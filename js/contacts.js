@@ -44,9 +44,8 @@ let contacts = [
         },
         "phone": "015394 75146",
         "cell": "0725-013-910",
-        "id": {
-            "name": "NINO",
-            "value": "SG 02 67 28 L"
+        "company": {
+            "name": "SAS",
         },
         "picture": {
             "large": "https://randomuser.me/api/portraits/men/0.jpg",
@@ -100,9 +99,8 @@ let contacts = [
         },
         "phone": "(671)-136-6789",
         "cell": "(917)-330-7191",
-        "id": {
-            "name": "",
-            "value": null
+        "company": {
+            "name": "Scania",
         },
         "picture": {
             "large": "https://randomuser.me/api/portraits/men/8.jpg",
@@ -156,9 +154,8 @@ let contacts = [
         },
         "phone": "079 325 37 12",
         "cell": "075 678 06 66",
-        "id": {
-            "name": "AVS",
-            "value": "756.0274.7633.97"
+        "company": {
+            "name": "SAS",
         },
         "picture": {
             "large": "https://randomuser.me/api/portraits/women/65.jpg",
@@ -212,9 +209,8 @@ let contacts = [
         },
         "phone": "(112)-812-3959",
         "cell": "(851)-705-9723",
-        "id": {
-            "name": "",
-            "value": null
+        "company": {
+            "name": "Ericsson",
         },
         "picture": {
             "large": "https://randomuser.me/api/portraits/women/95.jpg",
@@ -268,9 +264,8 @@ let contacts = [
         },
         "phone": "041-149-9987",
         "cell": "081-822-4828",
-        "id": {
-            "name": "PPS",
-            "value": "6515531T"
+        "company": {
+            "name": "Ericsson",
         },
         "picture": {
             "large": "https://randomuser.me/api/portraits/men/67.jpg",

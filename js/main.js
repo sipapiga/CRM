@@ -4,10 +4,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let customerList = new CustomerList();
 
     for (let customerinfo of contacts) {
-        let x = new Customer(customerinfo.name.first, customerinfo.name.last, customerinfo.dob.date, customerinfo.phone, customerinfo.picture.thumbnail, customerinfo.email);
-        customerList.list.push(x);
+        customerList.addCustomer(customerinfo);
     }
     customerList.displayCustomer();
+    console.log(customerList);
+    console.log(contacts);
 
     document.getElementById('saveBtn').addEventListener('click', e => customerList.addContact());
     document.getElementById('cancel').addEventListener('click', e => {
