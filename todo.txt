@@ -2,3 +2,10 @@
                                     THE LIST
 ===============================================================================
 
+* Dummy customer not really working :D 
+ * Time: 3 hours.
+
+* Fix new customer modal 
+ * Time: 1 hours.
+
+
