@@ -1,0 +1,14 @@
+.icon{
+    font-size: 4rem;
+}
+td{
+    height: 8rem;
+    border-right: 1px solid #000000;
+    empty-cells: hide !important;
+}
+td ul li{
+    list-style: none;
+}
+td ul{
+    padding: 0;
+}
