@@ -26,3 +26,11 @@ body {
     background: linear-gradient(#3EA4E2,#3661B9) !important;
     border-color: rgb(41, 67, 119) !important;
 }
+.div-color-bg{
+    background: linear-gradient(rgb(244, 246, 248),rgb(225, 226, 228)) !important;
+    height: 350px;
+}
+.div-color-bg1{
+    background: linear-gradient(rgb(244, 246, 248),rgb(225, 226, 228)) !important;
+    height: 200px;
+}
