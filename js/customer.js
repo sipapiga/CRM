@@ -13,7 +13,7 @@ class CustomerList {
     }
     setDummyCustomer() {
         //dummy customer
-        for (let customerinfo of contacts) {
+        for (let customerinfo of dummyContacts) {
             let customer = new Customer(customerinfo.name.first, customerinfo.name.last, customerinfo.dob.date, customerinfo.phone, customerinfo.picture.thumbnail, customerinfo.email, this.customer_id, customerinfo.location, customerinfo.company.name);
             this.list.push(customer);
             this.customer_id++;
@@ -22,15 +22,35 @@ class CustomerList {
     }
 
     getContactsFromLocalStorage() {
-        let contactsJson = JSON.parse(localStorage.getItem('Customers'));
+        let contactsJson = [];
+        if (localStorage.getItem('Customers') === null) {
+            //dummy customer
+            for (let customerinfo of contacts) {
+                let customer = new Customer(customerinfo.name.first, customerinfo.name.last, customerinfo.dob.date, customerinfo.phone, customerinfo.picture.thumbnail, customerinfo.email, this.customer_id, customerinfo.location, customerinfo.company.name);
+                this.list.push(customer);
+                contactsJson.push(customer);
+                this.customer_id++;
+            }
+            localStorage.setItem('Customers', JSON.stringify(this.list));
+        } else {
+            contactsJson = JSON.parse(localStorage.getItem('Customers'));
+        }
         console.log(contactsJson);
         return contactsJson;
     }
+    saveContactToLocalStorage(contact) {
+        const customerList = this.getContactsFromLocalStorage();
+        console.log(customerList);
+        this.list.push(contact);
+        customerList.push(contact);
+        this.customer_id++;
+        localStorage.setItem('Customers', JSON.stringify(customerList));
+    }
 
-    RemoveContactFromLocalStorage(num) {
-        const customerList = this. getContactsFromLocalStorage();
+    RemoveContactFromLocalStorage(id) {
+        const customerList = this.getContactsFromLocalStorage();
         customerList.forEach((contact, index) => {
-            if (contact.id == num) {
+            if (contact.id == id) {
                 customerList.splice(index, 1);  //remove from localStorage
                 this.list.splice(index, 1);  //remove from CustomerList class
             }
@@ -63,12 +83,10 @@ class CustomerList {
         const address = document.querySelector('#inputAddress').value;
 
         let newCus = new Customer(name, lastname, "", tel, 'https://randomuser.me/api/portraits/thumb/women/5.jpg', email, this.customer_id, address, company);
-        this.list.push(newCus);
+        //   this.list.push(newCus);
         this.addCustomerToList(newCus, this.customer_id);
-        localStorage.setItem('Customers', JSON.stringify(this.list));
+        this.saveContactToLocalStorage(newCus);
         this.clearFieldInput();
-        this.hideAddcontactModal();
-        this.customer_id++;
         console.log(this.list);
     }
     //delete from UI
@@ -78,8 +96,17 @@ class CustomerList {
         }
     }
     //Show customer info here
-    showInfo(e) {
-        console.log("SHow info here");
+    showInfo(id){
+        this.list.forEach((contact) => {
+            if (contact.id == id) {
+                document.querySelector('#cusName').innerHTML = contact.name;
+                console.log(contact);
+                document.querySelector('#phoneNum').innerHTML =contact.tel;
+                document.querySelector('#email').innerHTML= contact.email;
+                document.querySelector('#companyName').innerHTML =contact.company;
+                document.querySelector('#profie_user_pic').src= contact.photo;
+            }
+        });
     }
 
     clearFieldInput() {
@@ -90,21 +117,10 @@ class CustomerList {
         document.querySelector('#inputCompany').value = "";
         document.querySelector('#inputAddress').value = "";
     }
-    //not really work
-    hideAddcontactModal() {
-        let modal = document.getElementById('addContact');
-        modal.classList.remove('show');
-        modal.style.display = 'none';
-        modal.removeAttribute('aria-modal');
-        modal.setAttribute('aria-hidden', true);
-        // Remove any fade
-        if (document.querySelector('.modal-backdrop'))
-            document.body.removeChild(document.querySelector('.modal-backdrop'));
-    }
 }
 
 class Customer {
-    constructor(name, lastname, DOB = "", tel, photo = "", email, id, address = "", company) {
+    constructor(name, lastname, DOB = "1997-01-01", tel, photo = "", email, id, address = "", company) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;

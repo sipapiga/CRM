@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Registation</title>
+    <title>CRM</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="css/style1.css">
     <script src="js/contacts.js"> </script>
     <script src="js/customer.js"> </script>
+    <script src="js/user.js"> </script>
     <script src="js/main.js"> </script>
 </head>
 
@@ -39,7 +40,10 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#" id="account">Account</a>
+                        <a class="nav-link" id="user">Welcome</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="logout" href="login.html">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -50,10 +54,10 @@
     <!-- container-->
     <div class="container-fluid padding">
         <div class="row">
-            <div class="col-lg-3 leftColumn">
+            <div class="col-lg-3 rowPad">
                 <div class="list-group">
                     <a href="dashboard.html" class="list-group-item">Dashboard</a>
-                    <a href="contacts.html" class="list-group-item">Contacts</a>
+                    <a href="contacts.html" class="list-group-item active main-color-bg">Contacts</a>
                     <a href="salesTeam..html" class="list-group-item">Sales Team</a>
                     <a href="meeting.html" class="list-group-item">Meetings</a>
                 </div>
@@ -62,9 +66,9 @@
             <div class="col-lg-9 padding">
                 <!-- search-->
                 <div class="row">
-                    <div class="col"> </div>
-                    <div class="col-6">
-                        <div class="search">
+                    <div class="col-md-3"> </div>
+                    <div class="col-md-6">
+                        <div class="rowPad">
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="Search here" id="search">
                                 <div class="input-group-append">
@@ -73,94 +77,112 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col"></div>
-                </div>
-                <!-- end of search-->
-                <table class="table table-hover mails m-0 table table-actions-bar" id="myTable">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Lastname</th>
-                            <th>Email</th>
-                            <th>Contact Number</th>
-                            <th>Show info</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-                <!-- Button -->
-                <div class="row">
-                    <div class="col"> </div>
-                    <div class="col-6 text-center padding">
-                        <a href="#addContact" class="btn btn-primary btn-md waves-effect waves-light m-b-30"
-                            data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200"
-                            data-overlayColor="#36404a" id="addContactbtn" data-toggle="modal"
-                            data-target="#addContact"><i class="md md-add"></i> Add Contact</a>
+                    <div class="col-md-3">
+                        <div class="dropdown rowPad2 text-center">
+                            <button class="btn btn-secondary dropdown-toggle" type="button"
+                                id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Sort by
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+                                <button class="dropdown-item" type="button">Last Contacted</button>
+                                <button class="dropdown-item" type="button">Running Contacted</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col"></div>
                 </div>
-                <!-- End of Button -->
+                    <!-- end of search-->
+                    <table class="table table-hover mails m-0 table table-actions-bar" id="myTable">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Lastname</th>
+                                <th>Email</th>
+                                <th>Contact Number</th>
+                                <th>Show info</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <!-- Button -->
+                    <div class="row">
+                        <div class="col-md-3"> </div>
+                        <div class="col-md-6 text-center padding">
+                            <a href="#addContact" class="btn btn-primary btn-md waves-effect waves-light m-b-30"
+                                data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200"
+                                data-overlayColor="#36404a" id="addContactbtn" data-toggle="modal"
+                                data-target="#addContact"><i class="md md-add"></i> Add Contact</a>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                    <!-- End of Button -->
+                </div>
             </div>
         </div>
-    </div>
-    <!-- End of container-->
-    <!-- Modal -->
-    <div id='addContact' class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="custom-modal-title">Add Contact</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="custom-modal-text text-left">
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="inputName" placeholder="Enter name">
+        <!-- End of container-->
+        <!-- Modal -->
+        <div id='addContact' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="custom-modal-title">Add Contact</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="custom-modal-text text-left">
+                            <form role="form" class="needs-validation" novalidate>
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="inputName" placeholder="Enter name"
+                                        required>
+                                    <div class="invalid-feedback">Please write customer name</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastname">Lastname</label>
+                                    <input type="text" class="form-control" id="inputLastname"
+                                        placeholder="Enter lastname" required>
+                                    <div class="invalid-feedback">Please write customer name</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
+                                    <label>Contact number</label>
+                                    <input type="text" class="form-control" id="inputTel"
+                                        placeholder="Enter telephone number">
+                                </div>
+                                <div class="form-group">
+                                    <label>Company</label>
+                                    <input type="text" class="form-control" id="inputCompany"
+                                        placeholder="Enter company">
+                                </div>
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" id="inputAddress"
+                                        placeholder="Enter address">
+                                </div>
+                            </form>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary waves-effect waves-light" id="saveBtn"
+                                    data-dismiss="modal">Save</button>
+                                <button type="button" class="btn btn-danger waves-effect waves-light m-l-10"
+                                    data-dismiss="modal">Cancel</button>
                             </div>
-                            <div class="form-group">
-                                <label for="lastname">Lastname</label>
-                                <input type="text" class="form-control" id="inputLastname" placeholder="Enter lastname">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
-                            </div>
-                            <div class="form-group">
-                                <label>Contact number</label>
-                                <input type="text" class="form-control" id="inputTel"
-                                    placeholder="Enter telephone number">
-                            </div>
-                            <div class="form-group">
-                                <label>Company</label>
-                                <input type="text" class="form-control" id="inputCompany" placeholder="Enter company">
-                            </div>
-                            <div class="form-group">
-                                <label>Address</label>
-                                <input type="text" class="form-control" id="inputAddress" placeholder="Enter address">
-                            </div>
-                        </form>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary waves-effect waves-light"
-                                id="saveBtn">Save</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light m-l-10"
-                                id="cancel">Cancel</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Footer -->
+        <footer class="footer text-center">
+            <div class="col-xs-12">
+                © 2019. All rights reserved.
+            </div>
     </div>
-    <!-- Footer -->
-    <footer class="footer text-center">
-        <div class="col-xs-12">
-            © 2019. All rights reserved.
-        </div>
-        </div>
     </footer>
     <!-- End Footer -->
 </body>

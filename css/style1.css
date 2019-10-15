@@ -8,9 +8,21 @@ body {
 .navbar-nav li{
     padding-right:20px; 
 }
-.leftColumn,.search{
+.rowPad{
     padding-top: 5%;
+}
+.rowPad2{
+    padding-top: 10%;
 }
 .footer{
     padding: 3em;
+}
+#info{
+    width: 90%;
+    height: 500px;
+    background-color: rgb(221, 215, 215);
+}
+.main-color-bg{
+    background: linear-gradient(#3EA4E2,#3661B9) !important;
+    border-color: rgb(41, 67, 119) !important;
 }

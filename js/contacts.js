@@ -1,4 +1,4 @@
-let contacts = [
+let dummyContacts = [
     {
         "gender": "male",
         "name": {
@@ -6,24 +6,7 @@ let contacts = [
             "first": "John",
             "last": "Morris"
         },
-        "location": {
-            "street": {
-                "number": 47,
-                "name": "North Road"
-            },
-            "city": "Plymouth",
-            "state": "Shropshire",
-            "country": "United Kingdom",
-            "postcode": "N6E 3GH",
-            "coordinates": {
-                "latitude": "9.9804",
-                "longitude": "-96.0390"
-            },
-            "timezone": {
-                "offset": "+3:30",
-                "description": "Tehran"
-            }
-        },
+        "location": " 47, North Road Shropshire United Kingdom",
         "email": "john.morris@example.com",
         "login": {
             "uuid": "8a908ac4-7ad3-4389-a8ac-c75055c54f17",
@@ -35,11 +18,11 @@ let contacts = [
             "sha256": "7d9bd0eb5ac2f6160fbc9550f299e12f1eb04064d69656cc9b13467727f13773"
         },
         "dob": {
-            "date": "1971-02-27T18:15:37.837Z",
+            "date": "1971-02-27",
             "age": 48
         },
         "registered": {
-            "date": "2007-12-29T05:21:35.655Z",
+            "date": "2007-12-29",
             "age": 12
         },
         "phone": "015394 75146",
@@ -61,24 +44,7 @@ let contacts = [
             "first": "Michael",
             "last": "Clarke"
         },
-        "location": {
-            "street": {
-                "number": 2493,
-                "name": "Alexandra Street"
-            },
-            "city": "Auckland",
-            "state": "Bay of Plenty",
-            "country": "New Zealand",
-            "postcode": 77556,
-            "coordinates": {
-                "latitude": "62.2928",
-                "longitude": "-37.1492"
-            },
-            "timezone": {
-                "offset": "+4:00",
-                "description": "Abu Dhabi, Muscat, Baku, Tbilisi"
-            }
-        },
+        "location":    "2493 Alexandra Street Auckland New Zealand",
         "email": "michael.clarke@example.com",
         "login": {
             "uuid": "c193001c-7a21-41ac-9163-9001ac1259ab",
@@ -90,11 +56,11 @@ let contacts = [
             "sha256": "e1b97e8edd681bbb236307393c802e5d1d6c0590c87e5ba05d821318aee6a878"
         },
         "dob": {
-            "date": "1944-09-22T04:02:18.889Z",
+            "date": "1944-09-22",
             "age": 75
         },
         "registered": {
-            "date": "2002-04-26T23:57:06.787Z",
+            "date": "2002-04-26",
             "age": 17
         },
         "phone": "(671)-136-6789",
@@ -116,24 +82,7 @@ let contacts = [
             "first": "Noelia",
             "last": "Guerin"
         },
-        "location": {
-            "street": {
-                "number": 2477,
-                "name": "Place des 44 Enfants D'Izieu"
-            },
-            "city": "Bünzen",
-            "state": "St. Gallen",
-            "country": "Switzerland",
-            "postcode": 9300,
-            "coordinates": {
-                "latitude": "-56.5278",
-                "longitude": "100.6908"
-            },
-            "timezone": {
-                "offset": "+4:30",
-                "description": "Kabul"
-            }
-        },
+        "location":  "2477 Place des 44 Enfants D'Izieu St. Gallen Switzerland",
         "email": "noelia.guerin@example.com",
         "login": {
             "uuid": "c62a342b-697d-49a6-89dd-7d35a1ec5484",
@@ -145,11 +94,11 @@ let contacts = [
             "sha256": "5d19c5b263a0d8f6abbb319b16ad2c749d3708553e60ee348e8c29c18157032b"
         },
         "dob": {
-            "date": "1956-07-12T00:05:14.719Z",
+            "date": "1956-07-12",
             "age": 63
         },
         "registered": {
-            "date": "2007-11-08T10:37:02.475Z",
+            "date": "2007-11-08",
             "age": 12
         },
         "phone": "079 325 37 12",
@@ -171,24 +120,7 @@ let contacts = [
             "first": "Deniz",
             "last": "Çamdalı"
         },
-        "location": {
-            "street": {
-                "number": 1923,
-                "name": "Mevlana Cd"
-            },
-            "city": "Bayburt",
-            "state": "Giresun",
-            "country": "Turkey",
-            "postcode": 45054,
-            "coordinates": {
-                "latitude": "69.3442",
-                "longitude": "100.7956"
-            },
-            "timezone": {
-                "offset": "+10:00",
-                "description": "Eastern Australia, Guam, Vladivostok"
-            }
-        },
+        "location":  "1923 Mevlana Cd Giresun Turkey",
         "email": "deniz.camdali@example.com",
         "login": {
             "uuid": "4e6f3ed5-6486-4637-bb15-594ff134c235",
@@ -200,11 +132,11 @@ let contacts = [
             "sha256": "e9fc7fc4b84175118f802a6e9afbe47266e87ae0fdbb2aa6d27ce23c7ceb941f"
         },
         "dob": {
-            "date": "1961-03-08T10:28:52.310Z",
+            "date": "1961-03-08",
             "age": 58
         },
         "registered": {
-            "date": "2019-02-07T07:48:26.171Z",
+            "date": "2019-02-07",
             "age": 0
         },
         "phone": "(112)-812-3959",
@@ -226,24 +158,7 @@ let contacts = [
             "first": "Matthew",
             "last": "Webb"
         },
-        "location": {
-            "street": {
-                "number": 8444,
-                "name": "York Road"
-            },
-            "city": "Greystones",
-            "state": "Sligo",
-            "country": "Ireland",
-            "postcode": 17574,
-            "coordinates": {
-                "latitude": "22.3566",
-                "longitude": "-10.8365"
-            },
-            "timezone": {
-                "offset": "+9:00",
-                "description": "Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
-            }
-        },
+        "location":  "8444 York Road Greystones Sligo Ireland",
         "email": "matthew.webb@example.com",
         "login": {
             "uuid": "afedf7c1-26db-44f0-b2a6-6bea827fffdc",
@@ -255,11 +170,11 @@ let contacts = [
             "sha256": "3321fb5db1a8b42c294c68d194e84a1842b4dfa894c69724ac85697ef5116771"
         },
         "dob": {
-            "date": "1984-10-06T22:47:25.403Z",
+            "date": "1984-10-06",
             "age": 35
         },
         "registered": {
-            "date": "2018-04-11T09:57:42.810Z",
+            "date": "2018-04-11",
             "age": 1
         },
         "phone": "041-149-9987",
