@@ -1,0 +1,62 @@
+body {
+    background-color: darkgrey;
+    height: 100vh;
+}
+
+.login-page {
+    padding: 14px;
+    margin: auto;
+}
+
+.form {
+    position: relative;
+    background-color: white;
+    width: 50%;
+    min-width: 300px;
+    margin: auto auto 8rem;
+    padding: 45px;
+    text-align: center;
+}
+
+.form input {
+    font-family: "arial", sans-serif;
+    outline: 1;
+    background-color: lightgrey;
+    width: 80%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+.form button {
+    text-transform: uppercase;
+    outline: 0;
+    background-color: green;
+    width: 50%;
+    border: 0;
+    padding: 15px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.form button:hover,
+.form button:active {
+    background-color: darkgreen;
+}
+
+.message {
+    margin: 15px 0 0;
+    color: black;
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.hide {
+    display: none;
+}
