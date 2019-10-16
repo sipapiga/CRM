@@ -3,12 +3,24 @@
 }
 td{
     height: 8rem;
-    border-right: 1px solid #000000;
-    empty-cells: hide !important;
+    width: 5rem;
+    max-width: 5rem;
+    max-height: 15rem;
 }
 td ul li{
     list-style: none;
+    overflow: hidden;
 }
 td ul{
     padding: 0;
 }
+.modal-backdrop {
+   /*background-color: transparent !important;*/
+}
+
+#myModal{
+    position:absolute;
+    top: 30%;
+}
+
+
