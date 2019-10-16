@@ -22,10 +22,10 @@
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="css/style1.css">
-    <script src="js/contacts.js"> </script>
     <script src="js/customer.js"> </script>
+    <script src="js/contacts.js"> </script>
     <script src="js/user.js"> </script>
-    <script src="js/main.js"> </script>
+    <!-- <script src="js/main.js"> </script> -->
 </head>
 
 <body>
@@ -59,7 +59,7 @@
                     <a href="dashboard.html" class="list-group-item">Dashboard</a>
                     <a href="contacts.html" class="list-group-item active main-color-bg">Contacts</a>
                     <a href="salesTeam..html" class="list-group-item">Sales Team</a>
-                    <a href="meeting.html" class="list-group-item">Meetings</a>
+                    <a href="customer.html" class="list-group-item">Customers</a>
                 </div>
             </div>
 
@@ -79,8 +79,8 @@
                     </div>
                     <div class="col-md-3">
                         <div class="dropdown rowPad2 text-center">
-                            <button class="btn btn-secondary dropdown-toggle" type="button"
-                                id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Sort by
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -91,98 +91,125 @@
                         </div>
                     </div>
                 </div>
-                    <!-- end of search-->
-                    <table class="table table-hover mails m-0 table table-actions-bar" id="myTable">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th></th>
-                                <th>Name</th>
-                                <th>Lastname</th>
-                                <th>Email</th>
-                                <th>Contact Number</th>
-                                <th>Show info</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                    <!-- Button -->
-                    <div class="row">
-                        <div class="col-md-3"> </div>
-                        <div class="col-md-6 text-center padding">
-                            <a href="#addContact" class="btn btn-primary btn-md waves-effect waves-light m-b-30"
-                                data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200"
-                                data-overlayColor="#36404a" id="addContactbtn" data-toggle="modal"
-                                data-target="#addContact"><i class="md md-add"></i> Add Contact</a>
-                        </div>
-                        <div class="col-md-3"></div>
+                <!-- end of search-->
+                <table class="table table-hover mails m-0 table table-actions-bar" id="myTable">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                            <th>Contact Number</th>
+                            <th>Show info</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <!-- Button -->
+                <div class="row">
+                    <div class="col-md-3"> </div>
+                    <div class="col-md-6 text-center padding">
+                        <a href="#addContact" class="btn btn-primary btn-md waves-effect waves-light m-b-30"
+                            data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200"
+                            data-overlayColor="#36404a" id="addContactbtn" data-toggle="modal"
+                            data-target="#addContact"><i class="md md-add"></i> Add Contact</a>
                     </div>
-                    <!-- End of Button -->
+                    <div class="col-md-3"></div>
                 </div>
+                <!-- End of Button -->
             </div>
         </div>
-        <!-- End of container-->
-        <!-- Modal -->
-        <div id='addContact' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="custom-modal-title">Add Contact</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="custom-modal-text text-left">
-                            <form role="form" class="needs-validation" novalidate>
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="inputName" placeholder="Enter name"
-                                        required>
-                                    <div class="invalid-feedback">Please write customer name</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="lastname">Lastname</label>
-                                    <input type="text" class="form-control" id="inputLastname"
-                                        placeholder="Enter lastname" required>
-                                    <div class="invalid-feedback">Please write customer name</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail1">Email address</label>
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
-                                </div>
-                                <div class="form-group">
-                                    <label>Contact number</label>
-                                    <input type="text" class="form-control" id="inputTel"
-                                        placeholder="Enter telephone number">
-                                </div>
-                                <div class="form-group">
-                                    <label>Company</label>
-                                    <input type="text" class="form-control" id="inputCompany"
-                                        placeholder="Enter company">
-                                </div>
-                                <div class="form-group">
-                                    <label>Address</label>
-                                    <input type="text" class="form-control" id="inputAddress"
-                                        placeholder="Enter address">
-                                </div>
-                            </form>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary waves-effect waves-light" id="saveBtn"
-                                    data-dismiss="modal">Save</button>
-                                <button type="button" class="btn btn-danger waves-effect waves-light m-l-10"
-                                    data-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer -->
-        <footer class="footer text-center">
-            <div class="col-xs-12">
-                © 2019. All rights reserved.
-            </div>
     </div>
+    <!-- End of container-->
+    <!-- Modal -->
+    <div id='addContact' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="custom-modal-title">Add Contact</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="custom-modal-text text-left">
+                        <form role="form" class="needs-validation" novalidate>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="inputName" placeholder="Enter name"
+                                    required>
+                                <div class="invalid-feedback">Please write customer name</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname">Lastname</label>
+                                <input type="text" class="form-control" id="inputLastname" placeholder="Enter lastname"
+                                    required>
+                                <div class="invalid-feedback">Please write customer name</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                <label>Contact number</label>
+                                <input type="text" class="form-control" id="inputTel"
+                                    placeholder="Enter telephone number">
+                            </div>
+                            <div class="form-group">
+                                <label>Company</label>
+                                <input type="text" class="form-control" id="inputCompany" placeholder="Enter company">
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" class="form-control" id="inputAddress" placeholder="Enter address">
+                            </div>
+                        </form>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light" id="saveBtn"
+                                data-dismiss="modal">Save</button>
+                            <button type="button" class="btn btn-danger waves-effect waves-light m-l-10"
+                                data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-9 padding rowPad">
+        <div class="container">
+            <div class="row well">
+                <div class="col-lg-3">
+                    <div class="profile_user_pic">
+                        <img class="imgr-responsive img-circle" id="profile_user_pic">
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <h4 id="cusName">John Doe</h4>
+                    <table class="table table-reponsive">
+                    </table>
+                    <tr>
+                        <td>
+                            <p id="phoneNum">Phone Number</p>
+                        </td>
+                        <td>
+                            <p id="email">Email</p>
+                        </td>
+                        <td>
+                            <p id="companyName">Company</p>
+                        </td>
+                    </tr>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="col-xs-12">
+            © 2019. All rights reserved.
+        </div>
+        </div>
     </footer>
     <!-- End Footer -->
 </body>

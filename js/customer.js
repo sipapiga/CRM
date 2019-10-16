@@ -10,41 +10,35 @@ class CustomerList {
             this.addCustomerToList(customer);
             console.log(customer);
         });
+        //   this.setDummyCustomer();
     }
     setDummyCustomer() {
         //dummy customer
         for (let customerinfo of dummyContacts) {
             let customer = new Customer(customerinfo.name.first, customerinfo.name.last, customerinfo.dob.date, customerinfo.phone, customerinfo.picture.thumbnail, customerinfo.email, this.customer_id, customerinfo.location, customerinfo.company.name);
-            this.list.push(customer);
             this.customer_id++;
         }
-        localStorage.setItem('Customers', JSON.stringify(this.list));
+        //    localStorage.setItem('Customers', JSON.stringify(this.list));
     }
 
     getContactsFromLocalStorage() {
-        let contactsJson = [];
+
         if (localStorage.getItem('Customers') === null) {
-            //dummy customer
-            for (let customerinfo of contacts) {
-                let customer = new Customer(customerinfo.name.first, customerinfo.name.last, customerinfo.dob.date, customerinfo.phone, customerinfo.picture.thumbnail, customerinfo.email, this.customer_id, customerinfo.location, customerinfo.company.name);
-                this.list.push(customer);
-                contactsJson.push(customer);
-                this.customer_id++;
-            }
-            localStorage.setItem('Customers', JSON.stringify(this.list));
+            this.list = [];
         } else {
-            contactsJson = JSON.parse(localStorage.getItem('Customers'));
+            this.list = JSON.parse(localStorage.getItem('Customers'));
         }
-        console.log(contactsJson);
-        return contactsJson;
+        console.log(this.list);
+        return this.list;
     }
     saveContactToLocalStorage(contact) {
         const customerList = this.getContactsFromLocalStorage();
         console.log(customerList);
         this.list.push(contact);
-        customerList.push(contact);
+        // customerList.push(contact);
         this.customer_id++;
         localStorage.setItem('Customers', JSON.stringify(customerList));
+        console.log(this.list);
     }
 
     RemoveContactFromLocalStorage(id) {
@@ -52,7 +46,7 @@ class CustomerList {
         customerList.forEach((contact, index) => {
             if (contact.id == id) {
                 customerList.splice(index, 1);  //remove from localStorage
-                this.list.splice(index, 1);  //remove from CustomerList class
+                //  this.list.splice(index, 1);  //remove from CustomerList class
             }
         });
         localStorage.setItem('Customers', JSON.stringify(customerList));
@@ -65,12 +59,12 @@ class CustomerList {
         const row = document.createElement("tr");
         row.innerHTML = `<td><p>${list.id}</p></td>
                 <td><img src="${list.photo}" class="img-circle thumb-sm" id="photo"/></td>
-                <td><p id="firstName">${ list.name}</p></td>
-                <td><p id="lastName">${ list.lastname} </p></td>
-                <td><a href="#" id="email">${ list.email} </a></td>
-                <td><p id="tel">${ list.tel} </p> </td>
-                <td><a href="#" class="btn btn-success btn-sm info">Info</a></td>
-                <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
+                <td><p >${ list.name}</p></td>
+                <td><p >${ list.lastname} </p></td>
+                <td><a href="#" >${ list.email} </a></td>
+                <td><p >${ list.tel} </p> </td>
+                <td><a href="" class="btn btn-success btn-sm info">Info</a></td>
+                <td class="text-center"><button class="btn btn-danger btn-sm delete">X</button></td>
                 `;
         cusDiv.appendChild(row);
     }
@@ -96,15 +90,15 @@ class CustomerList {
         }
     }
     //Show customer info here
-    showInfo(id){
+    showInfo(id) {
         this.list.forEach((contact) => {
+            console.log(contact);
             if (contact.id == id) {
                 document.querySelector('#cusName').innerHTML = contact.name;
-                console.log(contact);
-                document.querySelector('#phoneNum').innerHTML =contact.tel;
-                document.querySelector('#email').innerHTML= contact.email;
-                document.querySelector('#companyName').innerHTML =contact.company;
-                document.querySelector('#profie_user_pic').src= contact.photo;
+                document.querySelector('#phoneNum').innerHTML = contact.tel;
+                document.querySelector('#email').innerHTML = contact.email;
+                document.querySelector('#companyName').innerHTML = contact.company;
+                document.querySelector('#profile_user_pic').src = contact.photo;
             }
         });
     }
@@ -132,3 +126,45 @@ class Customer {
         this.company = company;
     }
 }
+
+window.addEventListener('DOMContentLoaded', (event) => {
+
+    let customerList = new CustomerList();
+    console.log(customerList);
+    customerList.displayCustomer();
+
+
+    document.getElementById('saveBtn').addEventListener('click', e => {
+        customerList.addNewContact();
+    });
+    //Delete customer from UI and localStorage
+    document.getElementById('myTable').addEventListener('click', function (e) {
+        console.log(e.target);
+        customerList.deleteContactList(e.target);
+        let id = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+        customerList.RemoveContactFromLocalStorage(id);
+    });
+
+    document.getElementById('myTable').addEventListener('click', e => {
+        console.log(e.target);
+        let id = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+        console.log("id " + id);
+        customerList.showInfo(id);
+        //  location.href = "info.html";
+
+    });
+    //add new user 
+    for (let newUser of dummyUser) {
+        let user = new User(newUser.name.first, newUser.name.last, newUser.login.username, newUser.login.password);
+        user.userCRM.push(user);
+        user.getUserName();
+    }
+    getCustomerBD();
+    function getCustomerBD() {
+        let birthday;
+        for (let x of dummyContacts) {
+            console.log(x.dob.date);
+        }
+    }
+
+});
