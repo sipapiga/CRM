@@ -58,7 +58,7 @@
                 <div class="list-group">
                     <a href="dashboard.html" class="list-group-item">Dashboard</a>
                     <a href="contacts.html" class="list-group-item active main-color-bg">Contacts</a>
-                    <a href="salesTeam..html" class="list-group-item">Sales Team</a>
+                    <a href="calendar.html" class="list-group-item">Calendar</a>
                     <a href="customer.html" class="list-group-item">Customers</a>
                 </div>
             </div>
@@ -79,15 +79,10 @@
                     </div>
                     <div class="col-md-3">
                         <div class="dropdown rowPad2 text-center">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Sort by
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-
-                                <button class="dropdown-item" type="button">Last Contacted</button>
-                                <button class="dropdown-item" type="button">Running Contacted</button>
-                            </div>
+                            <a href="#addContact" class="btn btn-primary btn-md waves-effect waves-light m-b-30"
+                                data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200"
+                                data-overlayColor="#36404a" id="addContactbtn" data-toggle="modal"
+                                data-target="#addContact"><i class="md md-add"></i> Add Contact</a>
                         </div>
                     </div>
                 </div>
@@ -108,18 +103,6 @@
                     <tbody>
                     </tbody>
                 </table>
-                <!-- Button -->
-                <div class="row">
-                    <div class="col-md-3"> </div>
-                    <div class="col-md-6 text-center padding">
-                        <a href="#addContact" class="btn btn-primary btn-md waves-effect waves-light m-b-30"
-                            data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200"
-                            data-overlayColor="#36404a" id="addContactbtn" data-toggle="modal"
-                            data-target="#addContact"><i class="md md-add"></i> Add Contact</a>
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                <!-- End of Button -->
             </div>
         </div>
     </div>
@@ -138,26 +121,33 @@
                                 <label for="name">Name</label>
                                 <input type="text" class="form-control" id="inputName" placeholder="Enter name"
                                     required>
-                                <div class="invalid-feedback">Please write customer name</div>
+                                <span id="invalidName" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label for="lastname">Lastname</label>
                                 <input type="text" class="form-control" id="inputLastname" placeholder="Enter lastname"
                                     required>
-                                <div class="invalid-feedback">Please write customer name</div>
+                                <span id="invalidLastname" class="text-danger"></span>
+
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail1">Email address</label>
                                 <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
+                                <span id="invalidEmail" class="text-danger"></span>
+
                             </div>
                             <div class="form-group">
                                 <label>Contact number</label>
                                 <input type="text" class="form-control" id="inputTel"
                                     placeholder="Enter telephone number">
+                                    <span id="invalidTel" class="text-danger"></span>
+
                             </div>
                             <div class="form-group">
                                 <label>Company</label>
                                 <input type="text" class="form-control" id="inputCompany" placeholder="Enter company">
+                                <span id="invalidCompany" class="text-danger"></span>
+
                             </div>
                             <div class="form-group">
                                 <label>Address</label>
@@ -166,7 +156,7 @@
                         </form>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary waves-effect waves-light" id="saveBtn"
-                                data-dismiss="modal">Save</button>
+                                >Save</button>
                             <button type="button" class="btn btn-danger waves-effect waves-light m-l-10"
                                 data-dismiss="modal">Cancel</button>
                         </div>

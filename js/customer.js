@@ -1,7 +1,12 @@
 class CustomerList {
     constructor() {
         this.list = [];
-        this.customer_id = 1;
+        let id = localStorage.getItem('CurrentId');
+        if (id != null) {
+            this.customer_id = id;
+        } else {
+            this.customer_id = 1;
+        }
     }
 
     displayCustomer() {
@@ -10,7 +15,7 @@ class CustomerList {
             this.addCustomerToList(customer);
             console.log(customer);
         });
-        //   this.setDummyCustomer();
+        //  this.setDummyCustomer();
     }
     setDummyCustomer() {
         //dummy customer
@@ -18,11 +23,10 @@ class CustomerList {
             let customer = new Customer(customerinfo.name.first, customerinfo.name.last, customerinfo.dob.date, customerinfo.phone, customerinfo.picture.thumbnail, customerinfo.email, this.customer_id, customerinfo.location, customerinfo.company.name);
             this.customer_id++;
         }
-        //    localStorage.setItem('Customers', JSON.stringify(this.list));
+        localStorage.setItem('Customers', JSON.stringify(this.list));
     }
 
     getContactsFromLocalStorage() {
-
         if (localStorage.getItem('Customers') === null) {
             this.list = [];
         } else {
@@ -38,6 +42,7 @@ class CustomerList {
         // customerList.push(contact);
         this.customer_id++;
         localStorage.setItem('Customers', JSON.stringify(customerList));
+        localStorage.setItem('CurrentId', this.customer_id);
         console.log(this.list);
     }
 
@@ -63,7 +68,7 @@ class CustomerList {
                 <td><p >${ list.lastname} </p></td>
                 <td><a href="#" >${ list.email} </a></td>
                 <td><p >${ list.tel} </p> </td>
-                <td><a href="" class="btn btn-success btn-sm info">Info</a></td>
+                <td><a href="info.html" class="btn btn-success btn-sm info">Info</a></td>
                 <td class="text-center"><button class="btn btn-danger btn-sm delete">X</button></td>
                 `;
         cusDiv.appendChild(row);
@@ -76,7 +81,17 @@ class CustomerList {
         const company = document.querySelector('#inputCompany').value;
         const address = document.querySelector('#inputAddress').value;
 
-        let newCus = new Customer(name, lastname, "", tel, 'https://randomuser.me/api/portraits/thumb/women/5.jpg', email, this.customer_id, address, company);
+        //I framtiden om vi vet hur man spara photo så behöver vi inte dummy data
+        let photo = ["https://randomuser.me/api/portraits/thumb/women/5.jpg",
+            "https://randomuser.me/api/portraits/thumb/men/15.jpg",
+            "https://randomuser.me/api/portraits/thumb/women/78.jpg",
+            "https://randomuser.me/api/portraits/thumb/women/30.jpg",
+            "https://randomuser.me/api/portraits/thumb/women/71.jpg"
+        ];
+        let randomPhoto = photo[Math.random() * photo.length | 0];
+        console.log(randomPhoto);
+
+        let newCus = new Customer(name, lastname, "", tel, randomPhoto, email, this.customer_id, address, company);
         //   this.list.push(newCus);
         this.addCustomerToList(newCus, this.customer_id);
         this.saveContactToLocalStorage(newCus);
@@ -103,6 +118,34 @@ class CustomerList {
         });
     }
 
+    validateCustomer() {
+        const name = document.querySelector('#inputName').value;
+        if (name == "") {
+            document.querySelector('#invalidName').innerHTML = "Please write customer name";
+            return false;
+        }
+        const lastname = document.querySelector('#inputLastname').value;
+        if (lastname == "") {
+            document.querySelector('#invalidLastname').innerHTML = "Please write customer lastname";
+            return false;
+        }
+        const email = document.querySelector('#inputEmail').value;
+        if (email == "") {
+            document.querySelector('#invalidEmail').innerHTML = "Please write customer email";
+            return false;
+        }
+        const tel = document.querySelector('#inputTel').value;
+        if (tel == "") {
+            document.querySelector('#invalidTel').innerHTML = "Please write customer telephone number";
+            return false;
+        }
+        const company = document.querySelector('#inputCompany').value;
+        if (company == "") {
+            document.querySelector('#invalidCompany').innerHTML = "Please write customer company";
+            return false;
+        } else
+            return true;
+    }
     clearFieldInput() {
         document.querySelector('#inputName').value = "";
         document.querySelector('#inputLastname').value = "";
@@ -110,6 +153,12 @@ class CustomerList {
         document.querySelector('#inputTel').value = "";
         document.querySelector('#inputCompany').value = "";
         document.querySelector('#inputAddress').value = "";
+        document.querySelector('#invalidName').value = "";
+        document.querySelector('#invalidLastname').value = "";
+        document.querySelector('#invalidEmail').value = "";
+        document.querySelector('#invalidTel').value = "";
+        document.querySelector('#invalidCompany').value = "";
+
     }
 }
 
@@ -133,9 +182,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
     console.log(customerList);
     customerList.displayCustomer();
 
-
     document.getElementById('saveBtn').addEventListener('click', e => {
-        customerList.addNewContact();
+        let validateInput = customerList.validateCustomer();
+        if (validateInput == true) {
+            customerList.addNewContact();
+            // Remove modal
+            let modal = document.getElementById("addContact");
+            modal.classList.remove('show');
+            modal.style.display = 'none';
+            modal.removeAttribute('aria-modal');
+            modal.setAttribute('aria-hidden', true);
+
+            // Remove any fade
+            if (document.querySelector('.modal-backdrop'))
+                document.body.removeChild(document.querySelector('.modal-backdrop'));
+        }
     });
     //Delete customer from UI and localStorage
     document.getElementById('myTable').addEventListener('click', function (e) {
@@ -151,7 +212,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         console.log("id " + id);
         customerList.showInfo(id);
         //  location.href = "info.html";
-
     });
     //add new user 
     for (let newUser of dummyUser) {

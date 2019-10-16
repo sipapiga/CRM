@@ -56,6 +56,7 @@ body {
 a {
     text-decoration: none;
     width: 40%;
+    padding-top:30px;
 }
 
 .hide {

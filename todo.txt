@@ -5,7 +5,16 @@
 * Dummy customer not really working :D 
  * Time: 3 hours.
 
+**Done 21:42 2019-10-16
+
 * Fix new customer modal 
  * Time: 1 hours.
 
+**Done 21:42 2019-10-16
 
+
+* Sort name,company and last call
+ * Time: 20 hours.
+
+* Show data in user info page
+ * Time: 5 hours.
