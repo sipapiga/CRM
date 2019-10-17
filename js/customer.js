@@ -15,15 +15,18 @@ class CustomerList {
             this.addCustomerToList(customer);
             console.log(customer);
         });
-        //  this.setDummyCustomer();
+       //  this.setDummyCustomer();
     }
     setDummyCustomer() {
         //dummy customer
         for (let customerinfo of dummyContacts) {
             let customer = new Customer(customerinfo.name.first, customerinfo.name.last, customerinfo.dob.date, customerinfo.phone, customerinfo.picture.thumbnail, customerinfo.email, this.customer_id, customerinfo.location, customerinfo.company.name);
+            this.list.push(customer);
             this.customer_id++;
+
         }
         localStorage.setItem('Customers', JSON.stringify(this.list));
+        this.getContactsFromLocalStorage();
     }
 
     getContactsFromLocalStorage() {
@@ -91,7 +94,7 @@ class CustomerList {
         let randomPhoto = photo[Math.random() * photo.length | 0];
         console.log(randomPhoto);
 
-        let newCus = new Customer(name, lastname, "", tel, randomPhoto, email, this.customer_id, address, company);
+        let newCus = new Customer(name, lastname, "01-01-1997", tel, randomPhoto, email, this.customer_id, address, company);
         //   this.list.push(newCus);
         this.addCustomerToList(newCus, this.customer_id);
         this.saveContactToLocalStorage(newCus);
@@ -110,10 +113,13 @@ class CustomerList {
             console.log(contact);
             if (contact.id == id) {
                 document.querySelector('#cusName').innerHTML = contact.name;
+                document.querySelector('#cusLastName').innerHTML = contact.lastname;
                 document.querySelector('#phoneNum').innerHTML = contact.tel;
                 document.querySelector('#email').innerHTML = contact.email;
                 document.querySelector('#companyName').innerHTML = contact.company;
                 document.querySelector('#profile_user_pic').src = contact.photo;
+                document.querySelector('#address').innerHTML = contact.address;
+                document.querySelector('#DOB').innerHTML = contact.DOB;
             }
         });
     } 

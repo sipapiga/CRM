@@ -5,7 +5,6 @@ function showCustomer(list) {
             <td><img src="${list.photo}" class="img-circle thumb-sm" id="photo"/></td>
             <td><p >${ list.name}</p></td>
             <td><p >${ list.lastname} </p></td>
-            <td><a href="#" >${ list.email} </a></td>
             <td><p>${ list.tel} </p> </td>
             <td><a >${ list.company} </a></td>
             <td><p >${ list.Lastcall} </p> </td>

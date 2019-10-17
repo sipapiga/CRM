@@ -22,6 +22,7 @@
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="css/style1.css">
+    <script src="js/contacts.js"> </script>
     <script src="js/customer.js"> </script>
     <!-- <script src="js/user.js"> </script> -->
     <script src="js/main.js"> </script>
@@ -55,10 +56,11 @@
         <div class="row">
             <div class="col-lg-3 rowPad">
                 <div class="list-group">
-                    <a href="dashboard.html" class="list-group-item">Dashboard</a>
-                    <a href="contacts.html" class="list-group-item active main-color-bg">Contacts</a>
-                    <a href="calendar.html" class="list-group-item">Calendar</a>
-                    <a href="customer.html" class="list-group-item">Customers</a>
+                    <a href="dashboard.html" class="list-group-item"><i class="far fa-clipboard"></i> Dashboard</a>
+                    <a href="contacts.html" class="list-group-item active main-color-bg"><i class="fas fa-id-card"></i>
+                        Contacts</a>
+                    <a href="calendar.html" class="list-group-item"><i class="far fa-calendar-alt"></i> Calendar</a>
+                    <a href="customer.html" class="list-group-item"><i class="fas fa-user-astronaut"></i> Customers</a>
                 </div>
             </div>
 
@@ -81,28 +83,132 @@
                             <a href="#addContact" class="btn btn-primary btn-md waves-effect waves-light m-b-30"
                                 data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200"
                                 data-overlayColor="#36404a" id="addContactbtn" data-toggle="modal"
-                                data-target="#addContact"><i class="md md-add"></i> Add Contact</a>
+                                data-target="#addContact"><i class="fas fa-user-plus"></i></i> Add Contact</a>
                         </div>
                     </div>
                 </div>
                 <!-- end of search-->
-                <table class="table table-hover mails m-0 table table-actions-bar" id="myTable">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Lastname</th>
-                            <th>Email</th>
-                            <th>Contact Number</th>
-                            <th>Show info</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                <div id="table-responsive">
+                    <table class="table table-hover mails m-0 table table-actions-bar" id="myTable">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Lastname</th>
+                                <th>Email</th>
+                                <th>Contact Number</th>
+                                <th>Show info</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+
+                </div>
+                <!-- test -->
+
+
+                <div class="col-lg-12 padding rowPad">
+                    <div class="container">
+                        <div class="row well">
+                            <div class="col-lg-3">
+                                <div class="profile_user_pic">
+                                    <img class="imgr-responsive img-circle" id="profile_user_pic">
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 id="cusName">John </h4>
+                                        <h4 id="cusLastName">Doe </h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="#addNote"
+                                            class="btn btn-primary btn-md waves-effect waves-light m-b-30"
+                                            data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200"
+                                            data-overlayColor="#36404a" id="addContactbtn" data-toggle="modal"
+                                            data-target="#addNoteModal"><i class="far fa-sticky-note"></i> Add Note</a>
+                                        <a href="#addNote"
+                                            class="btn btn-primary btn-md waves-effect waves-light m-b-30"
+                                            data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200"
+                                            data-overlayColor="#36404a" id="addContactbtn" data-toggle="modal"
+                                            data-target="#addCall"><i class="fas fa-phone"></i> Add Last Contacted</a>
+                                    </div>
+                                </div>
+                                <table class="table table-reponsive">
+                                    <tr>
+                                        <td>
+                                            <label>Phone Number:</label>
+                                            <p id="phoneNum"> Number</p>
+                                        </td>
+                                        <td>
+                                            <label>Email:</label>
+                                            <p id="email">Email</p>
+                                        </td>
+                                        <td>
+                                            <label>Company:</label>
+                                            <p id="companyName">Company</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <label>Email:</label>
+                                <p id="address">Adress</p><br>
+                                <label>Date of Birth:</label>
+                                <p id="DOB">DOB</p>
+
+                                <div class="col-md-12 note">
+                                    <h4>Note:</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal" tabindex="-1" role="dialog" id="addNoteModal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Add some note to customer</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <label>Note</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" tabindex="-1" role="dialog" id="addCall">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Last contacted</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <label>Date</label>
+                                <input type="text" id="exampleFormControlTextarea1" placeholder="mm/dd/yyyy"></input>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End test -->
             </div>
+
         </div>
     </div>
     <!-- End of container-->
@@ -160,35 +266,6 @@
                                 data-dismiss="modal">Cancel</button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-lg-9 padding rowPad">
-        <div class="container">
-            <div class="row well">
-                <div class="col-lg-3">
-                    <div class="profile_user_pic">
-                        <img class="imgr-responsive img-circle" id="profile_user_pic">
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <h4 id="cusName">John Doe</h4>
-                    <table class="table table-reponsive">
-                    </table>
-                    <tr>
-                        <td>
-                            <p id="phoneNum">Phone Number</p>
-                        </td>
-                        <td>
-                            <p id="email">Email</p>
-                        </td>
-                        <td>
-                            <p id="companyName">Company</p>
-                        </td>
-                    </tr>
                 </div>
             </div>
         </div>

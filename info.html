@@ -22,8 +22,8 @@
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="css/style1.css">
-    <script src="js/customer.js"> </script>
-    <!-- <script src="js/main.js"> </script> --> 
+    <!-- <script src="js/customer.js"> </script> -->
+    <!-- <script src="js/main.js"> </script>  -->
     <script src="js/showInfo.js"> </script>
 </head>
 
@@ -61,6 +61,9 @@
                     <a href="customer.html" class="list-group-item">Customer</a>
                 </div>
             </div>
+
+
+
             <div class="col-lg-9 padding rowPad">
                 <div class="container">
                     <div class="row well">
@@ -70,35 +73,106 @@
                             </div>
                         </div>
                         <div class="col-lg-9">
-                            <h4 id="cusName">John Doe</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 id="cusName">John </h4>
+                                    <h4 id="cusLastName">Doe </h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="#addNote" class="btn btn-primary btn-md waves-effect waves-light m-b-30"
+                                        data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200"
+                                        data-overlayColor="#36404a" id="addContactbtn" data-toggle="modal"
+                                        data-target="#addNoteModal"><i class="far fa-sticky-note"></i> Add Note</a>
+                                    <a href="#addNote" class="btn btn-primary btn-md waves-effect waves-light m-b-30"
+                                        data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200"
+                                        data-overlayColor="#36404a" id="addContactbtn" data-toggle="modal"
+                                        data-target="#addCall"><i class="fas fa-phone"></i> Add Last Contacted</a>
+                                </div>
+                            </div>
                             <table class="table table-reponsive">
+                                <tr>
+                                    <td>
+                                        <label>Phone Number:</label>
+                                        <p id="phoneNum"> Number</p>
+                                    </td>
+                                    <td>
+                                        <label>Email:</label>
+                                        <p id="email">Email</p>
+                                    </td>
+                                    <td>
+                                        <label>Company:</label>
+                                        <p id="companyName">Company</p>
+                                    </td>
+                                </tr>
                             </table>
-                            <tr>
-                                <td>
-                                    <p id="phoneNum">Phone Number</p>
-                                </td>
-                                <td>
-                                    <p id="email">Email</p>
-                                </td>
-                                <td>
-                                    <p id="companyName">Company</p>
-                                </td>
-                            </tr>
+                            <label>Email:</label>
+                            <p id="address">Adress</p><br>
+                            <label>Date of Birth:</label>
+                            <p id="DOB">DOB</p>
+                            <div class="col-md-12 note">
+                                <h4>Note:</h4>
+                                <p>Some note?</p>
+                                <p>Some note?</p>
+                                <p>Some note?</p>
+                                <p>Some note?</p>
+                                <p>Some note?</p>
+                                <p>Some note?</p>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="modal" tabindex="-1" role="dialog" id="addNoteModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add some note to customer</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <label>Note</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal" tabindex="-1" role="dialog" id="addCall">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Last contacted</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <label>Date</label>
+                            <input type="text" id="exampleFormControlTextarea1" placeholder="mm/dd/yyyy"></input>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of container-->
+            <!-- Footer -->
+            <footer class="footer text-center">
+                <div class="col-xs-12">
+                    © 2019. All rights reserved.
+                </div>
         </div>
-    </div>
-    <!-- End of container-->
-    <!-- Footer -->
-    <footer class="footer text-center">
-        <div class="col-xs-12">
-            © 2019. All rights reserved.
-        </div>
-        </div>
-    </footer>
-    <!-- End Footer -->
+        </footer>
+        <!-- End Footer -->
 </body>
 
 </html>
