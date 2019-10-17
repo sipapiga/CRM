@@ -2,17 +2,19 @@
     font-size: 4rem;
 }
 td{
-    height: 8rem;
-    width: 5rem;
-    max-width: 5rem;
-    max-height: 15rem;
+    height: 10rem;
+    width: 7rem;
 }
 td ul li{
     list-style: none;
     overflow: hidden;
+    margin: 0.2rem;
+    padding: 0;
+    width: 80%;
 }
 td ul{
     padding: 0;
+    width: 100%;
 }
 .modal-backdrop {
    /*background-color: transparent !important;*/
