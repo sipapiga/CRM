@@ -56,9 +56,17 @@ body {
 a {
     text-decoration: none;
     width: 40%;
-    padding-top:30px;
+    padding-top: 30px;
 }
 
 .hide {
     display: none;
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        background: green;
+    }
+    button {
+    }
 }
