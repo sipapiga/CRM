@@ -1,6 +1,8 @@
 body {
     background-color: darkgrey;
-    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
 }
 
 .login-page {
@@ -56,10 +58,58 @@ body {
 a {
     text-decoration: none;
     width: 40%;
-    padding-top:30px;
+    padding-top: 30px;
 }
 
 .hide {
     display: none;
 }
 
+@media screen and (max-width: 600px) {
+    .login-page {
+        padding: 0;
+        margin: 0;
+    }
+    .form {
+        position: relative;
+        background-color: white;
+        width: 100%;
+        margin: 0;
+        padding: 50px 0;
+        text-align: center;
+    }
+
+    .form input {
+        font-family: "arial", sans-serif;
+        outline: 1;
+        background-color: lightgrey;
+        width: 80%;
+        border: 0;
+        margin: 15px;
+        padding: 14px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .login-page {
+        padding: 0;
+        margin: 0;
+    }
+
+    .form {
+        position: relative;
+        background-color: white;
+        width: 100%;
+        margin: 0;
+        padding: 50px 20px;
+        text-align: center;
+    }
+    .form input {
+        margin-top: 1rem;
+    }
+    .form button {
+        margin-top: 2rem;
+    }
+}
