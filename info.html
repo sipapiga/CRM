@@ -22,10 +22,9 @@
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="css/style1.css">
-    <script src="js/contacts.js"> </script>
     <script src="js/customer.js"> </script>
-    <script src="js/user.js"> </script>
-    <script src="js/main.js"> </script>
+    <!-- <script src="js/main.js"> </script> --> 
+    <script src="js/showInfo.js"> </script>
 </head>
 
 <body>
@@ -58,17 +57,16 @@
                 <div class="list-group">
                     <a href="dashboard.html" class="list-group-item ">Dashboard</a>
                     <a href="contacts.html" class="list-group-item active main-color-bg">Contacts</a>
-                    <a href="salesTeam.html" class="list-group-item">Sales Team</a>
-                    <a href="meeting.html" class="list-group-item">Meetings</a>
+                    <a href="calendar.html" class="list-group-item">Calendar</a>
+                    <a href="customer.html" class="list-group-item">Customer</a>
                 </div>
             </div>
-
             <div class="col-lg-9 padding rowPad">
                 <div class="container">
                     <div class="row well">
                         <div class="col-lg-3">
-                            <div class="prolie_user_pic">
-                                <img class="imgr-responsive img-circle" id="prolie_user_pic">
+                            <div class="profile_user_pic">
+                                <img class="imgr-responsive img-circle" id="profile_user_pic">
                             </div>
                         </div>
                         <div class="col-lg-9">
@@ -76,14 +74,19 @@
                             <table class="table table-reponsive">
                             </table>
                             <tr>
-                                <td id="phoneNum">388328384</td>
-                                <td id="email">sipaksld</td>
-                                <td id="companyName">SAS</td>
+                                <td>
+                                    <p id="phoneNum">Phone Number</p>
+                                </td>
+                                <td>
+                                    <p id="email">Email</p>
+                                </td>
+                                <td>
+                                    <p id="companyName">Company</p>
+                                </td>
                             </tr>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

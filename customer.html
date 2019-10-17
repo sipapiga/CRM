@@ -20,21 +20,16 @@
     <!-- icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <!-- Chart -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/style1.css">
-    <!-- <script src="js/customer.js"> </script> -->
-    <script src="js/graph.js"> </script>
-    <!-- <script src="js/user.js"> </script> -->
-    <!-- <script src="js/main.js"> </script> -->
+    <script src="js/sort.js"> </script>
 </head>
 
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Our CRM name</a>
+            <a class="navbar-brand" href="dashboard.html">Our CRM name</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -58,61 +53,63 @@
         <div class="row">
             <div class="col-lg-3 rowPad">
                 <div class="list-group">
-                    <a href="dashboard.html" class="list-group-item active main-color-bg">Dashboard</a>
-                    <a href="contacts.html" class="list-group-item">Contacts</a>
+                    <a href="dashboard.html" class="list-group-item">Dashboard</a>
+                    <a href="contacts.html" class="list-group-item ">Contacts</a>
                     <a href="calendar.html" class="list-group-item">Calendar</a>
-                    <a href="customer.html" class="list-group-item">Customers</a>
+                    <a href="customer.html" class="list-group-item active main-color-bg">Customers</a>
                 </div>
             </div>
 
-            <div class="col-lg-9 padding rowPad ">
-                <div class="row ">
-                    <div class="col-md-4 ">
-                        <div class="div-color-bg1 padding">
-                            <h2 id="customers">8564</h2>
-                            <div>Customers</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="div-color-bg1">
-                            <h2 id="todo">1256</h2>
-                            <div>Todos</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="div-color-bg1">
-                            <h2 id="meetings">18</h2>
-                            <div>Meetings</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row rowPad">
-                    <div class="col-md-4 ">
-                        <div class="div-color-bg padding">
-                            <h4 id="customers">Calendar</h4>
-                            <div id="calendar"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="div-color-bg">
-                            <h4 id="todo">Revenues</h4>
-                            <div >
-                                <canvas id="graph"></canvas>
+            <div class="col-lg-9 padding">
+                <!-- search-->
+                <div class="row">
+                    <div class="col-md-3"> </div>
+                    <div class="col-md-6">
+                        <div class="rowPad">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Search here" id="search">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="search"><i class='fas fa-search'></i></span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="div-color-bg">
-                            <h4 id="todo">Upcoming Birthday</h4>
-                            <div id="birthdayList"></div>
+                    <div class="col-md-3">
+                        <div class="dropdown rowPad2 text-center">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Sort by
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+                                <button class="dropdown-item" type="button">Last Contacted</button>
+                                <button class="dropdown-item" type="button">Running Contacted</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- end of search-->
+                <table class="table table-hover mails m-0 table table-actions-bar" id="sortTable">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th id="name">Name</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                            <th>Contact Number</th>
+                            <th>Company</th>
+                            <th>Last call</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
     <!-- End of container-->
+
     <!-- Footer -->
     <footer class="footer text-center">
         <div class="col-xs-12">
