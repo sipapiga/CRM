@@ -1,14 +1,13 @@
-
-
-window.addEventListener('DOMContentLoaded', (event) => {
-    
-    document.getElementById('myTable').addEventListener('click', e => {
-        console.log(test);
-        console.log(e.target);
-        let id = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-        console.log("id " + id);
-        showInfo(id);
-        //  location.href = "info.html";
-
+  //Show customer info here
+  function showInfo(id) {
+    this.list.forEach((contact) => {
+        console.log(contact);
+        if (contact.id == id) {
+            document.querySelector('#cusName').innerHTML = contact.name;
+            document.querySelector('#phoneNum').innerHTML = contact.tel;
+            document.querySelector('#email').innerHTML = contact.email;
+            document.querySelector('#companyName').innerHTML = contact.company;
+            document.querySelector('#profile_user_pic').src = contact.photo;
+        }
     });
-});
+}

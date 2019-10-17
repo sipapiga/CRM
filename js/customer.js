@@ -68,7 +68,7 @@ class CustomerList {
                 <td><p >${ list.lastname} </p></td>
                 <td><a href="#" >${ list.email} </a></td>
                 <td><p >${ list.tel} </p> </td>
-                <td><a href="info.html" class="btn btn-success btn-sm info">Info</a></td>
+                <td><a href="#" class="btn btn-success btn-sm info">Info</a></td>
                 <td class="text-center"><button class="btn btn-danger btn-sm delete">X</button></td>
                 `;
         cusDiv.appendChild(row);
@@ -116,7 +116,7 @@ class CustomerList {
                 document.querySelector('#profile_user_pic').src = contact.photo;
             }
         });
-    }
+    } 
 
     validateCustomer() {
         const name = document.querySelector('#inputName').value;
@@ -137,6 +137,10 @@ class CustomerList {
         const tel = document.querySelector('#inputTel').value;
         if (tel == "") {
             document.querySelector('#invalidTel').innerHTML = "Please write customer telephone number";
+            return false;
+        }
+        if (isNaN(tel)) {
+            document.querySelector('#invalidTel').innerHTML = "Please write telephone number in digits";
             return false;
         }
         const company = document.querySelector('#inputCompany').value;
@@ -176,13 +180,14 @@ class Customer {
     }
 }
 
-window.addEventListener('DOMContentLoaded', (event) => {
+
+/* window.addEventListener('DOMContentLoaded', (event) => {
 
     let customerList = new CustomerList();
     console.log(customerList);
     customerList.displayCustomer();
 
-    document.getElementById('saveBtn').addEventListener('click', e => {
+    document.getElementById('saveBtn').addEventListener('click', function () {
         let validateInput = customerList.validateCustomer();
         if (validateInput == true) {
             customerList.addNewContact();
@@ -206,25 +211,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
         customerList.RemoveContactFromLocalStorage(id);
     });
 
-    document.getElementById('myTable').addEventListener('click', e => {
+    document.getElementById('myTable').addEventListener('click', function (e) {
         console.log(e.target);
         let id = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
         console.log("id " + id);
         customerList.showInfo(id);
         //  location.href = "info.html";
     });
-    //add new user 
-    for (let newUser of dummyUser) {
-        let user = new User(newUser.name.first, newUser.name.last, newUser.login.username, newUser.login.password);
-        user.userCRM.push(user);
-        user.getUserName();
-    }
-    getCustomerBD();
+
     function getCustomerBD() {
         let birthday;
         for (let x of dummyContacts) {
             console.log(x.dob.date);
         }
     }
-
-});
+}); */

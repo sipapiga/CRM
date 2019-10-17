@@ -12,6 +12,12 @@ function showCustomer(list) {
             `;
     cusDiv.appendChild(row);
 }
+function item(c) {
+    return function () {
+        console.log(c)
+        //   sortColumn(c)
+    }
+}
 /* function sortColumn(columnName) {
     let sortDirection = false;
     let getName = dummyContacts.map((contact) => {
@@ -39,13 +45,14 @@ function sortNameColumn(sort, columnName) {
 }
  */
 window.addEventListener('DOMContentLoaded', (event) => {
-    let customerList = new CustomerList();
-    let sortList = customerList.getContactsFromLocalStorage();
+    let sortList =  JSON.parse(localStorage.getItem('Customers'));
     console.log(sortList);
-    customerList.list.forEach(customer => {
+    sortList.forEach(customer => {
         showCustomer(customer);
     });
-    const sortName = document.querySelector('#name');
-
+    th = document.getElementsByTagName('th');
+    for (let c = 0; c < th.length; c++) {
+        th[c].addEventListener('click', item(c))
+    }
 
 });
