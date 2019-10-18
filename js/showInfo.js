@@ -1,4 +1,5 @@
   //Show customer info here
+  //showInfo(id);
   function showInfo(id) {
     this.list.forEach((contact) => {
         console.log(contact);

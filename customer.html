@@ -52,59 +52,50 @@
     <div class="container-fluid padding">
         <div class="row">
             <div class="col-lg-3 rowPad">
-                <div class="list-group">
-                    <a href="dashboard.html" class="list-group-item">Dashboard</a>
-                    <a href="contacts.html" class="list-group-item ">Contacts</a>
-                    <a href="calendar.html" class="list-group-item">Calendar</a>
-                    <a href="customer.html" class="list-group-item active main-color-bg">Customers</a>
-                </div>
+                <a href="dashboard.html" class="list-group-item"><i class="far fa-clipboard"></i>
+                    Dashboard</a>
+                <a href="contacts.html" class="list-group-item"><i class="fas fa-id-card"></i> Contacts</a>
+                <a href="calendar.html" class="list-group-item"><i class="far fa-calendar-alt"></i> Calendar</a>
+                <a href="customer.html" class="list-group-item active main-color-bg"><i
+                        class="fas fa-user-astronaut"></i> Customers</a>
             </div>
+
 
             <div class="col-lg-9 padding">
                 <!-- search-->
                 <div class="row">
-                    <div class="col-md-3"> </div>
+                    <div class="col-md-6"> </div>
                     <div class="col-md-6">
-                        <div class="rowPad">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Search here" id="search">
-                                <div class="input-group-append">
-                                    <span class="input-group-text" id="search"><i class='fas fa-search'></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="dropdown rowPad2 text-center">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Sort by
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-
-                                <button class="dropdown-item" type="button">Last Contacted</button>
-                                <button class="dropdown-item" type="button">Running Contacted</button>
-                            </div>
+                        <div class="rowPad text-center">
+                            <section class="sort-options">
+                                <span class="vertical-middle lead">Sort By :</span>
+                                <button type="button" class="btn btn-primary" id="lastContactedSort">Last
+                                    Contacted</button>
+                                <button type="button" class="btn btn-primary" id="nameSort">Name</button>
+                                <button type="button" class="btn btn-primary" id="companySort">Company</button>
+                                <button type="button" class="btn btn-primary" id="idSort">id</button>
+                            </section>
                         </div>
                     </div>
                 </div>
                 <!-- end of search-->
-                <table class="table table-hover mails m-0 table table-actions-bar" id="sortTable">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th id="name">Name</th>
-                            <th>Lastname</th>
-                            <th>Email</th>
-                            <th>Contact Number</th>
-                            <th>Company</th>
-                            <th>Last call</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                <div class="rowPad">
+                    <table class="table table-hover mails m-0 table table-actions-bar">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th id="name">Name</th>
+                                <th>Lastname</th>
+                                <th>Contact Number</th>
+                                <th>Company</th>
+                                <th>Last call</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sortTable">
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

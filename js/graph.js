@@ -1,6 +1,28 @@
 window.addEventListener('DOMContentLoaded', (event) => {
-    let chart = document.getElementById('graph').getContext('2d');
 
+    let contactList = JSON.parse(localStorage.getItem('Customers'));
+    console.log(contactList);
+
+    const antalCustomer = document.querySelector('#customers');
+
+    antalCustomer.innerHTML = contactList.length;
+
+    for (let x = 0; x < contactList.length; x++) {
+        showCustomerBirthday(contactList[x]);
+    }
+    function showCustomerBirthday(cus) {
+        const cusBD = document.querySelector("#birthdayList");
+        const row = document.createElement("tr");
+        row.innerHTML = `
+                <td><p>${cus.DOB}</p></td>
+                <td><p >${ cus.name}</p></td>
+                <td><p >${ cus.company} </p></td>
+             `;
+        cusBD.appendChild(row);
+    }
+
+
+    let chart = document.getElementById('graph').getContext('2d');
     let revenueChart = new Chart(chart, {
         type: 'bar',
         data: {
@@ -17,6 +39,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 ],
             }],
         }
-
     });
 });
