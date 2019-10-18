@@ -20,7 +20,7 @@ class CustomerList {
     setDummyCustomer() {
         //dummy customer
         for (let customerinfo of dummyContacts) {
-            let customer = new Customer(customerinfo.name.first, customerinfo.name.last, customerinfo.dob.date, customerinfo.phone, customerinfo.picture.thumbnail, customerinfo.email, this.customer_id, customerinfo.location, customerinfo.company.name);
+            let customer = new Customer(customerinfo.name.first, customerinfo.name.last, customerinfo.dob.date, customerinfo.phone, customerinfo.picture.large, customerinfo.email, this.customer_id, customerinfo.location, customerinfo.company.name);
             this.list.push(customer);
             this.customer_id++;
 
@@ -66,7 +66,7 @@ class CustomerList {
         const cusDiv = document.querySelector("#myTable");
         const row = document.createElement("tr");
         row.innerHTML = `<td><p>${list.id}</p></td>
-                <td><img src="${list.photo}" class="img-circle thumb-sm" id="photo"/></td>
+                <td><img src="${list.photo}" class="img-fluid rounded-circle" width="20%"/></td>
                 <td><p >${ list.name}</p></td>
                 <td><p >${ list.lastname} </p></td>
                 <td><a href="#" >${ list.email} </a></td>
@@ -85,11 +85,13 @@ class CustomerList {
         const address = document.querySelector('#inputAddress').value;
 
         //I framtiden om vi vet hur man spara photo så behöver vi inte dummy data
-        let photo = ["https://randomuser.me/api/portraits/thumb/women/5.jpg",
-            "https://randomuser.me/api/portraits/thumb/men/15.jpg",
-            "https://randomuser.me/api/portraits/thumb/women/78.jpg",
-            "https://randomuser.me/api/portraits/thumb/women/30.jpg",
-            "https://randomuser.me/api/portraits/thumb/women/71.jpg"
+        let photo = ["https://randomuser.me/api/portraits/women/5.jpg",
+            "https://randomuser.me/api/portraits/men/15.jpg",
+            "https://randomuser.me/api/portraits/women/78.jpg",
+            "https://randomuser.me/api/portraits/women/30.jpg",
+            "https://randomuser.me/api/portraits/women/71.jpg",
+            "https://randomuser.me/api/portraits/men/0.jpg",
+            "https://randomuser.me/api/portraits/men/67.jpg"
         ];
         let randomPhoto = photo[Math.random() * photo.length | 0];
         console.log(randomPhoto);

@@ -33,6 +33,7 @@ body {
     border-radius: 5px;
     padding: 30px;
     height: 350px;
+    overflow: auto; 
 }
 .div-color-bg1 {
     border:1px solid #c1c3c5 !important;
@@ -46,6 +47,8 @@ a{
 }
 .note{
     width: 90%;
+    height: 250px;
+    overflow: auto; 
     border: 1px solid gray;
     border-radius: 5px;
 }

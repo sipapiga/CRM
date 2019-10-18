@@ -4,13 +4,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
     console.log(contactList);
 
     const antalCustomer = document.querySelector('#customers');
-    const customerBD = document.querySelector('#birthdayList');
 
     antalCustomer.innerHTML = contactList.length;
 
-    for (let x=0;x<contactList.length;x++) {
-        customerBD.innerHTML = contactList[x].DOB + "  "+contactList[x].name;
-        console.log(contactList[x].DOB + "  "+contactList[x].name);
+    for (let x = 0; x < contactList.length; x++) {
+        showCustomerBirthday(contactList[x]);
+    }
+    function showCustomerBirthday(cus) {
+        const cusBD = document.querySelector("#birthdayList");
+        const row = document.createElement("tr");
+        row.innerHTML = `
+                <td><p>${cus.DOB}</p></td>
+                <td><p >${ cus.name}</p></td>
+                <td><p >${ cus.company} </p></td>
+             `;
+        cusBD.appendChild(row);
     }
 
 
