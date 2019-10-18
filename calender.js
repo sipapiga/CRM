@@ -1,11 +1,10 @@
 class calenderItem { 
-    constructor(id,text, description, date, element){
+    constructor(id,text, description, date){
         this.id = id;
         this.type = "calenderItem";
         this.text = text;
         this.description = description;
         this.date = date;
-        this.element = element;
     }
 }
 class dateTime{
@@ -18,20 +17,18 @@ class dateTime{
     }
 }
 class reminder{
-    constructor(id,text,element){
+    constructor(id,text){
         this.id = id;
         this.type = "reminder";
         this.text = text;
-        this.element = element;
     }
 }
 
 class toDo{
-    constructor(id,text,element){
+    constructor(id,text){
         this.id = id;
         this.type = "toDo";
         this.text = text;
-        this.element = element;
     }
 }
 class eventList{
@@ -40,6 +37,14 @@ class eventList{
         this.id = 1;
     }
 }
+class element{
+    constructor(id,element){
+        this.id = id;
+        this.element = element;
+    }
+}
+
+this.elements = [];
 
 let testList = new eventList();
 let months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -50,6 +55,50 @@ let year = new Date().getFullYear();
     
 
 $(document).ready(function(){
+    $("#addToDo").popover({
+        placement: "bottom",
+        title: "Add To Do Item",
+        html: true,
+        content: $("#formToDo").html()
+    }).click(function(){
+        $("#saveToDo").click(function(){
+            let x = new toDo(testList.id, $("#toDo").val());
+            saveData(x);
+            $(".popover").popover("hide");
+            //showCalItems();
+        })  
+        $("#cancelToDo").click(function(){
+            $(".popover").popover("hide");
+        });  
+    })
+
+    $("#addReminder").popover({
+        placement: "bottom",
+        title: "Add a reminder",
+        html: true,
+        content: $("#formReminder").html()
+    }).click(function(){
+        $("#saveReminder").click(function(){
+            let x = new reminder(testList.id, $("#reminder").val());
+            saveData(x);
+            $(".popover").popover("hide");
+            //showCalItems();
+        }) 
+        $("#cancelReminder").click(function(){
+            $(".popover").popover("hide");
+        });  
+    })
+
+    $('#datetimepicker1').datetimepicker();
+    $("#datetimepicker1").data("DateTimePicker").sideBySide(true).showClose(true);
+  
+    displayMonth();
+    scrollMonth();
+    saveData();
+    modal();
+})
+
+function scrollMonth(){
     $(".icon").click(function(){
         if($(this).hasClass("next")){
             month++;
@@ -70,110 +119,83 @@ $(document).ready(function(){
             displayMonth();
         }
     });
-    
+}
+
+function modal(){
     $("#save").click(function(){
         addEvent();
-        showEvents();
         $("#myModal").modal("hide");
     });
-   
-    $("#addToDo").popover({
-        placement: "bottom",
-        title: "Add To Do Item",
-        html: true,
-        content: $("#formToDo").html()
-    }).click(function(){
-        $("#saveToDo").click(function(){
-            let li = makeListItem(2); 
-            /*let button = document.createElement("button");
-            button.classList.add("btn", "btn-danger");
-            button.html = "X";
-            li.append(button);*/
-            $(".listToDo").append(li);
-            showEvents();
-            $("#addToDo").popover("hide");
-        })  
-        $("#cancelToDo").click(function(){
-            console.log("clicked to do")
-            $(".popover").popover("hide");
-        });  
-    
-    })
-
-    $("#addReminder").popover({
-        placement: "bottom",
-        title: "Add a reminder",
-        html: true,
-        content: $("#formReminder").html()
-    }).click(function(){
-        $("#saveReminder").click(function(){
-            let li = makeListItem(1);
-            $(".listReminder").append(li);
-            showEvents();
-            $("#addReminder").popover("hide");
-        }) 
-        $("#cancelReminder").click(function(){
-            console.log("clicked reminder");
-            $(".popover").popover("hide");
-        });  
-    
-    })
-
-    $('#datetimepicker1').datetimepicker();
-    $("#datetimepicker1").data("DateTimePicker").sideBySide(true).showClose(true);
 
     $(document).on("show.bs.modal", function(){
         clearModal();
     });
+}
 
-    getData();
-    displayMonth();
-})
+/*function createElementFromHTML(htmlString){
+    try{
+        for(item of list){
+            let div = document.createElement("div");
+            let string = htmlString.trim();
+            string = string.slice(1,string.length -1);
+            div.innerHTML = string;
+            return div;
+        } 
+    }
+    catch(e){
+        return htmlString;
+    }  
+}*/
 
-function createElementFromHTML(htmlString){
+function removeItem(id){
     for(item of list){
-        var div = document.createElement("div");
-        div.innerHTML = htmlString.trim();
-    }
-    return div;
+        if(id == item.id){
+            let place = list.indexOf(item);
+            list.splice(place, 1);
+            elements.splice(place,1);
+        }
+    } 
+    //setID();
+    localStorage.setItem("ID", JSON.stringify(testList.id));
+    localStorage.setItem("events", JSON.stringify(this.list));
+    saveData();
 }
 
-function makeListItem(int){
-    let div = document.createElement("div");
-    let li = document.createElement("li");
-    li.classList.add("list-group-item");
-    if(int == 1){
-        div.append(li);
-        li.innerHTML = $("#reminder").val();
-        let x = new reminder(testList.id,li.innerHTML,div.innerHTML);
-        saveData(x);
-    }
-    else{
-        div.append(li);
-        li.innerHTML = $("#toDo").val();
-        let x = new toDo(testList.id,li.innerHTML,div.innerHTML);
-        saveData(x);
-    }
-    return div;
-}
+/*function setID(){
+    console.log(list);
+    let i = 1;
+    for(item of list){
+    console.log(i);
+        item.id = i;
+        if(item.element != undefined){
+            console.log(item.element);
+            let el = createElementFromHTML(item.element);
+            console.log(el.children);
+            let child =  el.children;
+            console.log(child);
+            child[0].id = i;
+            //item.element = el;
+            item.element = toString(el);
+            console.log(item.element);
 
-function removeItem(item){
-    console.log(item.parent());
-}
+            //console.log(el.lastElementChild());
+            //console.log(this);
+            //el.find("li").setAttribute("id",i);
+            //item.element.attr("id", i);
+        }
+        i++;
+    }
+    console.log(list);
+    testList.id = list.length +1;
+}*/
+
 
 function addEvent(){
     let selectedDate = formatDate(($("#date").val()));
-    let div = document.createElement("div");
-    let li = document.createElement("li");
-    li.innerHTML = $("#txtEvent").val();
-    li.classList.add("list-group-item","list-group-item-info");
-    li.setAttribute("id", testList.id);
-    console.log(createElementFromHTML(div.innerHTML));
-    div.append(li);
-    let x = new calenderItem(testList.id,$("#txtEvent").val(),$("#descriptionEvent").val(),selectedDate,div.innerHTML);
-    console.log(x);
+    let x = new calenderItem(testList.id,$("#txtEvent").val(),$("#descriptionEvent").val(),selectedDate);
     saveData(x);
 } 
+
 function clearModal(){
     $("#txtEvent").val("");
     $("#descriptionEvent").val("");
@@ -203,18 +225,47 @@ function getData(){
 function saveData(newEvent){
     this.list = getData();
     testList.id ++;
-    if(newEvent.text != ""){
-        this.list.push(newEvent);
+    if((newEvent != undefined)&&(newEvent.text != "")){
+        list.push(newEvent);
     }
     localStorage.setItem("ID", JSON.stringify(testList.id));
-    console.log(testList.id);
-    console.log(this.list);
     localStorage.setItem("events", JSON.stringify(this.list));
+    makeElements();
 }
 
-function removeData(event){
-    //remove event from list with ID 
-    localStorage.setItem("events", JSON.stringify(this.list));
+function makeElements(){
+    elements = [];
+    console.log("make elements");
+    for(item of list){
+        if(item.type == "calenderItem"){
+            let el = document.createElement("li");
+            el.classList.add("list-group-item","list-group-item-info");
+            el.setAttribute("id", item.id);
+            el.innerHTML = item.text;
+            elements.push(new element(item.id, el));
+        }
+        else if(item.type == "reminder"){
+            let div = document.createElement("div");
+            let el = document.createElement("li");
+            el.classList.add("list-group-item","list-group-item-info");
+            el.setAttribute("id", item.id);
+            el.innerHTML = item.text;
+            div.append(el);
+            elements.push(new element(item.id, div));
+        }
+        else if(item.type == "toDo"){
+            let div = document.createElement("div");
+            let el = document.createElement("li");
+            el.classList.add("list-group-item","list-group-item-info");
+            el.setAttribute("id", item.id);
+            el.innerHTML = item.text;
+            div.append(el);
+            elements.push(new element(item.id, div));
+        }
+    }
+    showLists();
+    removeListItem();
+    showCalItems();
 }
 
 function daysOfMonth(month,year){
@@ -226,101 +277,219 @@ function daysOfMonth(month,year){
     }
 }
 
-function showEvents(){
+function showCalItems(){
     let i = 1;
     $("td").each(function(){
         $(this).find("ul").empty();
         for(item of list){
             if(item.type == "calenderItem"){
                 if((item.date.month == month)&&(item.date.year == year)&&(item.date.day == i-1)){
-                    let element = createElementFromHTML(item.element);
-                    $(this).find("ul").append(element);
-                }
+                    let clickItem = document.createElement("li");
+                    clickItem.classList.add("list-group-item","list-group-item-info");
+                    clickItem.innerHTML = "...";
+                    let el;
+                    jQuery.each(elements, function(){
+                        if(item.id == ($(this)[0].id)){
+                            el = $(this)[0].element;
+                        }
+                    })
+                    $(this).find("ul").append(el,clickItem);
+                }      
             } 
         }
         i++;
     })
-    addClick();
+    tablePopover();
 }
-function addClick(){
+
+function tablePopover(){
+    $("table").find("li").each(function(){
+        $(this).click(stopEvent);
+        //console.log($(this));
+
+        if($(this)[0].id.length > 0){
+            $(this).click(function(){
+                $(".popover").popover("hide");
+                popover(this);
+            });
+        }
+        else if($(this)[0].id.length > 0 == 0){
+            $(this).click(function(){
+                $(".popover").popover("hide");
+                popover(this);
+            })
+        }
+    })
+}
+
+function showLists(){
     $(".listToDo").empty();
     $(".listReminder").empty();
     for(item of list){
         if(item.type == "toDo"){
-            console.log(item);
-            let element = createElementFromHTML(item.element);
-            $(".listToDo").append(element);
+            jQuery.each(elements, function(){
+                if(item.id == ($(this)[0].id)){
+                    $(".listToDo").append($(this)[0].element);
+                }
+            })      
         }
-        if(item.type == "reminder"){
-            console.log(item);
-            let element = createElementFromHTML(item.element);
-            console.log(element);
-            element.click(function(){
-                console.log("clicked reminder");
-            })
-            $(".listReminder").append(element);
+        else if(item.type == "reminder"){
+            jQuery.each(elements, function(){
+                if(item.id == ($(this)[0].id)){
+                    $(".listReminder").append($(this)[0].element);
+                }
+            })    
         }
     }
+}
+
+function removeListItem(){
     $(".listReminder").find("li").each(function(){
         $('<i class="fas fa-times reminder float-right"></i>').appendTo(this);
         $("i.reminder").each(function(){
             $(this).click(function(){
-                console.log("remove list item");
-                console.log(this); //this is list item
+                let id = $(this).parent().attr("id");
+                console.log("removing id" + id);
+                removeItem(id);
             })
         })
     });
+
     $(".listToDo").find("li").each(function(){
         $('<i class="fas fa-times todo float-right"></i>').appendTo(this);
         $("i.todo").each(function(){
             $(this).click(function(){
-                console.log("remove to do item");
+                let id = $(this).parent().attr("id");
+                console.log("removing id" + id);
+                removeItem(id);
             })
         })
     });
-    $("table").find("li").each(function(){
-        $(this).click(stopEvent);
-        $(this).click(function(){
-            $(".popover").popover("hide");
-        });
-        popover(this);
-    })
-
 }
+
 function stopEvent(ev){
+    console.log("stopping modal from happening");
     ev.stopPropagation();
 }
 
 function popover(el){
-    let calItem;
-    for(item of list){
-        if(el.id == item.id){
-           calItem = item;
+    //console.log(el);
+    if(el.id.length > 0){
+        for(item of list){
+            if(el.id == item.id){
+                $(el).popover({
+                    placement: "auto",
+                    title: "Calender Item",
+                    html: true,
+                    content: function(){
+                        $(".calender-item-title").html(item.text);
+                        $(".calender-item-text").html(item.description);
+                        return $("#pop-calender-item").html(); 
+                    }
+                }).click(stopEvent);
+                $(el).popover().click(function(){
+                    console.log($(this));
+                    $("#delCalenderItem").click(stopEvent);
+                    $("#delCalenderItem").click(function(){
+                        removeItem(item.id);
+                    })  
+                    $("#cancelItem").click(stopEvent);
+                    $("#cancelItem").click(function(){
+                        $(".popover").popover("hide");
+                    })
+                })
+                $(el).popover("show");
+            }
         }
     }
-    $(el).popover({
-        placement: "right",
-        title: "Calender Item",
-        html: true,
-        content: function(){
-            console.log(calItem);
-            $(".calender-item-title").html(calItem.text);
-            $(".calender-item-text").html(calItem.description);
-            return $("#pop-calender-item").html();
+
+    else if(el.id.length == 0){
+        for(item of list){
+            $(el).popover({
+                placement: "auto",
+                /*title: function(){
+                    return item.date.day;
+                },*/
+                html: true,
+                content: function(){
+                    //$(".popover-header").text(item.day);
+                    $(".day-items").append("<li>Just testing</li>");
+                    return $("#pop-calender-day").html();
+                }
+                /*function(){
+                    for(item of list){
+                        console.log(item);
+                        if(item.type == "calenderItem"){
+                            if(el.parentElement.id == item.day.date){
+                                $(".day-items").html = el.parent;
+                                return $("#pop-calender-day").html();
+                            }
+                        }
+                    }
+                }*/
+            }).click(function(){
+                //$("#cancelDay").click(stopEvent);
+                //$("#cancelDay").click(function(){
+                    //$(this).popover("hide");
+                //})
+                //console.log(parent);
+                 //pop open TD element
+                })
+                $(el).popover("show");
+            }
         }
-        
-    }).click(function(){
-        $("#delCalenderItem").click(stopEvent);
-        $("#delCalenderItem").click(function(){
-            console.log(list);
-            console.log(list[calItem.id -1]);
-        })  
-        $("#cancel").click(stopEvent);
-        $("#cancel").click(function(){
-            $(".popover").popover("hide");
-        }); 
-    })
+        /*$("li").children().each(function(){
+            console.log($(this));
+            $(this).click(stopEvent);
+            $(this).click(function(){
+                console.log("tried to stop the modal but couldnt");
+            })
+        })*/
+
+        /*$("table li").each(function(){
+            if(this.id.length == 0){
+                //console.log(this.parentElement.id);
+                //console.log(el);
+                console.log(this);
+                console.log(el.parentElement);
+                if(this.parentElement.id == el.parentElement.id){
+                    console.log("these are equal" + el.parentElement.id, this.parentElement.id);
+                    console.log(this);*/
+                    
+            
+           // }
+        //})
+   // }
 }
+
+
+        //console.log(el);
+        /*else{
+            $(this).popover({
+            placement: "top",
+            title: function(){
+                let day = item.date.day;
+                return day;
+            },
+            html: true,
+            content: function(){
+                for(item of list){
+                    if(item.type == "calenderItem"){
+                        console.log(el);
+                        if(el.parent.id == item.day.date){
+                            $(".day-items").html = el.parent;
+                            return $("#pop-calender-day").html();
+                        }
+                    }
+                }
+            }
+        })
+        /*.click(function(){
+           //console.log(parent);
+            //pop open TD element
+                }
+            }*/
+
 
 function displayMonth(){
     let week = 0;
@@ -346,14 +515,14 @@ function displayMonth(){
         }
     } 
     fillTable();
-    showEvents();
 }
 
 function fillTable(){
     $("td").each(function(){
         if($(this).html().length > 0){
             let ul = document.createElement("ul");
-            ul.classList.add("list-group-flush")
+            ul.classList.add("list-group-flush");
+            ul.setAttribute("id", this.innerHTML);
             $(this).append(ul);
             $(this).click(function(){
                 let clicked = $(this).text();
@@ -366,11 +535,7 @@ function fillTable(){
         }
     });
 }
-/*  $(function) () {
-                $('#datetimepicker1').datetimepicker({
-                    dateFormat: "dd-mm-yyyy"}).datetimepicker("setDate", new Date(clicked,month,year));
-                });
-                });*/
+
 
 
 
