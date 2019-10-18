@@ -11,11 +11,8 @@ class CustomerList {
 
     displayCustomer() {
         const dummy = this.getContactsFromLocalStorage();
-        dummy.forEach(customer => {
-            this.addCustomerToList(customer);
-            console.log(customer);
-        });
-       //  this.setDummyCustomer();
+        this.addCustomerToList(dummy);
+        //  this.setDummyCustomer();
     }
     setDummyCustomer() {
         //dummy customer
@@ -64,17 +61,19 @@ class CustomerList {
     //Append table row 
     addCustomerToList(list) {
         const cusDiv = document.querySelector("#myTable");
-        const row = document.createElement("tr");
-        row.innerHTML = `<td><p>${list.id}</p></td>
-                <td><img src="${list.photo}" class="img-fluid rounded-circle" width="20%"/></td>
-                <td><p >${ list.name}</p></td>
-                <td><p >${ list.lastname} </p></td>
-                <td><a href="#" >${ list.email} </a></td>
-                <td><p >${ list.tel} </p> </td>
-                <td><a href="#" class="btn btn-success btn-sm info">Info</a></td>
-                <td class="text-center"><button class="btn btn-danger btn-sm delete">X</button></td>
+        let dataHtml = '';
+        for (let customer of list) {
+            dataHtml += `<tr><td><p>${customer.id}</p></td>
+                <td><img src="${customer.photo}" class="img-fluid rounded-circle" width="20%"/></td>
+                <td><p >${ customer.name}</p></td>
+                <td><p >${ customer.lastname} </p></td>
+                <td><a href="#" >${ customer.email} </a></td>
+                <td><p >${ customer.tel} </p> </td>
+                <td><a href="info.html" class="btn btn-success btn-sm info">Info</a></td>
+                <td class="text-center"><button class="btn btn-danger btn-sm delete">X</button></td></tr>
                 `;
-        cusDiv.appendChild(row);
+            cusDiv.innerHTML = dataHtml
+        }
     }
     addNewContact() {
         const name = document.querySelector('#inputName').value;
@@ -97,8 +96,8 @@ class CustomerList {
         console.log(randomPhoto);
 
         let newCus = new Customer(name, lastname, "01-01-1997", tel, randomPhoto, email, this.customer_id, address, company);
-        //   this.list.push(newCus);
-        this.addCustomerToList(newCus, this.customer_id);
+        this.list.push(newCus);
+        this.addCustomerToList(this.list, this.customer_id);
         this.saveContactToLocalStorage(newCus);
         this.clearFieldInput();
         console.log(this.list);
@@ -123,8 +122,42 @@ class CustomerList {
                 document.querySelector('#address').innerHTML = contact.address;
                 document.querySelector('#DOB').innerHTML = contact.DOB;
             }
+            //Add Note to customer
+            document.getElementById('saveNoteBtn').addEventListener('click', function (e) {
+                // Hur vet man vilken kund id är det?
+                const customerNote = document.querySelector('#customerNote').value;
+                const appendNote = document.querySelector('#note');
+                appendNote.innerHTML = customerNote;
+                contact.lastcall = customerNote;
+            });
+            console.log(this.list);
         });
-    } 
+    }
+
+    //Search customer name 
+    searchCustomerName(name) {
+        let searchCus = "";
+        for (let x = 0; x < this.list.length; x++) {
+            if (name.toLowerCase() === this.list[x].name.toLowerCase()) {
+                console.log(name + " is a custoemr");
+                searchCus = this.list[x];
+                const cusDiv = document.querySelector("#myTable");
+                let dataHtml = '';
+                dataHtml += `<tr><td><p>${searchCus.id}</p></td>
+                <td><img src="${searchCus.photo}" class="img-fluid rounded-circle" width="20%"/></td>
+                <td><p >${ searchCus.name}</p></td>
+                <td><p >${ searchCus.lastname} </p></td>
+                <td><a href="#" >${ searchCus.email} </a></td>
+                <td><p >${ searchCus.tel} </p> </td>
+                <td><a href="info.html" class="btn btn-success btn-sm info">Info</a></td>
+                <td class="text-center"><button class="btn btn-danger btn-sm delete">X</button></td></tr>
+                `;
+                cusDiv.innerHTML = dataHtml
+            } else {
+                console.log("There is no customer with this name");
+            }
+        }
+    }
 
     validateCustomer() {
         const name = document.querySelector('#inputName').value;
@@ -185,52 +218,6 @@ class Customer {
         this.DOB = DOB;
         this.address = address;
         this.company = company;
+        this.lastcall = "";
     }
 }
-
-
-/* window.addEventListener('DOMContentLoaded', (event) => {
-
-    let customerList = new CustomerList();
-    console.log(customerList);
-    customerList.displayCustomer();
-
-    document.getElementById('saveBtn').addEventListener('click', function () {
-        let validateInput = customerList.validateCustomer();
-        if (validateInput == true) {
-            customerList.addNewContact();
-            // Remove modal
-            let modal = document.getElementById("addContact");
-            modal.classList.remove('show');
-            modal.style.display = 'none';
-            modal.removeAttribute('aria-modal');
-            modal.setAttribute('aria-hidden', true);
-
-            // Remove any fade
-            if (document.querySelector('.modal-backdrop'))
-                document.body.removeChild(document.querySelector('.modal-backdrop'));
-        }
-    });
-    //Delete customer from UI and localStorage
-    document.getElementById('myTable').addEventListener('click', function (e) {
-        console.log(e.target);
-        customerList.deleteContactList(e.target);
-        let id = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-        customerList.RemoveContactFromLocalStorage(id);
-    });
-
-    document.getElementById('myTable').addEventListener('click', function (e) {
-        console.log(e.target);
-        let id = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-        console.log("id " + id);
-        customerList.showInfo(id);
-        //  location.href = "info.html";
-    });
-
-    function getCustomerBD() {
-        let birthday;
-        for (let x of dummyContacts) {
-            console.log(x.dob.date);
-        }
-    }
-}); */

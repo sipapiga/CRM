@@ -9,7 +9,7 @@ function showCustomer(list) {
                <td>${ customer.lastname} </td>
                <td>${ customer.tel}  </td>
                <td>${ customer.company} </td>
-               <td>${ customer.Lastcall}</td></tr>
+               <td>${ customer.lastcall}</td></tr>
                `;
     }
     cusDiv.innerHTML = dataHtml

@@ -46,9 +46,16 @@ a{
     padding: 50px;
 }
 .note{
-    width: 90%;
-    height: 250px;
+    width: 100%;
+    padding: 5px;;
+    height: 150px;
     overflow: auto; 
     border: 1px solid gray;
     border-radius: 5px;
+}
+.note p{
+    display: inline;
+}
+.tableBG{
+    background-color: white;
 }

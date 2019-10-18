@@ -22,9 +22,9 @@
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="css/style1.css">
-    <!-- <script src="js/customer.js"> </script> -->
-    <!-- <script src="js/main.js"> </script>  -->
-    <script src="js/showInfo.js"> </script>
+    <script src="js/customer.js"> </script>
+   <script src="js/main.js"> </script> 
+    <!-- <script src="js/showInfo.js"> </script> -->
 </head>
 
 <body>
@@ -62,11 +62,11 @@
                 </div>
             </div>
             <div class="col-lg-9 padding rowPad">
-                <div class="container">
+                <div class="container tableBG">
                     <div class="row well">
                         <div class="col-lg-3">
                             <div class="profile_user_pic">
-                                <img class="imgr-responsive img-circle" id="profile_user_pic">
+                                <img class="img-fluid rounded-circle" id="profile_user_pic">
                             </div>
                         </div>
                         <div class="col-lg-9">
@@ -89,15 +89,15 @@
                             <table class="table table-reponsive">
                                 <tr>
                                     <td>
-                                        <label>Phone Number:</label>
+                                        <label><i class="fas fa-phone-square"></i> Phone Number:</label>
                                         <p id="phoneNum"> Number</p>
                                     </td>
                                     <td>
-                                        <label>Email:</label>
+                                        <label><i class="fas fa-envelope"></i> Email:</label>
                                         <p id="email">Email</p>
                                     </td>
                                     <td>
-                                        <label>Company:</label>
+                                        <label><i class="fas fa-briefcase"></i> Company:</label>
                                         <p id="companyName">Company</p>
                                     </td>
                                 </tr>
@@ -106,15 +106,20 @@
                             <p id="address">Adress</p><br>
                             <label>Date of Birth:</label>
                             <p id="DOB">DOB</p>
-                            <div class="col-md-12 note">
-                                <h4>Note:</h4>
-                                <p>Some note?</p>
-                                <p>Some note?</p>
-                                <p>Some note?</p>
-                                <p>Some note?</p>
-                                <p>Some note?</p>
-                                <p>Some note?</p>
-
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="note">
+                                        <h4>Note:</h4>
+                                        <p id="note"></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="note">
+                                        <h4>Last contacted:</h4>
+                                        <p>Call date :</p>
+                                        <p id="showLastContacted">test</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -131,10 +136,11 @@
                         </div>
                         <div class="modal-body">
                             <label>Note</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control" id="customerNote" rows="3"></textarea>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveNoteBtn">Save
+                                changes</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
@@ -152,10 +158,11 @@
                         </div>
                         <div class="modal-body">
                             <label>Date</label>
-                            <input type="text" id="exampleFormControlTextarea1" placeholder="mm/dd/yyyy"></input>
+                            <input type="text" id="addCallInput" placeholder="mm/dd/yyyy"></input>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveLastCall">Save
+                                changes</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>

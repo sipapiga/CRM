@@ -12,9 +12,16 @@
 
 **Done 21:42 2019-10-16
 
-
 * Sort name,company and last call
  * Time: 20 hours.
 
+** Sort name is done 22:55 2019-10-18
+
 * Show data in user info page
  * Time: 5 hours.
+
+* Fix if customer has same name when searching 
+ * Time : 30 mins
+
+* Check customer ID when add note and add last contacted 
+ * Time : 5 hours

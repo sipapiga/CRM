@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     for (let x = 0; x < contactList.length; x++) {
         showCustomerBirthday(contactList[x]);
     }
+    //Det här behöver sortering datum***
     function showCustomerBirthday(cus) {
         const cusBD = document.querySelector("#birthdayList");
         const row = document.createElement("tr");
