@@ -57,3 +57,25 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
     showCustomer(sortList);
 });
+
+// search by name
+let filterInput = document.getElementById('sok');
+filterInput.addEventListener('keyup', filterNames);
+
+function filterNames(){
+    let filterValue = document.getElementById('sok').value.toUpperCase ();
+    
+    let names = document.getElementById('sortTable');
+
+    let tr = names.querySelectorAll('tr');
+
+    for(let i = 0; i < tr.length; i++) {
+        let td = tr[i].getElementsByTagName('td')[2];
+        if (td.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
+            tr[i].style.display = '';
+        } else {
+            tr[i].style.display = 'none';
+
+        }
+    }
+}
