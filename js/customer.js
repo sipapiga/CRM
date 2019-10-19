@@ -69,7 +69,7 @@ class CustomerList {
                 <td><p >${ customer.lastname} </p></td>
                 <td><a href="#" >${ customer.email} </a></td>
                 <td><p >${ customer.tel} </p> </td>
-                <td><a href="info.html" class="btn btn-success btn-sm info">Info</a></td>
+                <td><a href="#" class="btn btn-success btn-sm info">Info</a></td>
                 <td class="text-center"><button class="btn btn-danger btn-sm delete">X</button></td></tr>
                 `;
             cusDiv.innerHTML = dataHtml
@@ -134,7 +134,27 @@ class CustomerList {
         });
     }
 
+    addLastcalltoCustomer(id) {
+        const customerCallInput = document.querySelector('#addCallInput').value;
+        console.log('customer class ID :' + id);
+        const appendCall = document.querySelector('#showLastContacted');
+        appendCall.innerHTML = customerCallInput;
+        let customerIndex = 0;
+        for (let i = 0; i < this.list.length; i++) {
+            //    console.log(this.list[i]);
+            if (this.list[i].id == id) {
+                this.list[i].lastcall = customerCallInput;
+                //     customerIndex= this.list[i].indexOf();
+                //  console.log(this.list[i].indexOf());
+                console.log(this.list);
+            }
+        }
+
+
+    }
+
     //Search customer name 
+    //Kolla hur man gör när man söker på samma namn
     searchCustomerName(name) {
         let searchCus = "";
         for (let x = 0; x < this.list.length; x++) {

@@ -1,5 +1,8 @@
 window.addEventListener('DOMContentLoaded', (event) => {
 
+    const showDiv = document.querySelector('#showInfoDiv');
+    const tableDIv = document.querySelector('#tableDiv');
+
     let customerList = new CustomerList();
     console.log(customerList);
     customerList.displayCustomer();
@@ -7,7 +10,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     //Search
     document.getElementById('searchBtn').addEventListener('click', function () {
         const searchInput = document.querySelector('#search').value;
-
         console.log(searchInput);
         customerList.searchCustomerName(searchInput);
     });
@@ -42,25 +44,25 @@ window.addEventListener('DOMContentLoaded', (event) => {
         let id = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
         console.log("id " + id);
         customerList.showInfo(id);
-        //location.href = "info.html";
+        showDiv.classList.remove("hide");
+        tableDIv.classList.add("hide");
+        //Add last contacted to customer
+        document.getElementById('saveLastCall').addEventListener('click', function (e) {
+            console.log(e.target);
+            console.log("saveBtn Id :"+id);
+            // Hur vet man vilken kund id är det?
+            /*     let id = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+                console.log("id " + id); */
+            customerList.addLastcalltoCustomer(id);
+        });
+        //Add Note to customer
+        document.getElementById('saveNoteBtn').addEventListener('click', function (e) {
+            // Hur vet man vilken kund id är det?
+            const customerContacted = document.querySelector('#addCallInput').value;
+            const appendCall = document.querySelector('#showLastContacted');
+            appendCall.innerHTML = customerContacted;
+        });
     });
 
-    /*  //Add Note to customer
-     document.getElementById('saveNoteBtn').addEventListener('click', function (e) {
-        // Hur vet man vilken kund id är det?
-         const customerNote = document.querySelector('#customerNote').value;
-         const appendNote = document.querySelector('#note');
-         appendNote.innerHTML = customerNote;
-         let id = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-         console.log("id " + id);
-     }); */
-    //Add last contacted to customer
-    document.getElementById('saveLastCall').addEventListener('click', function (e) {
-        // Hur vet man vilken kund id är det?
-        const customerContacted = document.querySelector('#addCallInput').value;
-        const appendCall = document.querySelector('#showLastContacted');
-        appendCall.innerHTML = customerContacted;
-
-    });
 
 });
