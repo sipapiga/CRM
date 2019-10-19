@@ -15,6 +15,22 @@ body {
 .rowPad2{
     padding-top: 10%;
 }
+
+.search-form {
+    display: flex;
+    max-width: 98%;
+    margin-top: 5%;
+    height: 50px;
+}
+
+.search{
+    
+    max-width: 90%;
+    height: 50px;
+}
+
+
+
 .footer{
     padding: 3em;
 }
