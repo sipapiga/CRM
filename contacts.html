@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
 
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -54,24 +56,25 @@
     <!-- container-->
     <div class="container-fluid padding">
         <div class="row">
-            <div class="col-lg-3 rowPad">
+            <div class="col-lg-2 rowPad">
                 <div class="list-group">
                     <a href="dashboard.html" class="list-group-item"><i class="far fa-clipboard"></i> Dashboard</a>
                     <a href="contacts.html" class="list-group-item active main-color-bg"><i class="fas fa-id-card"></i>
                         Contacts</a>
                     <a href="calendar.html" class="list-group-item"><i class="far fa-calendar-alt"></i> Calendar</a>
-                    <a href="customer.html" class="list-group-item"><i class="fas fa-user-astronaut"></i> Customers</a>
+                    <a href="customer.html" class="list-group-item"><i class="fas fa-user-astronaut"></i> Call History</a>
                 </div>
             </div>
 
-            <div class="col-lg-9 padding">
+            <div class="col-lg-10 padding">
                 <!-- search-->
                 <div class="row">
                     <div class="col-md-3"> </div>
                     <div class="col-md-6">
                         <div class="rowPad">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Search here" id="search">
+                                <input type="text" class="form-control" placeholder="Search by customer name"
+                                    id="search">
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="searchBtn"><i class='fas fa-search'></i></span>
                                 </div>
@@ -97,6 +100,7 @@
                             <th>Lastname</th>
                             <th>Email</th>
                             <th>Contact Number</th>
+                            <th>Conpany</th>
                             <th>Show info</th>
                             <th>Delete</th>
                         </tr>
@@ -104,119 +108,118 @@
                     <tbody id="myTable">
                     </tbody>
                 </table>
-            <!-- test -->
+                <!-- Customer info -->
 
-            <div class="col-lg-12 padding rowPad hide " id="showInfoDiv">
-                <div class="container tableBG">
-                    <div class="row well">
-                        <div class="col-lg-3">
-                            <div class="profile_user_pic">
-                                <img class="img-fluid rounded-circle" id="profile_user_pic">
-                            </div>
-                        </div>
-                        <div class="col-lg-9">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h4 id="cusName">John </h4>
-                                    <h4 id="cusLastName">Doe </h4>
-                                </div>
-                                <div class="col-md-6">
-                                    <a href="#addNote" class="btn btn-primary btn-md waves-effect waves-light m-b-30"
-                                        data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200"
-                                        data-overlayColor="#36404a" id="addContactbtn" data-toggle="modal"
-                                        data-target="#addNoteModal"><i class="far fa-sticky-note"></i> Add Note</a>
-                                    <a href="#addNote" class="btn btn-primary btn-md waves-effect waves-light m-b-30"
-                                        data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200"
-                                        data-overlayColor="#36404a" id="addContactbtn" data-toggle="modal"
-                                        data-target="#addCall"><i class="fas fa-phone"></i> Add Last Contacted</a>
+                <div class="col-lg-12 padding rowPad hide  tableBG" id="showInfoDiv">
+                    <div class="container">
+                        <div class="row well">
+                            <div class="col-lg-3">
+                                <div class="profile_user_pic">
+                                    <img class="img-fluid rounded-circle" id="profile_user_pic">
                                 </div>
                             </div>
-                            <table class="table table-reponsive">
-                                <tr>
-                                    <td>
-                                        <label><i class="fas fa-phone-square"></i> Phone Number:</label>
-                                        <p id="phoneNum"> Number</p>
-                                    </td>
-                                    <td>
-                                        <label><i class="fas fa-envelope"></i> Email:</label>
-                                        <p id="email">Email</p>
-                                    </td>
-                                    <td>
-                                        <label><i class="fas fa-briefcase"></i> Company:</label>
-                                        <p id="companyName">Company</p>
-                                    </td>
-                                </tr>
-                            </table>
-                            <label>Adress:</label>
-                            <p id="address">Adress</p><br>
-                            <label>Date of Birth:</label>
-                            <p id="DOB">DOB</p>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="note">
-                                        <h4>Note:</h4>
-                                        <p id="note"></p>
+                            <div class="col-lg-9">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 id="cusName" style="display:inline"> John </h4>
+                                        <h4 id="cusLastName" style="display:inline">Doe </h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="#addNote"
+                                            class="btn btn-primary btn-md waves-effect waves-light m-b-30"
+                                            data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200"
+                                            data-overlayColor="#36404a" id="addContactbtn" data-toggle="modal"
+                                            data-target="#addCall"><i class="fas fa-phone"></i> Add to calling list</a>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="note">
-                                        <h4>Last contacted:</h4>
-                                        <p>Call date :</p>
-                                        <p id="showLastContacted">test</p>
+                                <table class="table table-reponsive rowPad2">
+                                    <tr>
+                                        <td>
+                                            <label><i class="fas fa-phone-square"></i> Phone Number:</label>
+                                            <p id="phoneNum"> Number</p>
+                                        </td>
+                                        <td>
+                                            <label><i class="fas fa-envelope"></i> Email:</label>
+                                            <p id="email">Email</p>
+                                        </td>
+                                        <td>
+                                            <label><i class="fas fa-briefcase"></i> Company:</label>
+                                            <p id="companyName">Company</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <label>Adress:</label>
+                                <p id="address">Adress</p><br>
+                                <label>Date of Birth:</label>
+                                <p id="DOB">DOB</p>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="note">
+                                            <h4>Note:</h4>
+                                            <div id="note"></div>
+                                        </div><br>
+                                        <div>
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="Add note"
+                                                    id="addNote">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="addNoteBtn"> OK</span> </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal" tabindex="-1" role="dialog" id="addNoteModal">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Add some note to customer</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <label>Note</label>
-                            <textarea class="form-control" id="customerNote" rows="3"></textarea>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveNoteBtn">Save
-                                changes</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <div class="modal" tabindex="-1" role="dialog" id="addNoteModal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Add some note to customer</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <label>Note</label>
+                                <textarea class="form-control" id="customerNote" rows="3"></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveNoteBtn">Save
+                                    changes</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="modal" tabindex="-1" role="dialog" id="addCall">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Last contacted</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <label>Date</label>
+                                <input type="text" id="addCallInput" data-provide="datepicker" placeholder="mm/dd/yyyy"></input>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                    id="saveLastCall">Save
+                                    changes</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End test -->
             </div>
 
-            <div class="modal" tabindex="-1" role="dialog" id="addCall">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Last contacted</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <label>Date</label>
-                            <input type="text" id="addCallInput" placeholder="mm/dd/yyyy"></input>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveLastCall">Save
-                                changes</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End test -->
         </div>
-
-    </div>
     </div>
     <!-- End of container-->
     <!-- Modal -->

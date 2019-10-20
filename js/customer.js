@@ -48,29 +48,41 @@ class CustomerList {
 
     RemoveContactFromLocalStorage(id) {
         const customerList = this.getContactsFromLocalStorage();
-        customerList.forEach((contact, index) => {
-            if (contact.id == id) {
-                customerList.splice(index, 1);  //remove from localStorage
-                //  this.list.splice(index, 1);  //remove from CustomerList class
-            }
-        });
+        if (id.classList.contains('delete')) {
+            customerList.forEach((contact, index) => {
+                let remID = id.getAttribute('data-id');
+                if (contact.id == remID) {
+                    customerList.splice(index, 1);
+                }
+            });
+        }
         localStorage.setItem('Customers', JSON.stringify(customerList));
 
-        console.log(this.list);
+        /*  const customerList = this.getContactsFromLocalStorage();
+         customerList.forEach((contact, index) => {
+             if (contact.id == id) {
+                 customerList.splice(index, 1);  //remove from localStorage
+                 //  this.list.splice(index, 1);  //remove from CustomerList class
+             }
+         });
+         localStorage.setItem('Customers', JSON.stringify(customerList));
+ 
+         console.log(this.list); */
     }
     //Append table row 
     addCustomerToList(list) {
         const cusDiv = document.querySelector("#myTable");
         let dataHtml = '';
         for (let customer of list) {
-            dataHtml += `<tr><td><p>${customer.id}</p></td>
-                <td><img src="${customer.photo}" class="img-fluid rounded-circle" width="20%"/></td>
-                <td><p >${ customer.name}</p></td>
-                <td><p >${ customer.lastname} </p></td>
+            dataHtml += `<tr><td>${customer.id}</td>
+                <td><img src="${customer.photo}" class="img-fluid rounded-circle" width="40%"/></td>
+                <td>${ customer.name}</td>
+                <td>${ customer.lastname}</td>
                 <td><a href="#" >${ customer.email} </a></td>
-                <td><p >${ customer.tel} </p> </td>
-                <td><a href="#" class="btn btn-success btn-sm info">Info</a></td>
-                <td class="text-center"><button class="btn btn-danger btn-sm delete">X</button></td></tr>
+                <td>${ customer.tel}</td>
+                <td>${ customer.company}</td>
+                <td><a href="#" class="btn btn-success btn-sm info" data-id=${customer.id}>Info</a></td>
+                <td class="text-center"><button class="btn btn-danger btn-sm delete" data-id=${customer.id}>X</button></td></tr>
                 `;
             cusDiv.innerHTML = dataHtml
         }
@@ -110,71 +122,66 @@ class CustomerList {
     }
     //Show customer info here
     showInfo(id) {
-        this.list.forEach((contact) => {
-            console.log(contact);
-            if (contact.id == id) {
-                document.querySelector('#cusName').innerHTML = contact.name;
-                document.querySelector('#cusLastName').innerHTML = contact.lastname;
-                document.querySelector('#phoneNum').innerHTML = contact.tel;
-                document.querySelector('#email').innerHTML = contact.email;
-                document.querySelector('#companyName').innerHTML = contact.company;
-                document.querySelector('#profile_user_pic').src = contact.photo;
-                document.querySelector('#address').innerHTML = contact.address;
-                document.querySelector('#DOB').innerHTML = contact.DOB;
-            }
-            //Add Note to customer
-            document.getElementById('saveNoteBtn').addEventListener('click', function (e) {
-                // Hur vet man vilken kund id är det?
-                const customerNote = document.querySelector('#customerNote').value;
-                const appendNote = document.querySelector('#note');
-                appendNote.innerHTML = customerNote;
-                contact.lastcall = customerNote;
+        if (id.classList.contains('info')) {
+            console.log(id.getAttribute('data-id'));
+            let remID = id.getAttribute('data-id');
+            this.list.forEach((contact) => {
+                if (contact.id == remID) {
+                    document.querySelector('#cusName').innerHTML = contact.name;
+                    document.querySelector('#cusLastName').innerHTML = contact.lastname;
+                    document.querySelector('#phoneNum').innerHTML = contact.tel;
+                    document.querySelector('#email').innerHTML = contact.email;
+                    document.querySelector('#companyName').innerHTML = contact.company;
+                    document.querySelector('#profile_user_pic').src = contact.photo;
+                    document.querySelector('#address').innerHTML = contact.address;
+                    document.querySelector('#DOB').innerHTML = contact.DOB;
+                }
             });
-            console.log(this.list);
-        });
+        }
     }
 
-    addLastcalltoCustomer(id) {
-        const customerCallInput = document.querySelector('#addCallInput').value;
-        console.log('customer class ID :' + id);
-        const appendCall = document.querySelector('#showLastContacted');
-        appendCall.innerHTML = customerCallInput;
-        let customerIndex = 0;
-        for (let i = 0; i < this.list.length; i++) {
-            //    console.log(this.list[i]);
-            if (this.list[i].id == id) {
-                this.list[i].lastcall = customerCallInput;
-                //     customerIndex= this.list[i].indexOf();
-                //  console.log(this.list[i].indexOf());
+    addCallingList(id) {
+        $('addCallInput').datepicker();
+        
+    }
+    addNoteToCustomer(id) {
+        const customerList = this.getContactsFromLocalStorage();
+        const customerNote = document.querySelector('#addNote').value;
+        const appendNote = document.querySelector('#note');
+     
+        for (let i = 0; i < customerList.length; i++) {
+            console.log(customerList[i].id);
+            if (customerList[i].id == id) {
+                customerList[i].note.push(customerNote);
+               // this.list[i].note.push(customerNote);
+                console.log(this.list[i].note);
+                let addNoteHtml = ""
+                for (let note of customerList[i].note) {
+                    addNoteHtml += `<p>${note}</p>`
+                }
+                appendNote.innerHTML = addNoteHtml;
+                localStorage.setItem('Customers', JSON.stringify(customerList));
                 console.log(this.list);
+                //Save to localStorage
             }
         }
-
-
     }
+    // search by name
+    filterNames() {
+        let filterValue = document.getElementById('search').value.toUpperCase();
 
-    //Search customer name 
-    //Kolla hur man gör när man söker på samma namn
-    searchCustomerName(name) {
-        let searchCus = "";
-        for (let x = 0; x < this.list.length; x++) {
-            if (name.toLowerCase() === this.list[x].name.toLowerCase()) {
-                console.log(name + " is a custoemr");
-                searchCus = this.list[x];
-                const cusDiv = document.querySelector("#myTable");
-                let dataHtml = '';
-                dataHtml += `<tr><td><p>${searchCus.id}</p></td>
-                <td><img src="${searchCus.photo}" class="img-fluid rounded-circle" width="20%"/></td>
-                <td><p >${ searchCus.name}</p></td>
-                <td><p >${ searchCus.lastname} </p></td>
-                <td><a href="#" >${ searchCus.email} </a></td>
-                <td><p >${ searchCus.tel} </p> </td>
-                <td><a href="info.html" class="btn btn-success btn-sm info">Info</a></td>
-                <td class="text-center"><button class="btn btn-danger btn-sm delete">X</button></td></tr>
-                `;
-                cusDiv.innerHTML = dataHtml
+        let names = document.getElementById('myTable');
+
+        let tr = names.querySelectorAll('tr');
+
+        for (let i = 0; i < tr.length; i++) {
+            console.log(tr[i].getElementsByTagName('td'));
+            let td = tr[i].getElementsByTagName('td')[2];
+            if (td.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
+                tr[i].style.display = '';
             } else {
-                console.log("There is no customer with this name");
+                tr[i].style.display = 'none';
+
             }
         }
     }
@@ -239,57 +246,6 @@ class Customer {
         this.address = address;
         this.company = company;
         this.lastcall = "";
+        this.note = [];
     }
-<<<<<<< HEAD
 }
-=======
-}
-
-
-/* window.addEventListener('DOMContentLoaded', (event) => {
-
-    let customerList = new CustomerList();
-    console.log(customerList);
-    customerList.displayCustomer();
-
-    document.getElementById('saveBtn').addEventListener('click', function () {
-        let validateInput = customerList.validateCustomer();
-        if (validateInput == true) {
-            customerList.addNewContact();
-            // Remove modal
-            let modal = document.getElementById("addContact");
-            modal.classList.remove('show');
-            modal.style.display = 'none';
-            modal.removeAttribute('aria-modal');
-            modal.setAttribute('aria-hidden', true);
-
-            // Remove any fade
-            if (document.querySelector('.modal-backdrop'))
-                document.body.removeChild(document.querySelector('.modal-backdrop'));
-        }
-    });
-    //Delete customer from UI and localStorage
-    document.getElementById('myTable').addEventListener('click', function (e) {
-        console.log(e.target);
-        customerList.deleteContactList(e.target);
-        let id = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-        customerList.RemoveContactFromLocalStorage(id);
-    });
-
-    document.getElementById('myTable').addEventListener('click', function (e) {
-        console.log(e.target);
-        let id = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-        console.log("id " + id);
-        customerList.showInfo(id);
-        //  location.href = "info.html";
-    });
-
-    function getCustomerBD() {
-        let birthday;
-        for (let x of dummyContacts) {
-            console.log(x.dob.date);
-        }
-    }
-});
-*/
->>>>>>> ali

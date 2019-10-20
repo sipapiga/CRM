@@ -51,22 +51,22 @@
     <!-- container-->
     <div class="container-fluid padding">
         <div class="row">
-            <div class="col-lg-3 rowPad">
+            <div class="col-lg-2 rowPad">
                 <a href="dashboard.html" class="list-group-item"><i class="far fa-clipboard"></i>
                     Dashboard</a>
                 <a href="contacts.html" class="list-group-item"><i class="fas fa-id-card"></i> Contacts</a>
                 <a href="calendar.html" class="list-group-item"><i class="far fa-calendar-alt"></i> Calendar</a>
                 <a href="customer.html" class="list-group-item active main-color-bg"><i
-                        class="fas fa-user-astronaut"></i> Customers</a>
+                        class="fas fa-user-astronaut"></i> Call History</a>
             </div>
 
 
-            <div class="col-lg-9 padding">
+            <div class="col-lg-10 padding">
                 <!-- search-->
                 <div class="row">
                     <div class="col-md-6">
                         <form class="search-form">
-                            <input type="text" class="form-control search" id="sok" placeholder="Search By Name" />
+                            <h2 id="todayDate"></h2>
                         </form>
                     </div>
                     <div class="col-md-6">
@@ -93,8 +93,7 @@
                                 <th id="name">Name</th>
                                 <th>Lastname</th>
                                 <th>Contact Number</th>
-                                <th>Company</th>
-                                <th>Last call</th>
+                                <th>Last Contact Date</th>
                             </tr>
                         </thead>
                         <tbody id="sortTable">

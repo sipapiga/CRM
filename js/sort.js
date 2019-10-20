@@ -8,7 +8,6 @@ function showCustomer(list) {
                <td>${ customer.name}</td>
                <td>${ customer.lastname} </td>
                <td>${ customer.tel}  </td>
-               <td>${ customer.company} </td>
                <td>${ customer.lastcall}</td></tr>
                `;
     }
@@ -24,6 +23,13 @@ function sortArrayBy(array, sort, desc) {
         array.reverse();
     }
     return array;
+}
+function getTodayDate(){
+    const todayDiv = document.querySelector("#todayDate");
+    let today = new Date().toString().slice(0,15);
+    todayDiv.innerHTML = "Today is "+ today;
+    
+
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -56,9 +62,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         desc = !desc;
     });
     showCustomer(sortList);
+    getTodayDate();
 });
 
-// search by name
+/* // search by name
 let filterInput = document.getElementById('sok');
 filterInput.addEventListener('keyup', filterNames);
 
@@ -70,6 +77,7 @@ function filterNames(){
     let tr = names.querySelectorAll('tr');
 
     for(let i = 0; i < tr.length; i++) {
+        console.log(tr[i].getElementsByTagName('td')[2]);
         let td = tr[i].getElementsByTagName('td')[2];
         if (td.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
             tr[i].style.display = '';
@@ -78,4 +86,4 @@ function filterNames(){
 
         }
     }
-}
+} */
