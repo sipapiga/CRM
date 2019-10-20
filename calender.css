@@ -1,23 +1,27 @@
 .icon{
     font-size: 4rem;
 }
+table{
+    table-layout: fixed;
+    empty-cells: collapse;
+}
 td{
-    /*display: inline-block;*/
-    /*overflow: hidden;*/
-    height: 10rem;
-    max-height: 10rem;
+    height: 15rem;
     width: 7rem;
+    align-content: center;
 }
 td ul li{
     list-style: none;
     /*overflow: hidden;*/
     margin: 0.2rem;
     padding: 0;
-    width: 80%;
 }
 td ul{
     padding: 0;
-    width: 100%;
+    width: auto;
+}
+.popover-content ul{
+    text-align: center;
 }
 .modal-backdrop {
    /*background-color: transparent !important;*/
@@ -27,12 +31,19 @@ td ul{
     position:absolute;
     top: 30%;
 }
-/*td div.scrollable{
-    width:100%;
-    height:100%;
-    margin : 0;
-    padding: 0; 
-    overflow: auto;
-}*/
+
+.popover .arrow{
+    visibility: hidden;
+}
+.popover{
+    width: 100%;
+}
+.calender-item-title, .calender-item-text{
+    text-align: center;
+}
+
+.modal-content, .modal-title{
+    font-weight: bold;
+}
 
 

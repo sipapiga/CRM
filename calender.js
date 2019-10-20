@@ -55,6 +55,7 @@ let year = new Date().getFullYear();
     
 
 $(document).ready(function(){
+    
     $("#addToDo").popover({
         placement: "bottom",
         title: "Add To Do Item",
@@ -87,14 +88,20 @@ $(document).ready(function(){
         });  
     })
 
-    $("html").on("mouseup", function (e) {
+   /* $("html").on("click", function (e) {
         var l = $(e.target);
-        if (l[0].className.indexOf("popover") == -1) {
+        console.log(l[0].type);
+        if ((l[0].className.indexOf("popover") == -1)) {
+            //console.log($(".popover")[0].id);
             $(".popover").each(function () {
-                $(this).popover("hide");
+                //console.log($(this)[0].id);
+                //if($(this)[0].id == "pop-calender"){
+                    console.log("hiding popover");
+                    $(this).popover("hide");
+               // }
             });
         }
-    });
+    });*/
 
 
     $('#datetimepicker1').datetimepicker();
@@ -144,20 +151,6 @@ function clearModal(){
     $("#txtEvent").val("");
     $("#descriptionEvent").val("");
 }
-/*function createElementFromHTML(htmlString){
-    try{
-        for(item of list){
-            let div = document.createElement("div");
-            let string = htmlString.trim();
-            string = string.slice(1,string.length -1);
-            div.innerHTML = string;
-            return div;
-        } 
-    }
-    catch(e){
-        return htmlString;
-    }  
-}*/
 
 function removeItem(id){
     for(item of list){
@@ -231,9 +224,14 @@ function makeElements(){
     for(item of list){
         if(item.type == "calenderItem"){
             let el = document.createElement("li");
-            el.classList.add("list-group-item","list-group-item-info");
+            el.classList.add("list-group-item","list-group-item-info","py-1");
             el.setAttribute("id", item.id);
+            if(item.text.length > 20){
+                el.innerHTML = item.text.slice(0,21) + "...";
+            }
+           else{
             el.innerHTML = item.text;
+           }
             elements.push(new element(item.id, el));
         }
         else if(item.type == "reminder"){
@@ -272,21 +270,29 @@ function daysOfMonth(month,year){
 function showCalItems(){
     let i = 1;
     $("td").each(function(){
-        $(this).find("ul").empty();
+        let ul = $(this).find("ul")
+        ul.empty();
+        let more = document.createElement("li");
+        more.classList.add("list-group-item","list-group-item-info","py-1");
+        more.innerHTML = "...";
         for(item of list){
             if(item.type == "calenderItem"){
+                //console.log(item);
                 if((item.date.month == month)&&(item.date.year == year)&&(item.date.day == i-1)){
-                    let clickItem = document.createElement("li");
-                    clickItem.classList.add("list-group-item","list-group-item-info");
-                    clickItem.innerHTML = "...";
-                    let el;
-                    jQuery.each(elements, function(){
-                        if(item.id == ($(this)[0].id)){
-                            el = $(this)[0].element;
-                        }
-                    })
-                    $(this).find("ul").append(el,clickItem);
-                }      
+                    console.log(ul.children().length);
+                    if(ul.children().length > 2){
+                        ul.append(more);
+                    }
+                    else{
+                        let li;
+                        jQuery.each(elements, function(){
+                            if(item.id == ($(this)[0].id)){
+                                li = $(this)[0].element;
+                            }
+                            ul.prepend(li);
+                        })
+                    }
+                }
             } 
         }
         i++;
@@ -307,144 +313,66 @@ function calenderPopover(){
                 }
             }
             $(this).click(function(){
-                $(this).popover("destroy");
                 $(this).popover({
                     placement: "auto",
                     html : true, 
                     content: function(){
                         $(".calender-item-title").html(i.text);
                         $(".calender-item-text").html(i.description);
+                        $("#delCalenderItem").css("display","initial");
                         return $("#pop-calender").html();
                     }
                 }).popover("toggle");
                 $(".popover").off("click").on("click",stopEvent);
                 $("#cancel").off("click").on("click", function(){
-                    $(".popover").popover("toggle");
+                    $(".popover").popover("hide");
                  });
                 $("#delCalenderItem").on("click",function(){
                     removeItem(el.id);
                 })
             });
         }
-        else if($(this)[0].id.length > 0 == 0){
+        else if($(this)[0].id.length == 0){
             $(this).click(function(){
                 let el = $(this);
                 console.log(el.parent());
                 $(this).popover({
+                    container: this,
                     placement: "auto",
                     html: true,
                     content: function(){
-                        $(".calender-item-title").text(el.parent().id);
-                        $(".calender-item-text").append("<ul><li>Just testing</li></ul>");
-                        //$("#delCalenderItem").classList.add("hide");
+                        $(".calender-item-title").text(el.parent()[0].id);
+                        $(".calender-item-text").empty();
+                        $("#delCalenderItem").css("display","none");
+                        $(".calender-item-text").append('<ul></ul>');
+                        for(item of list){
+                            if(item.type == "calenderItem"){
+                                console.log(item);
+                                console.log(el.parent()[0].id);
+                                if((item.date.month == month)&&(item.date.year == year)&&(item.date.day == el.parent()[0].id)){
+                                    console.log(item);
+                                    let li;
+                                    jQuery.each(elements, function(){
+                                        if(item.id == ($(this)[0].id)){
+                                            li = ($(this)[0].element);
+                                            li = li.cloneNode(true);
+                                        }
+                                    });
+                                    $(".calender-item-text").find("ul").append(li);
+                                }      
+                            } 
+                        }
                         return $("#pop-calender").html();
                     } 
                 }).popover("toggle");
                 $(".popover").off("click").on("click",stopEvent);
-               // $("#cancel").off("click").on("click", stopEvent);
-                $("#cancel").on("click", function(){
-                   $(".popover").popover("toggle");
+                $("#cancel").off("click").on("click", function(){
+                   $(".popover").popover("hide");
                 });
             })
         }
     }) 
 }
-
-
-function popover(el,int){
-    //console.log(el);
-    /*console.log(el);
-    if(int == 1){
-        for(item of list){
-            if(el.id == item.id){
-                $(el).click(popover("show"));
-                $(el).popover({
-                    placement: "auto",
-                    title: "Calender Item",
-                    html: true,
-                    content: function(){
-                        $(".calender-item-title").html(item.text);
-                        $(".calender-item-text").html(item.description);
-                        return $("#pop-calender").html(); 
-                    }
-                }).click(stopEvent);
-                $(el).popover().click(function(){
-                    console.log($(this));
-                    $("#delCalenderItem").click(stopEvent);
-                    $("#delCalenderItem").click(function(){
-                        removeItem(item.id);
-                    })  
-                    $("#cancel").click(stopEvent);
-                    $("#cancel").click(function(){
-                        $(".popover").popover("hide");
-                    })
-                })
-                
-            }
-        }
-    }
-    else if(int == 0){
-        console.log("do a thing");
-    }
-    /*else if(el.id.length == 0){
-        for(item of list){
-            $(el).popover({
-                placement: "auto",
-                /*title: function(){
-                    return item.date.day;
-                },*/
-               // html: true,
-               /* content: function(){
-                    //$(".popover-header").text(item.day);
-                   // $(".day-items").append("<li>Just testing</li>");
-                    return $("#pop-calender").html();
-                }
-                /*function(){
-                    for(item of list){
-                        console.log(item);
-                        if(item.type == "calenderItem"){
-                            if(el.parentElement.id == item.day.date){
-                                $(".day-items").html = el.parent;
-                                return $("#pop-calender-day").html();
-                            }
-                        }
-                    }
-                }*/
-           /* }).click(function(){
-                $("#cancel").click(stopEvent);
-                $("#cancel").click(function(){
-                    $(this).popover("hide");
-                })
-                //console.log(parent);
-                 //pop open TD element
-                })
-                $(el).popover("show");
-            }
-        }
-        /*$("li").children().each(function(){
-            console.log($(this));
-            $(this).click(stopEvent);
-            $(this).click(function(){
-                console.log("tried to stop the modal but couldnt");
-            })
-        })*/
-
-        /*$("table li").each(function(){
-            if(this.id.length == 0){
-                //console.log(this.parentElement.id);
-                //console.log(el);
-                console.log(this);
-                console.log(el.parentElement);
-                if(this.parentElement.id == el.parentElement.id){
-                    console.log("these are equal" + el.parentElement.id, this.parentElement.id);
-                    console.log(this);*/
-                    
-            
-           // }
-        //})
-   // }
-}
-
 
 function showLists(){
     $(".listToDo").empty();
@@ -495,33 +423,6 @@ function stopEvent(ev){
     console.log("stopping modal from happening");
     ev.stopPropagation();
 }
-        //console.log(el);
-        /*else{
-            $(this).popover({
-            placement: "top",
-            title: function(){
-                let day = item.date.day;
-                return day;
-            },
-            html: true,
-            content: function(){
-                for(item of list){
-                    if(item.type == "calenderItem"){
-                        console.log(el);
-                        if(el.parent.id == item.day.date){
-                            $(".day-items").html = el.parent;
-                            return $("#pop-calender-day").html();
-                        }
-                    }
-                }
-            }
-        })
-        /*.click(function(){
-           //console.log(parent);
-            //pop open TD element
-                }
-            }*/
-
 
 function displayMonth(){
     let week = 0;
@@ -564,6 +465,9 @@ function fillTable(){
                     keyboard:true
                 });
             })
+        }
+        else{
+            $(this).css("visibility","hidden");
         }
     });
 }
