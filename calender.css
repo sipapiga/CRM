@@ -20,17 +20,21 @@ td ul{
     padding: 0;
     width: auto;
 }
-.popover-content ul{
-    text-align: center;
-}
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /*transform: translate(-50%, -50%);*/
+  }
+
 .modal-backdrop {
    background-color: transparent !important;
 }
 
-#myModal, #myModal2{
+/*#myModal, #myModal2{
     position:absolute;
-    top: 30%;
-}
+    top: 20%;
+}*/
 
 .popover .arrow{
     visibility: hidden;
