@@ -31,7 +31,7 @@
             </ul>
         </div>
     </nav>
- <div class="container">
+<!-- <div class="container">
     <div class="row">
             <div class="todo-list text-center col-6">
                 <div class="">
@@ -67,15 +67,18 @@
                     </form>
                 </div>
         </div>
-    </div>  
+    </div>  -->
 
 <div class="calender text-center container-fluid">
-    <h3 class="year display-5 float-left ml-2 mt-2"></h3>
-    <div class="d-md-flex p-2 justify-content-between">
+    
+    <div class="row"><h3 class="year display-5 float-left ml-3 mt-2"></h3></div>
+<div class="row">
+    <div class="d-md-flex p-2 justify-content-around col-md-12">
         <a class="icon previous"><i class="fas fa-angle-left fa-sm"></i></a>  
         <h1 class="month display-3 ml-5 mr-5"></h1>
         <a class="icon next"><i class="fas fa-angle-right fa-sm"></i></a>
     </div>
+</div>
     
 <table class="table text-center table-bordered">
 <thead>
@@ -167,7 +170,7 @@
                             <div class="row">
                             <div class="d-inline-block col-md-12">
                                     <div class="form-group">
-                                        <label class="col-md-4"for="datetimepicker1">Date & Time</label>
+                                        <label class="col-md-4" for="datetimepicker1">Date & Time</label>
                                         <div class='input-group date col-md-8' id='datetimepicker1'>
                                             <input type='text' class="form-control" id="date">
                                                <span class="input-group-addon">
@@ -196,38 +199,20 @@
 </div>
 
 </table>
-
-
-<!--<div id="pop-calender" class="popover hide text-center">
-        <h4 class="calender-item-title"></h4>
-        <p class="calender-item-text"></p>
-        <button type="button" class="btn btn-danger" id="delete">delete</button>
-        <button type="button" class="btn btn-light" id="cancel">cancel</button>
-</div>-->
-
-
-
-    <!--<div class="calender-day col-md-3 text-center">
-        <h1 class="display-4">Item</h1>
-        <h4 class="calender-item-title"></h4>
-        <ul class="calender-items"></ul>
-        <p class="calender-item-text"></p>
-        <button type="button" class="btn btn-danger" id="delete">delete</button>
-        <button type="button" class="btn btn-light" id="cancel">cancel</button>
-    </div>-->
-
 </div>
 
 <div id="myModal2" class="modal fade">
         <div class ="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title-calender text-center col-12"></h4>
+                    <h4 class="modal-title-calender text-center col-11"></h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="calender-day text-center">
                         <ul class="calender-items"></ul>
+                        <p class="calender-date"></p>
+                        <p class="calender-time"></p>
                         <p class="calender-item-text"></p>
                         <button type="button" class="btn btn-danger" id="delete">delete</button>
                         <button type="button" class="btn btn-secondary hide" id="back">Back</button>
