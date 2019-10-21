@@ -143,13 +143,9 @@ function modal(){
     });
 
     $(document).on("show.bs.modal", function(){
-        clearModal();
+        $("#txtEvent").val("");
+        $("#descriptionEvent").val("");
     });
-}
-
-function clearModal(){
-    $("#txtEvent").val("");
-    $("#descriptionEvent").val("");
 }
 
 function removeItem(id){
@@ -177,7 +173,7 @@ function setID(){
         item.id = i;
         i++;
     }
-    testList.id = i;
+    testList.id = i -1;
 }
 
 function addEvent(){
@@ -227,7 +223,7 @@ function makeElements(){
             el.classList.add("list-group-item","list-group-item-info","py-1");
             el.setAttribute("id", item.id);
             if(item.text.length > 20){
-                el.innerHTML = item.text.slice(0,21) + "...";
+                el.innerHTML = item.text.slice(0,16) + "...";
             }
            else{
             el.innerHTML = item.text;
@@ -277,9 +273,7 @@ function showCalItems(){
         more.innerHTML = "...";
         for(item of list){
             if(item.type == "calenderItem"){
-                //console.log(item);
                 if((item.date.month == month)&&(item.date.year == year)&&(item.date.day == i-1)){
-                    console.log(ul.children().length);
                     if(ul.children().length > 2){
                         ul.append(more);
                     }
@@ -289,7 +283,7 @@ function showCalItems(){
                             if(item.id == ($(this)[0].id)){
                                 li = $(this)[0].element;
                             }
-                            ul.prepend(li);
+                            ul.append(li);
                         })
                     }
                 }
@@ -306,7 +300,6 @@ function calenderPopover(){
         let i;
         if($(this)[0].id.length > 0){
             let el = this;
-            console.log(list);
             for(item of list){
                 if(item.id == el.id){
                     i = item;
@@ -319,23 +312,82 @@ function calenderPopover(){
                     content: function(){
                         $(".calender-item-title").html(i.text);
                         $(".calender-item-text").html(i.description);
-                        $("#delCalenderItem").css("display","initial");
                         return $("#pop-calender").html();
                     }
                 }).popover("toggle");
                 $(".popover").off("click").on("click",stopEvent);
+                $("#delete").off("click").on("click",function(){
+                    removeItem(el.id);
+                });
                 $("#cancel").off("click").on("click", function(){
                     $(".popover").popover("hide");
                  });
-                $("#delCalenderItem").on("click",function(){
-                    removeItem(el.id);
-                })
+                
             });
         }
         else if($(this)[0].id.length == 0){
             $(this).click(function(){
                 let el = $(this);
-                console.log(el.parent());
+                $("#myModal2").on("show.bs.modal", function(){
+                    $(this).find(".calender-items").empty();
+                    $(this).find(".modal-title-calender").empty();
+                        $(this).find(".modal-title-calender").text(el.parent()[0].id + " " + months[month]);
+                        for(item of list){
+                            if(item.type == "calenderItem"){
+                                if((item.date.month == month)&&(item.date.year == year)&&(item.date.day == el.parent()[0].id)){
+                                    let li;
+                                    jQuery.each(elements, function(){
+                                        if(item.id == ($(this)[0].id)){
+                                            li = ($(this)[0].element);
+                                            li = li.cloneNode(true);
+                                            li.innerHTML = item.text;
+                                        }
+                                    });
+                                    $(this).find(".calender-items").append(li);
+                                }      
+                            } 
+                        }
+                    }).modal({
+                        show:false,
+                        backdrop: "static",
+                        keyboard: true,
+                    }).modal("show");
+
+
+                    $("#myModal2").find("li").each(function(){
+                        let i;
+                        $(this).click(function(){
+                            let el = this;
+                            console.log("clicked li" + el);
+                            for(item of list){
+                                if(item.id == el.id){
+                                    i = item;
+                            }
+                        }
+                        $(this).popover({
+                            placement: "right",
+                            html : true, 
+                            content: function(){
+                                $(".calender-item-title-modal").html(i.text);
+                                $(".calender-item-text-modal").html(i.description);
+                                $("#delete-modal").off("click").on("click",function(){
+                                    removeItem(el.id);
+                                });
+                                $("#cancel-modal").off("click").on("click", function(){
+                                    console.log("clicking cancel");
+                                    $(".popover").popover("hide");
+                                });
+                                return $("#pop-calender-modal").html();
+                            }
+                        }).popover("toggle");
+                        $(".popover").off("click").on("click",stopEvent);
+                    })
+                })
+            })
+        }
+    })     
+}            
+                /*console.log(el.parent());
                 $(this).popover({
                     container: this,
                     placement: "auto",
@@ -347,10 +399,7 @@ function calenderPopover(){
                         $(".calender-item-text").append('<ul></ul>');
                         for(item of list){
                             if(item.type == "calenderItem"){
-                                console.log(item);
-                                console.log(el.parent()[0].id);
                                 if((item.date.month == month)&&(item.date.year == year)&&(item.date.day == el.parent()[0].id)){
-                                    console.log(item);
                                     let li;
                                     jQuery.each(elements, function(){
                                         if(item.id == ($(this)[0].id)){
@@ -369,10 +418,13 @@ function calenderPopover(){
                 $("#cancel").off("click").on("click", function(){
                    $(".popover").popover("hide");
                 });
-            })
-        }
-    }) 
-}
+                $(".popover").find("li").each(function(){
+                    let el = $(this)[0];
+                    el.onclick = function(){
+                        (console.log("clicked a thing"));  
+                    }
+                })*/
+
 
 function showLists(){
     $(".listToDo").empty();
@@ -420,7 +472,6 @@ function removeListItem(){
 }
 
 function stopEvent(ev){
-    console.log("stopping modal from happening");
     ev.stopPropagation();
 }
 
@@ -457,13 +508,15 @@ function fillTable(){
             ul.classList.add("list-group-flush");
             ul.setAttribute("id", this.innerHTML);
             $(this).append(ul);
-            $(this).click(function(){
+            $(this).on("dblclick",function(){
+                console.log("clicked the td");
                 let clicked = $(this).text();
                 $("#datetimepicker1").data("DateTimePicker").date(new Date(year,month,clicked));
                 $("#myModal").modal({
+                    show:false,
                     backdrop: "static",
                     keyboard:true
-                });
+                }).modal("show");
             })
         }
         else{

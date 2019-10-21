@@ -24,10 +24,10 @@ td ul{
     text-align: center;
 }
 .modal-backdrop {
-   /*background-color: transparent !important;*/
+   background-color: transparent !important;
 }
 
-#myModal{
+#myModal, #myModal2{
     position:absolute;
     top: 30%;
 }
