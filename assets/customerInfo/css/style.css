@@ -1,4 +1,6 @@
-.profile-header .profile-header-img .imgDemo, .allColumn .recentPur .item-card-1 .item-card .item-info .item-img .imgDemo, .allColumn .recentPur .item-card-2 .item-card .item-info .item-img .imgDemo, .allColumn .recentPur .item-card-3 .item-card .item-info .item-img .imgDemo {
+.profile-header .profile-header-img .imgDemo, .allColumn .recentPur .item-card-1 .item-card .item-info .item-img .imgDemo,
+.allColumn .recentPur .item-card-2 .item-card .item-info .item-img .imgDemo,
+.allColumn .recentPur .item-card-3 .item-card .item-info .item-img .imgDemo, .allColumn .feedback .item-card-1 .item-card .item-info .item-img .imgDemo {
   background-color: #464646;
 }
 
@@ -106,6 +108,7 @@ li a {
   grid-column-gap: 20px;
   margin-top: 40px;
   max-height: 480px;
+  min-height: 480px;
 }
 .allColumn .info-contents {
   line-height: 32px;
@@ -113,29 +116,49 @@ li a {
 .allColumn .addComment {
   margin-top: 20px;
 }
+.allColumn .addComment .writeComment .topic-input {
+  width: 94%;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid grey;
+}
 .allColumn .addComment .writeComment textarea {
+  margin-top: 20px;
   width: 98%;
   height: 105px;
 }
-.allColumn .recentPur .item-card-1, .allColumn .recentPur .item-card-2, .allColumn .recentPur .item-card-3 {
+.allColumn .recentPur {
+  height: 450px;
+}
+.allColumn .recentPur .item-card-1,
+.allColumn .recentPur .item-card-2,
+.allColumn .recentPur .item-card-3 {
   box-shadow: 2px 2px 15px 1px rgba(219, 219, 219, 0.3);
   -webkit-box-shadow: 2px 2px 15px 1px rgba(219, 219, 219, 0.3);
   -moz-box-shadow: 2px 2px 15px 1px rgba(219, 219, 219, 0.3);
   padding: 20px;
   margin-top: 20px;
 }
-.allColumn .recentPur .item-card-1 .item-card, .allColumn .recentPur .item-card-2 .item-card, .allColumn .recentPur .item-card-3 .item-card {
+.allColumn .recentPur .item-card-1 .item-card,
+.allColumn .recentPur .item-card-2 .item-card,
+.allColumn .recentPur .item-card-3 .item-card {
   width: 100%;
 }
-.allColumn .recentPur .item-card-1 .item-card .item-info, .allColumn .recentPur .item-card-2 .item-card .item-info, .allColumn .recentPur .item-card-3 .item-card .item-info {
+.allColumn .recentPur .item-card-1 .item-card .item-info,
+.allColumn .recentPur .item-card-2 .item-card .item-info,
+.allColumn .recentPur .item-card-3 .item-card .item-info {
   display: grid;
   grid-template-columns: 80px 180px;
   grid-template-areas: "img info";
 }
-.allColumn .recentPur .item-card-1 .item-card .item-info .item-img, .allColumn .recentPur .item-card-2 .item-card .item-info .item-img, .allColumn .recentPur .item-card-3 .item-card .item-info .item-img {
+.allColumn .recentPur .item-card-1 .item-card .item-info .item-img,
+.allColumn .recentPur .item-card-2 .item-card .item-info .item-img,
+.allColumn .recentPur .item-card-3 .item-card .item-info .item-img {
   grid-area: img;
 }
-.allColumn .recentPur .item-card-1 .item-card .item-info .item-img .imgDemo, .allColumn .recentPur .item-card-2 .item-card .item-info .item-img .imgDemo, .allColumn .recentPur .item-card-3 .item-card .item-info .item-img .imgDemo {
+.allColumn .recentPur .item-card-1 .item-card .item-info .item-img .imgDemo,
+.allColumn .recentPur .item-card-2 .item-card .item-info .item-img .imgDemo,
+.allColumn .recentPur .item-card-3 .item-card .item-info .item-img .imgDemo {
   width: 50px;
   height: 50px;
   border-radius: 4px;
@@ -143,45 +166,119 @@ li a {
   -webkit-box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
 }
-.allColumn .recentPur .item-card-1 .item-card .item-info .item-info-info, .allColumn .recentPur .item-card-2 .item-card .item-info .item-info-info, .allColumn .recentPur .item-card-3 .item-card .item-info .item-info-info {
+.allColumn .recentPur .item-card-1 .item-card .item-info .item-info-info,
+.allColumn .recentPur .item-card-2 .item-card .item-info .item-info-info,
+.allColumn .recentPur .item-card-3 .item-card .item-info .item-info-info {
   grid-area: info;
 }
-.allColumn .recentPur .item-card-1 .item-card .item-info .item-info-info .item-info-name-date, .allColumn .recentPur .item-card-2 .item-card .item-info .item-info-info .item-info-name-date, .allColumn .recentPur .item-card-3 .item-card .item-info .item-info-info .item-info-name-date {
+.allColumn .recentPur .item-card-1 .item-card .item-info .item-info-info .item-info-name-date,
+.allColumn .recentPur .item-card-2 .item-card .item-info .item-info-info .item-info-name-date,
+.allColumn .recentPur .item-card-3 .item-card .item-info .item-info-info .item-info-name-date {
   display: flex;
 }
-.allColumn .recentPur .item-card-1 .item-card .item-info .item-info-info .item-title-date, .allColumn .recentPur .item-card-2 .item-card .item-info .item-info-info .item-title-date, .allColumn .recentPur .item-card-3 .item-card .item-info .item-info-info .item-title-date {
+.allColumn .recentPur .item-card-1 .item-card .item-info .item-info-info .item-title-date,
+.allColumn .recentPur .item-card-2 .item-card .item-info .item-info-info .item-title-date,
+.allColumn .recentPur .item-card-3 .item-card .item-info .item-info-info .item-title-date {
   margin-left: 20px;
 }
-.allColumn .recentPur .item-card-1 .item-card .item-info .item-info-info .item-desciption, .allColumn .recentPur .item-card-2 .item-card .item-info .item-info-info .item-desciption, .allColumn .recentPur .item-card-3 .item-card .item-info .item-info-info .item-desciption {
+.allColumn .recentPur .item-card-1 .item-card .item-info .item-info-info .item-desciption,
+.allColumn .recentPur .item-card-2 .item-card .item-info .item-info-info .item-desciption,
+.allColumn .recentPur .item-card-3 .item-card .item-info .item-info-info .item-desciption {
   word-wrap: break-word;
-  width: 300px;
+  width: 255px;
 }
-.allColumn .recentPur .item-card-1 .item-card .item-info .item-info-info .item-desciption p, .allColumn .recentPur .item-card-2 .item-card .item-info .item-info-info .item-desciption p, .allColumn .recentPur .item-card-3 .item-card .item-info .item-info-info .item-desciption p {
+.allColumn .recentPur .item-card-1 .item-card .item-info .item-info-info .item-desciption p,
+.allColumn .recentPur .item-card-2 .item-card .item-info .item-info-info .item-desciption p,
+.allColumn .recentPur .item-card-3 .item-card .item-info .item-info-info .item-desciption p {
   font-size: 12px;
   font-weight: lighter;
   margin-top: 10px;
 }
-.allColumn .recentCont .item-card-1, .allColumn .recentCont .item-card-2, .allColumn .recentCont .item-card-3 {
+.allColumn .recentCont .item-card-1,
+.allColumn .recentCont .item-card-2,
+.allColumn .recentCont .item-card-3 {
   box-shadow: 2px 2px 15px 1px rgba(219, 219, 219, 0.3);
   -webkit-box-shadow: 2px 2px 15px 1px rgba(219, 219, 219, 0.3);
   -moz-box-shadow: 2px 2px 15px 1px rgba(219, 219, 219, 0.3);
   padding: 20px;
   margin-top: 20px;
 }
-.allColumn .recentCont .item-card-1 .item-card, .allColumn .recentCont .item-card-2 .item-card, .allColumn .recentCont .item-card-3 .item-card {
+.allColumn .recentCont .item-card-1 .item-card,
+.allColumn .recentCont .item-card-2 .item-card,
+.allColumn .recentCont .item-card-3 .item-card {
   width: 190px;
 }
-.allColumn .recentCont .item-card-1 .item-card .item-info .item-info-info .item-info-name-date, .allColumn .recentCont .item-card-2 .item-card .item-info .item-info-info .item-info-name-date, .allColumn .recentCont .item-card-3 .item-card .item-info .item-info-info .item-info-name-date {
+.allColumn .recentCont .item-card-1 .item-card .item-info .item-info-info .item-info-name-date,
+.allColumn .recentCont .item-card-2 .item-card .item-info .item-info-info .item-info-name-date,
+.allColumn .recentCont .item-card-3 .item-card .item-info .item-info-info .item-info-name-date {
   display: flex;
 }
-.allColumn .recentCont .item-card-1 .item-card .item-info .item-info-info .item-title-date, .allColumn .recentCont .item-card-2 .item-card .item-info .item-info-info .item-title-date, .allColumn .recentCont .item-card-3 .item-card .item-info .item-info-info .item-title-date {
+.allColumn .recentCont .item-card-1 .item-card .item-info .item-info-info .item-info-name-date .item-title-topic,
+.allColumn .recentCont .item-card-2 .item-card .item-info .item-info-info .item-info-name-date .item-title-topic,
+.allColumn .recentCont .item-card-3 .item-card .item-info .item-info-info .item-info-name-date .item-title-topic {
+  color: #FF6B81;
+}
+.allColumn .recentCont .item-card-1 .item-card .item-info .item-info-info .item-title-date,
+.allColumn .recentCont .item-card-2 .item-card .item-info .item-info-info .item-title-date,
+.allColumn .recentCont .item-card-3 .item-card .item-info .item-info-info .item-title-date {
   margin-left: 20px;
 }
-.allColumn .recentCont .item-card-1 .item-card .item-info .item-info-info .item-desciption, .allColumn .recentCont .item-card-2 .item-card .item-info .item-info-info .item-desciption, .allColumn .recentCont .item-card-3 .item-card .item-info .item-info-info .item-desciption {
+.allColumn .recentCont .item-card-1 .item-card .item-info .item-info-info .item-desciption,
+.allColumn .recentCont .item-card-2 .item-card .item-info .item-info-info .item-desciption,
+.allColumn .recentCont .item-card-3 .item-card .item-info .item-info-info .item-desciption {
   word-wrap: break-word;
-  width: 300px;
+  width: 255px;
 }
-.allColumn .recentCont .item-card-1 .item-card .item-info .item-info-info .item-desciption p, .allColumn .recentCont .item-card-2 .item-card .item-info .item-info-info .item-desciption p, .allColumn .recentCont .item-card-3 .item-card .item-info .item-info-info .item-desciption p {
+.allColumn .recentCont .item-card-1 .item-card .item-info .item-info-info .item-desciption p,
+.allColumn .recentCont .item-card-2 .item-card .item-info .item-info-info .item-desciption p,
+.allColumn .recentCont .item-card-3 .item-card .item-info .item-info-info .item-desciption p {
+  font-size: 12px;
+  font-weight: lighter;
+  margin-top: 10px;
+}
+.allColumn .feedback {
+  margin-top: 20px;
+}
+.allColumn .feedback .item-card-1 {
+  box-shadow: 2px 2px 15px 1px rgba(219, 219, 219, 0.3);
+  -webkit-box-shadow: 2px 2px 15px 1px rgba(219, 219, 219, 0.3);
+  -moz-box-shadow: 2px 2px 15px 1px rgba(219, 219, 219, 0.3);
+  padding: 20px;
+  margin-top: 20px;
+}
+.allColumn .feedback .item-card-1 .item-card {
+  width: 100%;
+}
+.allColumn .feedback .item-card-1 .item-card .item-info {
+  display: grid;
+  grid-template-columns: 80px 180px;
+  grid-template-areas: "img info";
+}
+.allColumn .feedback .item-card-1 .item-card .item-info .item-img {
+  grid-area: img;
+}
+.allColumn .feedback .item-card-1 .item-card .item-info .item-img .imgDemo {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+}
+.allColumn .feedback .item-card-1 .item-card .item-info .item-info-info {
+  grid-area: info;
+}
+.allColumn .feedback .item-card-1 .item-card .item-info .item-info-info .item-info-name-date {
+  display: flex;
+}
+.allColumn .feedback .item-card-1 .item-card .item-info .item-info-info .item-title-date {
+  margin-left: 20px;
+}
+.allColumn .feedback .item-card-1 .item-card .item-info .item-info-info .item-desciption {
+  word-wrap: break-word;
+  width: 255px;
+}
+.allColumn .feedback .item-card-1 .item-card .item-info .item-info-info .item-desciption p {
   font-size: 12px;
   font-weight: lighter;
   margin-top: 10px;

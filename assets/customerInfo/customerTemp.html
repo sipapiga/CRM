@@ -63,11 +63,9 @@
                         </div>
                         <hr>
                         <div class="writeComment">
-                            <form action="">
-                                <input type="text" placeholder="Topic" class="topic-input">
+                                <input type="text" placeholder="Topic" class="topic-input" id='topicIn'>
                                 <textarea name="comment" id="writeText"></textarea>
-                                <button type="submit">Send</button>
-                            </form>
+                                <button type="submit" id="sendText">Send</button>
                         </div>
                     </div>
                 </div>
@@ -174,16 +172,15 @@
                                      <div class="item-info-info">
                                          <div class="item-info-name-date">
                                              <div class="item-title-topic">
-                                                 <h4>Topic</h4>
+                                                 <h4 id='topic'>-</h4>
                                              </div>
                                              <div class="item-title-date">
-                                                 <h4>Date</h4>
+                                                 <h4 id='date'>-</h4>
                                              </div>
  
                                          </div>
                                          <div class="item-desciption">
-                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                 elit. Etiam lectus elit, egestas sed sodales in.
+                                             <p id='descriptt'> -
  
                                              </p>
                                          </div>
@@ -193,18 +190,52 @@
                              </div> 
                              </div>
                     </div>
+                    <div class="feedback main-card">
+                        <div class="feedback-title">
+                            <h3>Feedback</h3>
+                        </div>
+                        <hr>
+                        <div class="item-card-1">
+                            <div class="item-card">
+                             <div class="item-info">
+                                 <div class="item-img">
+                                     <div class="imgDemo"></div>
+                                 </div>
+                                 <div class="item-info-info">
+                                     <div class="item-info-name-date">
+                                         <div class="item-title-name">
+                                             <h4>Item name</h4>
+                                         </div>
+                                         <div class="item-title-date">
+                                             <h4>Date</h4>
+                                         </div>
+
+                                     </div>
+                                     <div class="item-desciption">
+                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                                             elit. Etiam lectus elit, egestas sed sodales in.
+
+                                         </p>
+                                     </div>
+                                 </div>
+
+                             </div>
+                         </div> 
+                         </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="phase2">
+        <!-- <div class="phase2">
             <div class="most-product">
                 <div class="most-product-title main-card">
                     <h3>Most Products</h3>
                     <hr>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
