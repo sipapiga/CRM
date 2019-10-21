@@ -15,16 +15,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
 
     <!-- icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="css/style1.css">
-    <script src="js/contacts.js"> </script>
-    <script src="js/customer.js"> </script>
-    <script src="js/sort.js"> </script>
+    
 </head>
 
 <body>
@@ -42,7 +40,7 @@
                         <a class="nav-link" id="user">Welcome</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="logout" href="login.html">Logout</a>
+                        <a class="nav-link" id="logout" href="login/login.html">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -53,60 +51,55 @@
     <!-- container-->
     <div class="container-fluid padding">
         <div class="row">
-            <div class="col-lg-3 rowPad">
-                <div class="list-group">
-                    <a href="dashboard.html" class="list-group-item">Dashboard</a>
-                    <a href="contacts.html" class="list-group-item ">Contacts</a>
-                    <a href="salesTeam..html" class="list-group-item">Sales Team</a>
-                    <a href="customer.html" class="list-group-item active main-color-bg">Customers</a>
-                </div>
+            <div class="col-lg-2 rowPad">
+                <a href="dashboard.html" class="list-group-item"><i class="far fa-clipboard"></i>
+                    Dashboard</a>
+                <a href="contacts.html" class="list-group-item"><i class="fas fa-id-card"></i> Contacts</a>
+                <a href="calendar.html" class="list-group-item"><i class="far fa-calendar-alt"></i> Calendar</a>
+                <a href="customer.html" class="list-group-item active main-color-bg"><i
+                        class="fas fa-user-astronaut"></i> Call History</a>
             </div>
 
-            <div class="col-lg-9 padding">
+
+            <div class="col-lg-10 padding">
                 <!-- search-->
                 <div class="row">
-                    <div class="col-md-3"> </div>
                     <div class="col-md-6">
-                        <div class="rowPad">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Search here" id="search">
-                                <div class="input-group-append">
-                                    <span class="input-group-text" id="search"><i class='fas fa-search'></i></span>
-                                </div>
-                            </div>
-                        </div>
+                        <form class="search-form">
+                            <h2 id="todayDate"></h2>
+                        </form>
                     </div>
-                    <div class="col-md-3">
-                        <div class="dropdown rowPad2 text-center">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Sort by
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-
-                                <button class="dropdown-item" type="button">Last Contacted</button>
-                                <button class="dropdown-item" type="button">Running Contacted</button>
-                            </div>
+                    <div class="col-md-6">
+                        <div class="rowPad text-center">
+                            <section class="sort-options">  
+                                                            
+                                <span class="vertical-middle lead">Sort By :</span>
+                                <button type="button" class="btn btn-primary" id="lastContactedSort">Last
+                                    Contacted</button>
+                                <button type="button" class="btn btn-primary" id="nameSort">Name</button>
+                                <button type="button" class="btn btn-primary" id="companySort">Company</button>
+                                <button type="button" class="btn btn-primary" id="idSort">id</button>
+                            </section>
                         </div>
                     </div>
                 </div>
                 <!-- end of search-->
-                <table class="table table-hover mails m-0 table table-actions-bar" id="sortTable">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th id="name">Name</th>
-                            <th>Lastname</th>
-                            <th>Email</th>
-                            <th>Contact Number</th>
-                            <th>Company</th>
-                            <th>Last call</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                <div class="rowPad">
+                    <table class="table table-hover mails m-0 table table-actions-bar tableBG">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th id="name">Name</th>
+                                <th>Lastname</th>
+                                <th>Contact Number</th>
+                                <th>Last Contact Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sortTable">
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -120,6 +113,7 @@
         </div>
     </footer>
     <!-- End Footer -->
+    <script src="js/sort.js"> </script>
 </body>
 
 </html>

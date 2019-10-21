@@ -1,51 +1,89 @@
+
 function showCustomer(list) {
+    let dataHtml = '';
     const cusDiv = document.querySelector("#sortTable");
-    const row = document.createElement("tr");
-    row.innerHTML = `<td><p>${list.id}</p></td>
-            <td><img src="${list.photo}" class="img-circle thumb-sm" id="photo"/></td>
-            <td><p >${ list.name}</p></td>
-            <td><p >${ list.lastname} </p></td>
-            <td><a href="#" >${ list.email} </a></td>
-            <td><p>${ list.tel} </p> </td>
-            <td><a >${ list.company} </a></td>
-            <td><p >${ list.Lastcall} </p> </td>
-            `;
-    cusDiv.appendChild(row);
-}
-/* function sortColumn(columnName) {
-    let sortDirection = false;
-    let getName = dummyContacts.map((contact) => {
-        return contact.name.first
-    });
-    console.log(getName);
-    let dataType = typeof getName[0];
-    sortDirection = !sortDirection;
-    console.log(dataType);
-    switch (dataType) {
-        case 'string':
-            sortNameColumn(sortDirection, columnName);
-            break;
+    for (let customer of list) {
+        dataHtml += `<tr><td>${customer.id}</td>
+               <td><img src="${customer.photo}" class="img-fluid rounded-circle" width="20%"/></td>
+               <td>${ customer.name}</td>
+               <td>${ customer.lastname} </td>
+               <td>${ customer.tel}  </td>
+               <td>${ customer.lastcall}</td></tr>
+               `;
     }
-    console.log(getName);
-    //  showCustomer(getName);
+    cusDiv.innerHTML = dataHtml
 }
-function sortNameColumn(sort, columnName) {
-    let getName = dummyContacts.map((contact) => {
-        return contact.name.first
+function sortArrayBy(array, sort, desc) {
+    array.sort(function (a, b) {
+        if (a[sort] < b[sort]) return -1;
+        if (a[sort] > b[sort]) return 1;
+        return 0;
     });
-    getName = getName.sort((p1, p2) => {
-        return sort ? p1[columnName] - p2[columnName] : p2[columnName] - p1[columnName]
-    });
+    if (desc) {
+        array.reverse();
+    }
+    return array;
 }
- */
+function getTodayDate(){
+    const todayDiv = document.querySelector("#todayDate");
+    let today = new Date().toString().slice(0,15);
+    todayDiv.innerHTML = "Today is "+ today;
+    
+
+}
+
 window.addEventListener('DOMContentLoaded', (event) => {
-    let customerList = new CustomerList();
-    let sortList = customerList.getContactsFromLocalStorage();
+    let sortList = JSON.parse(localStorage.getItem('Customers'));
     console.log(sortList);
-    customerList.list.forEach(customer => {
-        showCustomer(customer);
+    const sortContactedbtn = document.querySelector("#lastContactedSort");
+    const sortNamebtn = document.querySelector("#nameSort");
+    const sortIdbtn = document.querySelector("#idSort");
+    const sortCompanybtn = document.querySelector("#companySort");
+
+    let desc = false;
+
+    sortNamebtn.addEventListener('click', (e) => {
+        let array = sortArrayBy(sortList, 'name', desc);
+        console.log(array);
+        showCustomer(array);
+        desc = !desc;
     });
-    const sortName = document.querySelector('#name');
+    sortCompanybtn.addEventListener('click', (e) => {
+        let array = sortArrayBy(sortList, 'company', desc);
+        console.log(array);
+        showCustomer(array);
+        desc = !desc;
+    });
 
-
+    sortIdbtn.addEventListener('click', (e) => {
+        let array = sortArrayBy(sortList, 'id', desc);
+        console.log(array);
+        showCustomer(array);
+        desc = !desc;
+    });
+    showCustomer(sortList);
+    getTodayDate();
 });
+
+/* // search by name
+let filterInput = document.getElementById('sok');
+filterInput.addEventListener('keyup', filterNames);
+
+function filterNames(){
+    let filterValue = document.getElementById('sok').value.toUpperCase ();
+    
+    let names = document.getElementById('sortTable');
+
+    let tr = names.querySelectorAll('tr');
+
+    for(let i = 0; i < tr.length; i++) {
+        console.log(tr[i].getElementsByTagName('td')[2]);
+        let td = tr[i].getElementsByTagName('td')[2];
+        if (td.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
+            tr[i].style.display = '';
+        } else {
+            tr[i].style.display = 'none';
+
+        }
+    }
+} */

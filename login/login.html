@@ -15,37 +15,55 @@
     <div class="login-page container-fluid">
         <div class="form">
             <div class="col-md-12">
-                <form class="login-form ">
-                    <h3>Login</h3>
-                    <input type="text" placeholder="username" />
-                    <input type="password" placeholder="password" /></br>
-                    <a href="../dashboard.html" class="btn btn-primary btn-lg " role="button" aria-disabled="true">Log
-                        in</a>
-                    <p class="message">
-                        Not registered?
-                        <a href="#register" class="register">Register</a>
-                    </p>
-                </form>
-                <form class="register-form hide" id="register">
-                    <h2>Register</h2>
-                    <h3 class="my-3 text-left">Personal information</h3>
-                    <hr>
-                    <input type="name" placeholder="Name" />
-                    <input type="lastName" placeholder="Lastname" />
-                    <h3 class="my-3 text-left">Signin information</h3>
-                    <hr>
-                    <input type="email" placeholder="email" />
-                    <input type="text" placeholder="username" />
-                    <input type="password" placeholder="password" />
-                    <a href="login.html" class="btn btn-primary btn-lg " role="button" aria-disabled="true">Create</a>
-                    <p class="message">
-                        Already Registered? <a href="login.html" class="login">Login</a>
-                    </p>
-                </form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="../image/collasol.png" alt="">
+                    </div>
+                    <div class="col-md-6">
+
+                        <form class="login-form ">
+                            <h3>Log in</h3>
+                            <input type="text" placeholder="username" />
+                            <input type="password" placeholder="password" /></br>
+                            <a href="../dashboard.html" class="btn btn-primary btn-lg" role="button"
+                                aria-disabled="true">Log
+                                in</a>
+                            <p class="message">
+                                Not registered?
+                                <a href="#register" class="register">Register</a>
+                            </p>
+                        </form>
+                        <div class="container">
+                            <form class="register-form hide" id="register">
+                                <h2>Register</h2>
+                                <h3 class="my-3 text-left">Personal information</h3>
+                                <hr>
+                                <input type="name" id="name" placeholder="Name" /></br>
+                                <span id="invalidName" class="text-danger"></span></br>
+                                <input type="lastName" id="lastname" placeholder="Lastname" /></br>
+                                <span id="invalidLastname" class="text-danger"></span>
+                                <h3 class="my-3 text-left">Signin information</h3>
+                                <hr>
+                                <input type="email" id="email" placeholder="email" /></br>
+                                <span id="invalidEmail" class="text-danger"></span></br>
+                                <input type="text" id="username" placeholder="username" /></br>
+                                <span id="invalidUsername" class="text-danger"></span>
+                                <input type="password" id="password" placeholder="password" /></br>
+                                <span id="invalidPassword" class="text-danger"></span></br>
+                                <a href="#" class="btn btn-primary btn-lg" id="validate" role="button"
+                                    aria-disabled="true">Create</a>
+                                <p class="message">
+                                    Already Registered? <a href="login.html" class="login">Login</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <script src="login.js"></script>
+    </div>
+    <script src="../js/user.js"></script>
 </body>
 
 </html>
