@@ -32,7 +32,7 @@ class User {
             document.querySelector('#invalidUsername').innerHTML = "Please write your username";
             return false;
         } if ((userUsername.length <= 6) || (userUsername.length > 20)) {
-            document.querySelector('#invalidUsername').innerHTML = "Username lenght must be between 2 and 20";
+            document.querySelector('#invalidUsername').innerHTML = "Username lenght must be between 6 and 20";
             return false;
         }
         const userPassword = document.querySelector("#password").value;
@@ -40,7 +40,7 @@ class User {
             document.querySelector('#invalidPassword').innerHTML = "Please write your password";
             return false;
         } if ((userPassword.length <= 6) || (userPassword.length > 20)) {
-            document.querySelector('#invalidPassword').innerHTML = "Password lenght must be between 2 and 20";
+            document.querySelector('#invalidPassword').innerHTML = "Password lenght must be between 6 and 20";
             return false;
         } else
             return true;

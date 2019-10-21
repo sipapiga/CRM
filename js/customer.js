@@ -81,7 +81,7 @@ class CustomerList {
                 <td><a href="#" >${ customer.email} </a></td>
                 <td>${ customer.tel}</td>
                 <td>${ customer.company}</td>
-                <td><a href="#" class="btn btn-success btn-sm info" data-id=${customer.id}>Info</a></td>
+                <td><a href="#" class="btn btn-success btn-sm info" id=infoBtn${this.customer_id} data-id=${customer.id}>Info</a></td>
                 <td class="text-center"><button class="btn btn-danger btn-sm delete" data-id=${customer.id}>X</button></td></tr>
                 `;
             cusDiv.innerHTML = dataHtml
@@ -142,27 +142,38 @@ class CustomerList {
 
     addCallingList(id) {
         $('addCallInput').datepicker();
-        
+
     }
     addNoteToCustomer(id) {
         const customerList = this.getContactsFromLocalStorage();
         const customerNote = document.querySelector('#addNote').value;
         const appendNote = document.querySelector('#note');
-     
+
         for (let i = 0; i < customerList.length; i++) {
             console.log(customerList[i].id);
             if (customerList[i].id == id) {
                 customerList[i].note.push(customerNote);
-               // this.list[i].note.push(customerNote);
-                console.log(this.list[i].note);
+                // this.list[i].note.push(customerNote);
                 let addNoteHtml = ""
                 for (let note of customerList[i].note) {
                     addNoteHtml += `<p>${note}</p>`
                 }
                 appendNote.innerHTML = addNoteHtml;
-                localStorage.setItem('Customers', JSON.stringify(customerList));
-                console.log(this.list);
-                //Save to localStorage
+            }
+        }
+        localStorage.setItem('Customers', JSON.stringify(customerList));
+    }
+    renderNote(id) {
+        const customerList = this.getContactsFromLocalStorage();
+        const appendNote = document.querySelector('#note');
+        for (let i = 0; i < customerList.length; i++) {
+            console.log(customerList[i].id);
+            if (customerList[i].id == id) {
+                let addNoteHtml = ""
+                for (let note of customerList[i].note) {
+                    addNoteHtml += `<p>${note}</p>`
+                }
+                appendNote.innerHTML = addNoteHtml;
             }
         }
     }
