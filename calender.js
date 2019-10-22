@@ -107,6 +107,7 @@ function scrollMonth(){
             }
             $("td").empty();
             displayMonth();
+            makeElements();
         }
         else if(($(this).hasClass("previous"))){
             month--;
@@ -116,6 +117,7 @@ function scrollMonth(){
             }
             $("td").empty();
             displayMonth();
+            makeElements();
         }
     });
 }
@@ -253,6 +255,7 @@ function makeElements(){
     removeListItem();
     showCalItems();
 }
+
 function sortElements(){
     let max = list.length -1
     for(i = 0; i < max; i++){
@@ -377,7 +380,7 @@ function showDay(el){
                     if(item.id == ($(this)[0].id)){
                         li = ($(this)[0].element);
                         li = li.cloneNode(true);
-                        
+
                         let hours = item.date.hours; 
                         let minutes = item.date.minutes; 
             
