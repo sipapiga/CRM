@@ -5,7 +5,7 @@ class User {
         this.name = name;
         this.lastname = lastname;
         this.password = password,
-            this.username = username;
+        this.username = username;
     }
     getUserName() {
         const welcomeName = document.querySelector("#user");
@@ -90,7 +90,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         let userInput = new User(userName, userLastname, userEmail, userUsername, userPassword);
         userInput.userCRM.push(userInput);
-      //  let addUser =  localStorage.setItem('Users', JSON.stringify(userInput));
-      //  console.log(addUser);
+        //  let addUser =  localStorage.setItem('Users', JSON.stringify(userInput));
+        //  console.log(addUser);
     }
 });

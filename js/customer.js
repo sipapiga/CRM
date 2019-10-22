@@ -39,7 +39,6 @@ class CustomerList {
         const customerList = this.getContactsFromLocalStorage();
         console.log(customerList);
         this.list.push(contact);
-        // customerList.push(contact);
         this.customer_id++;
         localStorage.setItem('Customers', JSON.stringify(customerList));
         localStorage.setItem('CurrentId', this.customer_id);
@@ -57,17 +56,6 @@ class CustomerList {
             });
         }
         localStorage.setItem('Customers', JSON.stringify(customerList));
-
-        /*  const customerList = this.getContactsFromLocalStorage();
-         customerList.forEach((contact, index) => {
-             if (contact.id == id) {
-                 customerList.splice(index, 1);  //remove from localStorage
-                 //  this.list.splice(index, 1);  //remove from CustomerList class
-             }
-         });
-         localStorage.setItem('Customers', JSON.stringify(customerList));
- 
-         console.log(this.list); */
     }
     //Append table row 
     addCustomerToList(list) {
@@ -105,7 +93,6 @@ class CustomerList {
             "https://randomuser.me/api/portraits/men/67.jpg"
         ];
         let randomPhoto = photo[Math.random() * photo.length | 0];
-        console.log(randomPhoto);
 
         let newCus = new Customer(name, lastname, "01-01-1997", tel, randomPhoto, email, this.customer_id, address, company);
         this.list.push(newCus);
@@ -141,8 +128,22 @@ class CustomerList {
     }
 
     addCallingList(id) {
-        $('addCallInput').datepicker();
-
+        const customerList = this.getContactsFromLocalStorage();
+        const saveBtn = document.querySelector('#saveLastCall');
+        console.log("test");
+        $('#addCall').modal('show');
+        saveBtn.addEventListener('click', function (e) {
+            const getDate = document.querySelector('#dateInput').value;
+            console.log(getDate);
+            for (let i = 0; i < customerList.length; i++) {
+                if (customerList[i].id == id) {
+                    console.log(customerList[i]);
+                    customerList[i].call.push(getDate);
+                }
+            }
+            localStorage.setItem('Customers', JSON.stringify(customerList));
+        });
+        console.log(customerList);
     }
     addNoteToCustomer(id) {
         const customerList = this.getContactsFromLocalStorage();
@@ -180,11 +181,8 @@ class CustomerList {
     // search by name
     filterNames() {
         let filterValue = document.getElementById('search').value.toUpperCase();
-
         let names = document.getElementById('myTable');
-
         let tr = names.querySelectorAll('tr');
-
         for (let i = 0; i < tr.length; i++) {
             console.log(tr[i].getElementsByTagName('td'));
             let td = tr[i].getElementsByTagName('td')[2];
@@ -192,7 +190,6 @@ class CustomerList {
                 tr[i].style.display = '';
             } else {
                 tr[i].style.display = 'none';
-
             }
         }
     }
@@ -256,7 +253,7 @@ class Customer {
         this.DOB = DOB;
         this.address = address;
         this.company = company;
-        this.lastcall = "";
         this.note = [];
+        this.call = [];
     }
 }

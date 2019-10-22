@@ -1,0 +1,91 @@
+$backgroundDivColor: white;
+$shadowColor: #dad7d7;
+
+body {
+    padding-top: 56px;
+    background-color: #ebeff2;
+    height: 100vh;
+}
+.navbar{
+    padding: .8rem;
+    background: linear-gradient(#3EA4E2,#3661B9);
+    box-shadow: 5px 5px  $shadowColor;
+}
+.navbar-nav li{
+    padding-right:20px; 
+}
+.rowPad{
+    padding-top: 5%;
+}
+.rowPad2{
+    padding-top: 10%;
+}
+
+.search-form {
+    display: flex;
+    max-width: 98%;
+    margin-top: 5%;
+    height: 50px;
+}
+
+.search{
+    
+    max-width: 90%;
+    height: 50px;
+}
+
+.footer{
+    padding: 3em;
+}
+#info{
+    width: 90%;
+    height: 500px;
+    background-color: rgb(221, 215, 215);
+}
+.main-color-bg{
+    background: linear-gradient(#3EA4E2,#3661B9) !important;
+    border-color: rgb(41, 67, 119) !important;
+}
+.div-color-bg{
+    border: 1px solid #c1c3c5 !important;
+    background-color:$backgroundDivColor;
+    border-radius: 5px;
+    padding: 30px;
+    height: 350px;
+    overflow: auto; 
+    box-shadow: 5px 5px 5px 5px $shadowColor;
+}
+.div-color-bg1 {
+    border:1px solid #c1c3c5 !important;
+    background-color: $backgroundDivColor;
+    border-radius: 5px;
+    height: 150px;
+    padding: 30px;
+    box-shadow: 5px 5px 5px 5px $shadowColor;
+}
+a{
+    padding: 50px;
+}
+.note{
+    width: 100%;
+    padding: 30px;;
+    height: 150px;
+    overflow: auto; 
+    border: 1px solid gray;
+    border-radius: 5px;
+    p{
+        padding: 10px;
+        background-color:lightgrey;
+        border-radius: 5px;
+        box-shadow: 1px 1px #818080;
+    }
+}
+.tableBG{
+    background-color:$backgroundDivColor;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px $shadowColor;
+    overflow: auto; 
+}
+.hide{
+    display: none;
+}
