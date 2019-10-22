@@ -378,8 +378,9 @@ function showItem(test){
             i = item;
             }
         }
+
         $(".modal-title-calender").html("Title : " + i.text);
-        $(".calender-date").html("Date : " +  i.date.day + " " + months[i.date.month]+ " " + i.date.year);
+        $(".calender-date").html("Date : " +  i.date.day + " " + months[i.date.month] + " " + i.date.year);
         $(".calender-time").html("Time : " + i.date.hours + ":" + i.date.minutes);
         $(".calender-item-text").html("Description : <br>" + i.description);
         $("#delete").css("visibility","visible");
@@ -477,7 +478,6 @@ function fillTable(){
             ul.setAttribute("id", this.innerHTML);
             $(this).append(ul);
             $(this).on("click",function(){
-                //console.log("clicked the td");
                 //let clicked = $(this).text();
                 //$("#datetimepicker1").data("DateTimePicker").date(new Date(year,month,clicked));
                
@@ -487,23 +487,10 @@ function fillTable(){
                 }).modal("show");
             })
         }
-        else{
+        /*else{
             $(this).css("visibility","hidden");
-        }
+        }*/
     });
-    /*$("tbody tr").each(function() {        
-        let empty = 0;
-        $(this).children().each(function(){
-            if ($(this).children().length == 0){
-                empty++;
-                console.log('empty' + this);
-            }      
-        })  
-        if(empty == 7){
-            console.log(this); 
-            $(this).css("visibility","hidden");
-        }     
-    });*/
 }
 
 
