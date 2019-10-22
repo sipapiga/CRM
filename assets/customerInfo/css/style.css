@@ -202,11 +202,7 @@ li a {
   -moz-box-shadow: 2px 2px 15px 1px rgba(219, 219, 219, 0.3);
   padding: 20px;
   margin-top: 20px;
-}
-.allColumn .recentCont .item-card-1 .item-card,
-.allColumn .recentCont .item-card-2 .item-card,
-.allColumn .recentCont .item-card-3 .item-card {
-  width: 190px;
+  border-left: 5px solid #FF4757;
 }
 .allColumn .recentCont .item-card-1 .item-card .item-info .item-info-info .item-info-name-date,
 .allColumn .recentCont .item-card-2 .item-card .item-info .item-info-info .item-info-name-date,
@@ -227,7 +223,7 @@ li a {
 .allColumn .recentCont .item-card-2 .item-card .item-info .item-info-info .item-desciption,
 .allColumn .recentCont .item-card-3 .item-card .item-info .item-info-info .item-desciption {
   word-wrap: break-word;
-  width: 255px;
+  width: 320px;
 }
 .allColumn .recentCont .item-card-1 .item-card .item-info .item-info-info .item-desciption p,
 .allColumn .recentCont .item-card-2 .item-card .item-info .item-info-info .item-desciption p,
