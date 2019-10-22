@@ -1,38 +1,21 @@
 ===============================================================================
                                     THE LIST
 ===============================================================================
+* Fix scss (need scss or less for VG)
+ * Time : 2 hours
 
-* Dummy customer not really working :D 
- * Time: 3 hours.
 
-**Done 21:42 2019-10-16
-===============================================================================
-* Fix new customer modal 
- * Time: 1 hours.
-
-**Done 21:42 2019-10-16
-===============================================================================
-* Sort name,company and last call
- * Time: 20 hours.
-
-** Sort name is done 22:55 2019-10-18
-===============================================================================
-* Show data in user info page
- * Time: 5 hours.
-**Done  14:29 2019-10-20
-===============================================================================
-* Fix if customer has same name when searching 
- * Time : 30 mins
-
-** Using Ali's search function instead
-===============================================================================
-* Check customer ID when add note and add last contacted 
- * Time : 5 hours
-**Done 14:29 2019-10-20
-===============================================================================
-* Add note to LocalStorage
- * Time : 1 hours
 
 ===============================================================================
-* Fix deleteBtn and infoBtn, right now its clicking the same 
- * Time : 1 hours
+* Follow Web Content Accessibility Guidelines
+https://www.w3.org/WAI/WCAG21/quickref/
+https://www.invisionapp.com/inside-design/guide-web-content-accessibility/
+ * Time : 3 hours 
+
+
+
+===============================================================================
+
+
+
+ 

@@ -1,0 +1,50 @@
+body{
+    padding: 0;
+}
+.icon{
+    font-size: 4rem;
+}
+table{
+    table-layout: fixed;
+}
+td{
+    height: 15rem;
+    width: 7rem;
+    text-align: center;
+}
+td ul li{
+    list-style: none;
+    margin: 0.2rem;
+    padding: 0;
+    text-align: left;
+}
+
+.modal li{
+    text-align: left;
+}
+
+.calender-items{
+    padding: 0;
+}
+
+td ul{
+    padding: 0;
+}
+
+.modal-backdrop {
+   background-color: transparent !important;
+}
+
+#myModal, #myModal2{
+    position:absolute;
+    top: 20%;
+}
+
+.popover .arrow{
+    visibility: hidden;
+}
+
+
+
+
+

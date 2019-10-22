@@ -2,13 +2,13 @@
 function showCustomer(list) {
     let dataHtml = '';
     const cusDiv = document.querySelector("#sortTable");
-    for (let customer of list) {
-        dataHtml += `<tr><td>${customer.id}</td>
-               <td><img src="${customer.photo}" class="img-fluid rounded-circle" width="20%"/></td>
-               <td>${ customer.name}</td>
-               <td>${ customer.lastname} </td>
-               <td>${ customer.tel}  </td>
-               <td>${ customer.lastcall}</td></tr>
+    for (let call of list) {
+        dataHtml += `<tr><td>${call.customer.id}</td>
+               <td><img src="${call.customer.photo}" class="img-fluid rounded-circle" width="20%"/></td>
+               <td>${ call.customer.name}</td>
+               <td>${ call.customer.lastname} </td>
+               <td>${ call.customer.tel}  </td>
+               <td>${ call.date}</td></tr>
                `;
     }
     cusDiv.innerHTML = dataHtml
@@ -33,57 +33,25 @@ function getTodayDate(){
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    let sortList = JSON.parse(localStorage.getItem('Customers'));
+    let sortList = JSON.parse(localStorage.getItem('Calling Lists'));
     console.log(sortList);
     const sortContactedbtn = document.querySelector("#lastContactedSort");
     const sortNamebtn = document.querySelector("#nameSort");
-    const sortIdbtn = document.querySelector("#idSort");
-    const sortCompanybtn = document.querySelector("#companySort");
-
+  
     let desc = false;
 
     sortNamebtn.addEventListener('click', (e) => {
         let array = sortArrayBy(sortList, 'name', desc);
-        console.log(array);
         showCustomer(array);
         desc = !desc;
     });
-    sortCompanybtn.addEventListener('click', (e) => {
-        let array = sortArrayBy(sortList, 'company', desc);
+    sortContactedbtn.addEventListener('click', (e) => {
+        let array = sortArrayBy(sortList, 'call', desc);
         console.log(array);
         showCustomer(array);
         desc = !desc;
     });
 
-    sortIdbtn.addEventListener('click', (e) => {
-        let array = sortArrayBy(sortList, 'id', desc);
-        console.log(array);
-        showCustomer(array);
-        desc = !desc;
-    });
     showCustomer(sortList);
     getTodayDate();
 });
-
-/* // search by name
-let filterInput = document.getElementById('sok');
-filterInput.addEventListener('keyup', filterNames);
-
-function filterNames(){
-    let filterValue = document.getElementById('sok').value.toUpperCase ();
-    
-    let names = document.getElementById('sortTable');
-
-    let tr = names.querySelectorAll('tr');
-
-    for(let i = 0; i < tr.length; i++) {
-        console.log(tr[i].getElementsByTagName('td')[2]);
-        let td = tr[i].getElementsByTagName('td')[2];
-        if (td.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
-            tr[i].style.display = '';
-        } else {
-            tr[i].style.display = 'none';
-
-        }
-    }
-} */
