@@ -150,6 +150,7 @@ class CustomerList {
                     //   customerList[i].call.push(getDate);
                     let callList = new Call(getDate, customerList[i]);
                     callingList.push(callList);
+                    callList.addListOfDate(getDate);
                     console.log(callList);
                     localStorage.setItem('Calling Lists', JSON.stringify(callingList));
                 }
@@ -271,6 +272,10 @@ class Customer {
 class Call {
     constructor(date, customer) {
         this.date = date;
+        this.lissOfDate =[];
         this.customer = customer;
+    }
+    addListOfDate(date){
+        this.lissOfDate.push(date);
     }
 }
