@@ -126,10 +126,19 @@ class CustomerList {
             });
         }
     }
-
+    getCallingListFromLocalStorage() {
+        let callingList;
+        if (localStorage.getItem('Calling Lists') === null) {
+            callingList = [];
+        } else {
+            callingList = JSON.parse(localStorage.getItem('Calling Lists'));
+        }
+        return callingList;
+    }
     addCallingList(id) {
         const customerList = this.getContactsFromLocalStorage();
         const saveBtn = document.querySelector('#saveLastCall');
+        const callingList = this.getCallingListFromLocalStorage();
         console.log("test");
         $('#addCall').modal('show');
         saveBtn.addEventListener('click', function (e) {
@@ -138,10 +147,13 @@ class CustomerList {
             for (let i = 0; i < customerList.length; i++) {
                 if (customerList[i].id == id) {
                     console.log(customerList[i]);
-                    customerList[i].call.push(getDate);
+                    //   customerList[i].call.push(getDate);
+                    let callList = new Call(getDate, customerList[i]);
+                    callingList.push(callList);
+                    console.log(callList);
+                    localStorage.setItem('Calling Lists', JSON.stringify(callingList));
                 }
             }
-            localStorage.setItem('Customers', JSON.stringify(customerList));
         });
         console.log(customerList);
     }
@@ -254,6 +266,11 @@ class Customer {
         this.address = address;
         this.company = company;
         this.note = [];
-        this.call = [];
+    }
+}
+class Call {
+    constructor(date, customer) {
+        this.date = date;
+        this.customer = customer;
     }
 }

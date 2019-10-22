@@ -2,13 +2,13 @@
 function showCustomer(list) {
     let dataHtml = '';
     const cusDiv = document.querySelector("#sortTable");
-    for (let customer of list) {
-        dataHtml += `<tr><td>${customer.id}</td>
-               <td><img src="${customer.photo}" class="img-fluid rounded-circle" width="20%"/></td>
-               <td>${ customer.name}</td>
-               <td>${ customer.lastname} </td>
-               <td>${ customer.tel}  </td>
-               <td>${ customer.call}</td></tr>
+    for (let call of list) {
+        dataHtml += `<tr><td>${call.customer.id}</td>
+               <td><img src="${call.customer.photo}" class="img-fluid rounded-circle" width="20%"/></td>
+               <td>${ call.customer.name}</td>
+               <td>${ call.customer.lastname} </td>
+               <td>${ call.customer.tel}  </td>
+               <td>${ call.date}</td></tr>
                `;
     }
     cusDiv.innerHTML = dataHtml
@@ -33,7 +33,7 @@ function getTodayDate(){
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    let sortList = JSON.parse(localStorage.getItem('Customers'));
+    let sortList = JSON.parse(localStorage.getItem('Calling Lists'));
     console.log(sortList);
     const sortContactedbtn = document.querySelector("#lastContactedSort");
     const sortNamebtn = document.querySelector("#nameSort");
