@@ -198,6 +198,7 @@ function saveData(newEvent){
     }
     localStorage.setItem("ID", JSON.stringify(testList.id));
     localStorage.setItem("events", JSON.stringify(this.list));
+    this.list = getData();
     makeElements();
 }
 
@@ -208,14 +209,26 @@ function makeElements(){
             let el = document.createElement("li");
             el.classList.add("list-group-item","list-group-item-info","py-1");
             el.setAttribute("id", item.id);
+
+            let hours = item.date.hours; 
+            let minutes = item.date.minutes; 
+
+            if(item.date.hours < 10){
+                hours = "0" + item.date.hours;
+            }
+            if(item.date.minutes < 10){
+                minutes = "0" + item.date.minutes
+            }
+
             if(item.text.length > 10){
-                el.innerHTML = item.date.hours + ":" + item.date.minutes + " " + item.text.slice(0,15) + "...";
+                el.innerHTML = hours + ":" + minutes + " " + item.text.slice(0,15) + "...";
             }
            else{
-            el.innerHTML = item.date.hours + ":" + item.date.minutes + " " + item.text;
+            el.innerHTML = hours + ":" + minutes + " " + item.text;
            }
             elements.push(new element(item.id, el));
         }
+
         else if(item.type == "reminder"){
             let div = document.createElement("div");
             let el = document.createElement("li");
@@ -235,9 +248,30 @@ function makeElements(){
             elements.push(new element(item.id, div));
         }
     }
+    sortElements();
     showLists();
     removeListItem();
     showCalItems();
+}
+function sortElements(){
+    let max = list.length -1
+    for(i = 0; i < max; i++){
+        let left = max - i;
+        for(j = 0; j < left; j++){
+            if(list[j].date.hours > list[j+1].date.hours){
+                let temp = list[j];
+                list[j] = list[j+1];
+                list[j+1] = temp;
+            }
+            else if(list[j].date.hours == list[j+1].date.hours){
+                if(list[j].date.minutes > list[j+1].date.minutes){
+                    let temp = list[j];
+                    list[j] = list[j+1];
+                    list[j+1] = temp;
+                }
+            }
+        }
+    }
 }
 
 function daysOfMonth(month,year){
@@ -257,8 +291,7 @@ function showCalItems(){
         let more = document.createElement("li");
         more.classList.add("list-group-item","list-group-item-info","py-1");
         more.innerHTML = "...";
-        let oldHours;
-        let oldMinutes
+       
         for(item of list){
             if(item.type == "calenderItem"){
                 if((item.date.month == month)&&(item.date.year == year)&&(item.date.day == i-1)){
@@ -271,25 +304,9 @@ function showCalItems(){
                             if(item.id == ($(this)[0].id)){
                                 li = $(this)[0].element;
                             }
-                            if(item.date.hours < oldHours){
-                                ul.prepend(li);
-                            }
-                            else if(item.date.hours == oldHours){    
-                                if(item.date.minutes < oldMinutes){
-                                    //console.log("this is smaller");
-                                    ul.prepend(li);
-                                }
-                                else{
-                                    ul.append(li);
-                                }
-                            }
-                            else{
-                                ul.append(li);
-                            }
-                            
+                            ul.append(li);
                         })
-                        oldMinutes = item.date.minutes;
-                        oldHours = item.date.hours;
+                       
                     }
                 }
             } 
@@ -301,6 +318,8 @@ function showCalItems(){
 
 function calItemClick(){
     $("table").find("li").each(function(){
+        //console.log(list);
+        //console.log(elements);
         $(this).click(stopEvent);
         let i;
         if($(this)[0].id.length > 0){
@@ -343,6 +362,7 @@ function calItemClick(){
 }     
 function showDay(el){
     $(".calender-items").empty();
+    console.log(el);
     $(".modal-title-calender").html(el.parent()[0].id + " " + months[month]);
     $(".calender-item-title").html("");
     $(".calender-item-text").html("");
@@ -357,7 +377,17 @@ function showDay(el){
                     if(item.id == ($(this)[0].id)){
                         li = ($(this)[0].element);
                         li = li.cloneNode(true);
-                        li.innerHTML =  item.date.hours + ":" + item.date.minutes + " " + item.text;
+                        
+                        let hours = item.date.hours; 
+                        let minutes = item.date.minutes; 
+            
+                        if(item.date.hours < 10){
+                            hours = "0" + item.date.hours;
+                        }
+                        if(item.date.minutes < 10){
+                            minutes = "0" + item.date.minutes
+                        }
+                        li.innerHTML =  hours + ":" + minutes + " " + item.text;
                     }
                 });
                 $(".calender-items").append(li);
