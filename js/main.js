@@ -33,6 +33,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             console.log("id " + id);
             customerList.showInfo(e.target);
             customerList.renderNote(id);
+            customerList.renderCall(id);
             showDiv.classList.remove("hide");
             tableDIv.classList.add("hide");
             //Add Note to customer
@@ -41,8 +42,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
             });
             //Add Calling list to customer
             callBtn.addEventListener('click', function (e) {
-                customerList.addCallingList(id);
-
+                const saveBtn = document.querySelector('#saveLastCall');
+                $('#addCall').modal('show');
+                saveBtn.addEventListener('click', function (e) {
+                    customerList.addCallToCustomer(id);
+                });
             });
         });
     }

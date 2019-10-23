@@ -1,19 +1,29 @@
 
 function showCustomer(list) {
     let dataHtml = '';
+    let num = 1;
+    let sortCustomerCall = "";
     const cusDiv = document.querySelector("#sortTable");
-    for (let call of list) {
-        dataHtml += `<tr><td>${call.customer.id}</td>
-               <td><img src="${call.customer.photo}" class="img-fluid rounded-circle" width="20%"/></td>
-               <td>${ call.customer.name}</td>
-               <td>${ call.customer.lastname} </td>
-               <td>${ call.customer.tel}  </td>
-               <td>${ call.date}</td></tr>
-               `;
+    for (let customer of list) {
+        console.log(customer.call);
+        if (customer.call.length > 0) {
+            //sorting and reverse array 
+            sortCustomerCall = customer.call.sort().reverse();
+            console.log(sortCustomerCall);
+            dataHtml += `<tr><td>${num}</td>
+                       <td><img src="${customer.photo}" class="img-fluid rounded-circle text-center" width="20%"/></td>
+                       <td>${ customer.name}</td>
+                       <td>${ customer.lastname} </td>
+                       <td>${ customer.tel}  </td>
+                       <td>${ sortCustomerCall[0]}</td>
+                       `;
+            num++;
+        }
+        cusDiv.innerHTML = dataHtml
     }
-    cusDiv.innerHTML = dataHtml
 }
 function sortArrayBy(array, sort, desc) {
+    console.log(sort);
     array.sort(function (a, b) {
         if (a[sort] < b[sort]) return -1;
         if (a[sort] > b[sort]) return 1;
@@ -24,29 +34,29 @@ function sortArrayBy(array, sort, desc) {
     }
     return array;
 }
-function getTodayDate(){
+function getTodayDate() {
     const todayDiv = document.querySelector("#todayDate");
-    let today = new Date().toString().slice(0,15);
-    todayDiv.innerHTML = "Today is "+ today;
-    
+    let today = new Date().toString().slice(0, 15);
+    todayDiv.innerHTML = "Today is " + today;
+
 
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    let sortList = JSON.parse(localStorage.getItem('Calling Lists'));
+    let sortList = JSON.parse(localStorage.getItem('Customers'));
     console.log(sortList);
     const sortContactedbtn = document.querySelector("#lastContactedSort");
     const sortNamebtn = document.querySelector("#nameSort");
-  
-    let desc = false;
 
+    let desc = false;
+    //check again**
     sortNamebtn.addEventListener('click', (e) => {
         let array = sortArrayBy(sortList, 'name', desc);
         showCustomer(array);
         desc = !desc;
     });
     sortContactedbtn.addEventListener('click', (e) => {
-        let array = sortArrayBy(sortList, 'call', desc);
+        let array = sortArrayBy(sortList, 'date', desc);
         console.log(array);
         showCustomer(array);
         desc = !desc;

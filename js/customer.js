@@ -12,18 +12,13 @@ class CustomerList {
     displayCustomer() {
         const dummy = this.getContactsFromLocalStorage();
         this.addCustomerToList(dummy);
-        //  this.setDummyCustomer();
     }
     setDummyCustomer() {
         //dummy customer
         for (let customerinfo of dummyContacts) {
             let customer = new Customer(customerinfo.name.first, customerinfo.name.last, customerinfo.dob.date, customerinfo.phone, customerinfo.picture.large, customerinfo.email, this.customer_id, customerinfo.location, customerinfo.company.name);
-            this.list.push(customer);
-            this.customer_id++;
-
+            this.saveContactToLocalStorage(customer);
         }
-        localStorage.setItem('Customers', JSON.stringify(this.list));
-        this.getContactsFromLocalStorage();
     }
 
     getContactsFromLocalStorage() {
@@ -32,7 +27,6 @@ class CustomerList {
         } else {
             this.list = JSON.parse(localStorage.getItem('Customers'));
         }
-        console.log(this.list);
         return this.list;
     }
     saveContactToLocalStorage(contact) {
@@ -63,7 +57,7 @@ class CustomerList {
         let dataHtml = '';
         for (let customer of list) {
             dataHtml += `<tr><td>${customer.id}</td>
-                <td><img src="${customer.photo}" class="img-fluid rounded-circle" width="40%"/></td>
+                <td><img src="${customer.photo}" class="img-fluid rounded-circle" width="30%"/></td>
                 <td>${ customer.name}</td>
                 <td>${ customer.lastname}</td>
                 <td><a href="#" >${ customer.email} </a></td>
@@ -126,38 +120,40 @@ class CustomerList {
             });
         }
     }
-    getCallingListFromLocalStorage() {
-        let callingList;
-        if (localStorage.getItem('Calling Lists') === null) {
-            callingList = [];
-        } else {
-            callingList = JSON.parse(localStorage.getItem('Calling Lists'));
-        }
-        return callingList;
-    }
-    addCallingList(id) {
+    addCallToCustomer(id) {
         const customerList = this.getContactsFromLocalStorage();
-        const saveBtn = document.querySelector('#saveLastCall');
-        const callingList = this.getCallingListFromLocalStorage();
-        console.log("test");
-        $('#addCall').modal('show');
-        saveBtn.addEventListener('click', function (e) {
-            const getDate = document.querySelector('#dateInput').value;
-            console.log(getDate);
-            for (let i = 0; i < customerList.length; i++) {
-                if (customerList[i].id == id) {
-                    console.log(customerList[i]);
-                    //   customerList[i].call.push(getDate);
-                    let callList = new Call(getDate, customerList[i]);
-                    callingList.push(callList);
-                    callList.addListOfDate(getDate);
-                    console.log(callList);
-                    localStorage.setItem('Calling Lists', JSON.stringify(callingList));
+        const appendCall = document.querySelector('#callLog');
+        const getDate = document.querySelector('#dateInput').value;
+        for (let i = 0; i < customerList.length; i++) {
+            if (customerList[i].id == id) {
+                customerList[i].call.push(getDate);
+                let addCallHtml = "";
+                console.log(customerList[i].call);
+                for (let call of customerList[i].call) {
+                    addCallHtml += `<p>${call}</p>`
                 }
+                appendCall.innerHTML = addCallHtml;
+                break;
             }
-        });
-        console.log(customerList);
+        }
+        localStorage.setItem('Customers', JSON.stringify(customerList));
+
     }
+    renderCall(id) {
+        const customerList = this.getContactsFromLocalStorage();
+        const appendCall = document.querySelector('#callLog');
+        for (let i = 0; i < customerList.length; i++) {
+            if (customerList[i].id == id) {
+                let addCallHtml = "";
+                console.log(customerList[i].call);
+                for (let call of customerList[i].call) {
+                    addCallHtml += `<p>${call}</p>`
+                }
+                appendCall.innerHTML = addCallHtml;
+            }
+        }
+    }
+
     addNoteToCustomer(id) {
         const customerList = this.getContactsFromLocalStorage();
         const customerNote = document.querySelector('#addNote').value;
@@ -167,7 +163,6 @@ class CustomerList {
             console.log(customerList[i].id);
             if (customerList[i].id == id) {
                 customerList[i].note.push(customerNote);
-                // this.list[i].note.push(customerNote);
                 let addNoteHtml = ""
                 for (let note of customerList[i].note) {
                     addNoteHtml += `<p>${note}</p>`
@@ -267,15 +262,6 @@ class Customer {
         this.address = address;
         this.company = company;
         this.note = [];
-    }
-}
-class Call {
-    constructor(date, customer) {
-        this.date = date;
-        this.lissOfDate =[];
-        this.customer = customer;
-    }
-    addListOfDate(date){
-        this.lissOfDate.push(date);
+        this.call = [];
     }
 }

@@ -62,7 +62,8 @@
                             class="far fa-clipboard"></i> Dashboard</a>
                     <a href="contacts.html" class="list-group-item"><i class="fas fa-id-card"></i> Contacts</a>
                     <a href="calender.html" class="list-group-item"><i class="far fa-calendar-alt"></i> Calendar</a>
-                    <a href="callHistory.html" class="list-group-item"><i class="fas fa-user-astronaut"></i> Call History</a>
+                    <a href="callHistory.html" class="list-group-item"><i class="fas fa-user-astronaut"></i> Call
+                        History</a>
                 </div>
             </div>
 
@@ -86,7 +87,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="div-color-bg1">
-                            <h2 id="meetings">0</h2>
+                            <h2 id="events">0</h2>
                             <div>
                                 <h4><i class="far fa-calendar-alt"></i> Events</h4>
                             </div>
@@ -95,18 +96,22 @@
                 </div>
 
                 <div class="row rowPad">
-                    <div class="col-md-4 ">
+                    <div class="col-md-8 ">
                         <div class="div-color-bg padding">
-                            <h4 >Calendar</h4>
-                            <div id="calendar"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="div-color-bg">
-                            <h4>Revenues</h4>
-                            <div>
-                                <canvas id="graph"></canvas>
-                            </div>
+                            <h4>Events</h4>
+                            <div id="table-responsive ">
+                                    <table class="table table-hover mails m-0 table table-actions-bar">
+                                        <thead>
+                                            <tr>
+                                                <th>Event title</th>
+                                                <th>Date</th>
+                                                <th>Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="eventText">
+                                        </tbody>
+                                    </table>
+                                </div>
                         </div>
                     </div>
                     <div class="col-md-4">
