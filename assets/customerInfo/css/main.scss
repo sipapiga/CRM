@@ -209,10 +209,9 @@ li {
             @include boxShadow(2px 2px 15px 1px rgba(219, 219, 219, 0.3));
             padding: 20px;
             margin-top: 20px;
+            border-left: 5px solid #FF4757;
 
             .item-card {
-                width: 190px;
-
                 .item-info {
                     .item-info-info {
                         .item-info-name-date {
@@ -228,7 +227,7 @@ li {
 
                         .item-desciption {
                             word-wrap: break-word;
-                            width: 255px;
+                            width: 320px;
 
                             p {
                                 font-size: 12px;
