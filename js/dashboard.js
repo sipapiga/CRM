@@ -26,17 +26,21 @@ function appendEvent(event) {
     const row = document.createElement("tr");
     row.innerHTML = `
         <td>${event.text}</td>
-        <td>${ event.date.day}${" "}${event.date.month}${" "}${event.date.year}</td>
-        <td>${ event.date.hours}${" : "}${event.date.minutes}</td></tr>
+        <td>${ event.date.month}${"/"}${event.date.day}${"/"}${event.date.year}</td>
+        <td>${ event.date.hours}${":"}${event.date.minutes}</td></tr>
         `;
     eventsDiv.appendChild(row);
 }
 function showCustomer() {
     let contactList = JSON.parse(localStorage.getItem('Customers'));
     const antalCustomer = document.querySelector('#customers');
-    antalCustomer.innerHTML = contactList.length;
-    for (let x = 0; x < contactList.length; x++) {
-        showCustomerBirthday(contactList[x]);
+    if(contactList === null){
+        antalCustomer.innerHTML = 0;
+    }else{
+        antalCustomer.innerHTML = contactList.length;
+        for (let x = 0; x < contactList.length; x++) {
+            showCustomerBirthday(contactList[x]);
+        }
     }
 }
 window.addEventListener('DOMContentLoaded', (event) => {

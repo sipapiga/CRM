@@ -1,15 +1,64 @@
 class User {
-    constructor(name, lastname, username, password) {
-        this.userCRM = [];
-        this.id = 1;
+    constructor(name, lastname, email, username, password) {
         this.name = name;
         this.lastname = lastname;
+        this.email = email;
         this.password = password,
-        this.username = username;
+            this.username = username;
     }
     getUserName() {
         const welcomeName = document.querySelector("#user");
         welcomeName.innerHTML = "Welcome  " + this.name;
+    }
+    getUsersFromLocalStorage() {
+        let userCRM;
+        if (localStorage.getItem('Users') === null) {
+            userCRM = [];
+        } else {
+            userCRM = JSON.parse(localStorage.getItem('Users'));
+        }
+        return userCRM;
+    }
+    saveUserToLocalStorage(user) {
+        const userList = this.getUsersFromLocalStorage();
+        //   this.userCRM.push(user);
+        userList.push(user);
+        console.log(userList);
+        localStorage.setItem('Users', JSON.stringify(userList));
+    }
+    checkLogin(username, password) {
+        let user = "";
+        const userList = this.getUsersFromLocalStorage();
+        console.log(username);
+        console.log(userList);
+        for (let user of userList) {
+            if (username === user.username){
+                if(password === user.password){
+                    user = user.name;
+                    location.href = "../dashboard.html";
+                    console.log(user);
+                    break;
+                }else{
+                    this.showAlert("The password is not correct","danger");
+                    break;
+                }
+            } else {
+                this.showAlert("There is no username", "danger");
+                break;
+            }
+        }
+        return user;
+    }
+    showAlert(message, className) {
+        const div = document.createElement('div');
+        div.className = `alert alert-${className}`;
+        div.appendChild(document.createTextNode(message));
+        const container = document.querySelector('.container');
+        const form = document.querySelector('.register-form');
+        container.insertBefore(div, form);
+
+        // Vanish in 3 seconds
+        setTimeout(() => document.querySelector('.alert').remove(), 3000);
     }
     validateUser() {
         const userName = document.querySelector("#name").value;
@@ -52,16 +101,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let validateBtn = document.querySelector("#validate");
 
     let user = new User();
-
     validateBtn.addEventListener('click', function () {
         console.log("test1");
         let validate = user.validateUser();
         if (validate == true) {
-            showAlert("You have registered", "success")
+            user.showAlert("You have registered", "success")
             addNewUser();
-            console.log(user);
-            location.href = "login.html";
+            clearTextfield();
+            //   location.href = "login.html";
         }
+    });
+    document.querySelector("#login").addEventListener("click", function () {
+        let usernameFromUser = document.querySelector("#usernameInput").value;
+        let passwordFromUser = document.querySelector("#passwordInput").value;
+        user.checkLogin(usernameFromUser, passwordFromUser);
+
     });
 
     document.querySelector(".register").addEventListener("click", function () {
@@ -69,18 +123,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
         loginForm.classList.add("hide");
 
     });
+    function clearTextfield() {
+        const userName = document.querySelector("#name").value = "";
+        const userLastname = document.querySelector("#lastname").value = "";
+        const userEmail = document.querySelector("#email").value = "";
+        const userUsername = document.querySelector("#username").value = "";
+        const userPassword = document.querySelector("#password").value = "";
 
-    function showAlert(message, className) {
-        const div = document.createElement('div');
-        div.className = `alert alert-${className}`;
-        div.appendChild(document.createTextNode(message));
-        const container = document.querySelector('.container');
-        const form = document.querySelector('.register-form');
-        container.insertBefore(div, form);
-
-        // Vanish in 3 seconds
-        setTimeout(() => document.querySelector('.alert').remove(), 3000);
     }
+
     function addNewUser() {
         const userName = document.querySelector("#name").value;
         const userLastname = document.querySelector("#lastname").value;
@@ -89,7 +140,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         const userPassword = document.querySelector("#password").value;
 
         let userInput = new User(userName, userLastname, userEmail, userUsername, userPassword);
-        userInput.userCRM.push(userInput);
+        userInput.saveUserToLocalStorage(userInput);
+        console.log(userInput);
         //  let addUser =  localStorage.setItem('Users', JSON.stringify(userInput));
         //  console.log(addUser);
     }

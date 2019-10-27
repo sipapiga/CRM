@@ -17,7 +17,7 @@ class CustomerList {
         //dummy customer
         for (let customerinfo of dummyContacts) {
             let customer = new Customer(customerinfo.name.first, customerinfo.name.last, customerinfo.dob.date, customerinfo.phone, customerinfo.picture.large, customerinfo.email, this.customer_id, customerinfo.location, customerinfo.company.name);
-            this.saveContactToLocalStorage(customer);
+            //this.saveContactToLocalStorage(customer);
         }
     }
 
@@ -90,8 +90,9 @@ class CustomerList {
 
         let newCus = new Customer(name, lastname, "01-01-1997", tel, randomPhoto, email, this.customer_id, address, company);
         this.list.push(newCus);
-        this.addCustomerToList(this.list, this.customer_id);
+      //  this.addCustomerToList(this.list, this.customer_id);
         this.saveContactToLocalStorage(newCus);
+     //   this.displayCustomer();
         this.clearFieldInput();
         console.log(this.list);
     }
@@ -105,9 +106,9 @@ class CustomerList {
     showInfo(id) {
         if (id.classList.contains('info')) {
             console.log(id.getAttribute('data-id'));
-            let remID = id.getAttribute('data-id');
+            let customerId = id.getAttribute('data-id');
             this.list.forEach((contact) => {
-                if (contact.id == remID) {
+                if (contact.id == customerId) {
                     document.querySelector('#cusName').innerHTML = contact.name;
                     document.querySelector('#cusLastName').innerHTML = contact.lastname;
                     document.querySelector('#phoneNum').innerHTML = contact.tel;
@@ -127,16 +128,17 @@ class CustomerList {
         for (let i = 0; i < customerList.length; i++) {
             if (customerList[i].id == id) {
                 customerList[i].call.push(getDate);
-                let addCallHtml = "";
+                localStorage.setItem('Customers', JSON.stringify(customerList));
+                this.renderCall(id);
+             /*    let addCallHtml = "";
                 console.log(customerList[i].call);
                 for (let call of customerList[i].call) {
                     addCallHtml += `<p>${call}</p>`
                 }
                 appendCall.innerHTML = addCallHtml;
-                break;
+                break; */
             }
         }
-        localStorage.setItem('Customers', JSON.stringify(customerList));
 
     }
     renderCall(id) {
@@ -157,20 +159,20 @@ class CustomerList {
     addNoteToCustomer(id) {
         const customerList = this.getContactsFromLocalStorage();
         const customerNote = document.querySelector('#addNote').value;
-        const appendNote = document.querySelector('#note');
 
         for (let i = 0; i < customerList.length; i++) {
             console.log(customerList[i].id);
             if (customerList[i].id == id) {
                 customerList[i].note.push(customerNote);
-                let addNoteHtml = ""
+                localStorage.setItem('Customers', JSON.stringify(customerList));
+                this.renderNote(id);
+              /*   let addNoteHtml = ""
                 for (let note of customerList[i].note) {
                     addNoteHtml += `<p>${note}</p>`
                 }
-                appendNote.innerHTML = addNoteHtml;
+                appendNote.innerHTML = addNoteHtml; */
             }
         }
-        localStorage.setItem('Customers', JSON.stringify(customerList));
     }
     renderNote(id) {
         const customerList = this.getContactsFromLocalStorage();

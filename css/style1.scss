@@ -1,10 +1,12 @@
 $backgroundDivColor: white;
 $shadowColor: #dad7d7;
+$paddingTop : 20px;
 
 body {
     padding-top: 56px;
     background-color: #ebeff2;
     height: 100vh;
+    
 }
 .navbar{
     padding: .8rem;
@@ -20,20 +22,6 @@ body {
 .rowPad2{
     padding-top: 10%;
 }
-
-.search-form {
-    display: flex;
-    max-width: 98%;
-    margin-top: 5%;
-    height: 50px;
-}
-
-.search{
-    
-    max-width: 90%;
-    height: 50px;
-}
-
 .footer{
     padding: 3em;
 }
@@ -68,7 +56,7 @@ a{
 }
 .note{
     width: 100%;
-    padding: 20px;;
+    padding: $paddingTop;
     height: 250px;
     overflow: auto; 
     border: 1px solid gray;
@@ -90,3 +78,27 @@ a{
 .hide{
     display: none;
 }
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) { 
+    #todayDate{
+        padding-top: $paddingTop;
+        font-size: 20px;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) { 
+    #todayDate{
+        padding-top: $paddingTop;
+        font-size: 20px;
+    }
+    .table-responsive{
+        padding-top: $paddingTop;
+    }
+    .col-md-9{
+        padding-top: $paddingTop;
+    }
+    .col-md-4{
+        padding-top: $paddingTop;
+    }
+} 

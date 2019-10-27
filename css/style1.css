@@ -24,20 +24,6 @@ body {
   padding-top: 10%;
 }
 
-.search-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  max-width: 98%;
-  margin-top: 5%;
-  height: 50px;
-}
-
-.search {
-  max-width: 90%;
-  height: 50px;
-}
-
 .footer {
   padding: 3em;
 }
@@ -107,5 +93,28 @@ a {
 
 .hide {
   display: none;
+}
+
+@media (max-width: 576px) {
+  #todayDate {
+    padding-top: 20px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  #todayDate {
+    padding-top: 20px;
+    font-size: 20px;
+  }
+  .table-responsive {
+    padding-top: 20px;
+  }
+  .col-md-9 {
+    padding-top: 20px;
+  }
+  .col-md-4 {
+    padding-top: 20px;
+  }
 }
 /*# sourceMappingURL=style1.css.map */

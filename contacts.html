@@ -42,9 +42,10 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="dashboard.html"></a>
+            <a class="navbar-brand" href="dashboard.html"><img src="image/output-onlinepngtools.png" alt=""
+                    height="50px"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="sideBar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -62,15 +63,15 @@
     </nav>
     <!-- End of navigation -->
     <!-- container-->
-    <div class="container-fluid padding">
+    <div class="container-fluid padding rowPad">
         <div class="row">
-            <div class="col-lg-2 rowPad">
+            <div class="col-lg-2 rowPad" id="sideBar">
                 <div class="list-group">
                     <a href="dashboard.html" class="list-group-item"><i class="far fa-clipboard"></i> Dashboard</a>
                     <a href="contacts.html" class="list-group-item active main-color-bg"><i class="fas fa-id-card"></i>
                         Contacts</a>
                     <a href="calender.html" class="list-group-item"><i class="far fa-calendar-alt"></i> Calendar</a>
-                    <a href="callHistory.html" class="list-group-item"><i class="fas fa-user-astronaut"></i> Call
+                    <a href="callhistory.html" class="list-group-item"><i class="fas fa-user-astronaut"></i> Call
                         History</a>
                 </div>
             </div>
@@ -100,23 +101,25 @@
                     </div>
                 </div>
                 <!-- end of search-->
-                <table class="table-reponsive table-hover mails m-0 table table-actions-bar tableBG" id="tableDiv">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Lastname</th>
-                            <th>Email</th>
-                            <th>Contact Number</th>
-                            <th>Company</th>
-                            <th>Show info</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody id="myTable">
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table-hover mails m-0 table table-actions-bar tableBG" id="tableDiv">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Lastname</th>
+                                <th>Email</th>
+                                <th>Contact Number</th>
+                                <th>Company</th>
+                                <th>Show info</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                        </tbody>
+                    </table>
+                </div>
                 <!-- Customer info -->
 
                 <div class="col-lg-12 padding rowPad hide  tableBG" id="showInfoDiv">
@@ -153,8 +156,8 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <label>Adress:</label>
-                                <p id="address">Adress</p><br>
+                                <address>Address:</address>
+                                <p id="address">Address</p><br>
                                 <label>Date of Birth:</label>
                                 <p id="DOB">DOB</p>
                             </div>
@@ -165,27 +168,16 @@
                                     <h4>Call log:</h4>
                                     <div id="callLog"></div>
                                 </div>
+                                <div class="rowPad2">
+                                    <button type="button" class="btn btn-primary text-right" id="addCalltbtn"><i
+                                            class="fas fa-phone"></i> Add call</button>
+                                </div>
                             </div>
                             <div class="col-md-9">
                                 <div class="note">
                                     <h4>Note:</h4>
                                     <div id="note"></div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="row rowPad2">
-                                    <div class="col-md-6">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <button type="button" class="btn btn-primary" id="addCalltbtn"><i
-                                                class="fas fa-phone"></i>
-                                            Add call</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-9 ">
                                 <div class="input-group mb-3 rowPad">
                                     <input type="text" class="form-control" aria-labelledby="AddNotetoCustomer"
                                         placeholder="Add note" id="addNote">
@@ -246,34 +238,34 @@
                     <div class="custom-modal-text text-left">
                         <form role="form" class="needs-validation" novalidate>
                             <div class="form-group">
-                                <label for="name">Name</label>
+                                <label for="name">Name*</label>
                                 <input type="text" class="form-control" id="inputName" aria-labelledby="CustomerName"
                                     placeholder="Enter name" required>
                                 <span id="invalidName" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label for="lastname">Lastname</label>
+                                <label for="lastname">Lastname*</label>
                                 <input type="text" class="form-control" id="inputLastname"
                                     aria-labelledby="CustomerLastname" placeholder="Enter lastname" required>
                                 <span id="invalidLastname" class="text-danger"></span>
 
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail1">Email address</label>
+                                <label for="inputEmail1">Email address*</label>
                                 <input type="email" class="form-control" id="inputEmail" aria-labelledby="CustomerEmail"
                                     placeholder="Enter email">
                                 <span id="invalidEmail" class="text-danger"></span>
 
                             </div>
                             <div class="form-group">
-                                <label>Contact number</label>
+                                <label>Contact number*</label>
                                 <input type="text" class="form-control" id="inputTel" aria-labelledby="CustomerNumber"
                                     placeholder="Enter telephone number">
                                 <span id="invalidTel" class="text-danger"></span>
 
                             </div>
                             <div class="form-group">
-                                <label>Company</label>
+                                <label>Company*</label>
                                 <input type="text" class="form-control" id="inputCompany"
                                     aria-labelledby="CustomerCompany" placeholder="Enter company">
                                 <span id="invalidCompany" class="text-danger"></span>

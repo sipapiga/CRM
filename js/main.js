@@ -18,8 +18,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         if (validateInput == true) {
             customerList.addNewContact();
             $('#addContact').modal('hide');
+            customerList.displayCustomer();
         }
     });
+    customerList.displayCustomer();
     //Delete customer from UI and localStorage
     for (let i = 0; i < deleteBtn.length; i++) {
         deleteBtn[i].addEventListener('click', function (e) {
@@ -52,4 +54,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
     // search by name
     filterInput.addEventListener('keyup', customerList.filterNames);
+    $(".menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    
 });
