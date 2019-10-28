@@ -50,28 +50,31 @@ h5 {
 .navbar .navbar-collapse .navbar-nav .logOut h5 {
   font-size: 16px;
 }
+.navbar .searchBar {
+  margin-top: 1.125em;
+}
 
 .container-fluid .row .sideNav {
   margin-top: 5%;
 }
 .container-fluid .row .sideNav .list-group .list-group-item {
   color: #273c75;
+  letter-spacing: 0.025em;
 }
 .container-fluid .row .sideNav .list-group .list-group-item.active {
   color: #fff;
   background-color: #273c75 !important;
   border-color: transparent;
-  letter-spacing: 0.025em;
 }
 .container-fluid .row .main-content {
   margin-top: 5%;
 }
 .container-fluid .row .main-content .underMain1 .statisticCard {
   background-color: white;
-  border-radius: 8px 0px 0px 8px;
   padding: 30px 40px 30px 40px;
-  border-right: 10px solid #273c75;
   box-shadow: 1px 2px 43px -3px rgba(230, 230, 230, 0.5);
+  border-right: 10px solid #273c75;
+  border-radius: 8px 0px 0px 8px;
 }
 .container-fluid .row .main-content .underMain1 .statisticCard .statistic {
   margin-bottom: 10px;
@@ -102,21 +105,35 @@ h5 {
   font-weight: 900;
   margin-bottom: 15px;
 }
+.container-fluid .row .contactList {
+  margin-top: 0.9em;
+}
+.container-fluid .row .contactList .customer-list {
+  margin-top: 5%;
+}
+.container-fluid .row .contactList .customer-list .tableBG {
+  background-color: white;
+  padding: 30px 40px 30px 40px;
+  box-shadow: 1px 2px 43px -3px rgba(230, 230, 230, 0.5);
+  padding: 0px;
+  border-radius: 8px;
+}
+.container-fluid .row .contactList .customer-list .tableBG thead th {
+  padding: 15px;
+  border-top: 0;
+  border-bottom: 0;
+}
+.container-fluid .row .contactList .customer-list .addNewContact {
+  margin-top: 0.65em;
+}
+.container-fluid .row .contactInfo {
+  background-color: white;
+  padding: 30px 40px 30px 40px;
+  box-shadow: 1px 2px 43px -3px rgba(230, 230, 230, 0.5);
+}
 
 .rowPad2 {
   margin-top: 10%;
-}
-
-.search-form {
-  display: flex;
-  max-width: 98%;
-  margin-top: 5%;
-  height: 50px;
-}
-
-.search {
-  max-width: 90%;
-  height: 50px;
 }
 
 .footer {
@@ -147,13 +164,6 @@ a {
   background-color: lightgrey;
   border-radius: 5px;
   box-shadow: 1px 1px #818080;
-}
-
-.tableBG {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px 5px #dad7d7;
-  overflow: auto;
 }
 
 .hide {

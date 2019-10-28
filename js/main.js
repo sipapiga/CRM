@@ -36,6 +36,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
             customerList.renderCall(id);
             showDiv.classList.remove("hide");
             tableDIv.classList.add("hide");
+            document.getElementById('addContactbtn').classList.add('hide');
+
             //Add Note to customer
             noteBtn.addEventListener('click', function (e) {
                 customerList.addNoteToCustomer(id);

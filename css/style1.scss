@@ -74,36 +74,46 @@ h5 {
         }
 
     }
+    .searchBar {
+        margin-top: 1.125em;
+    }
 }
 
+
 .container-fluid {
-    .row {
-        .sideNav {
-            margin-top: 5%;
-            .list-group {
-                .list-group-item {
-                    color: $mazarineBlue;
-                }
-                .list-group-item.active {
-                    color: #fff;
-                    background-color: $mazarineBlue !important;
-                    border-color: transparent;
-                    letter-spacing: 0.025em;
-                    // background: linear-gradient(#3EA4E2,#3661B9) !important;
-                    // border-color: rgb(41, 67, 119) !important;
-                }
+    
+    @mixin bar {
+    .sideNav {
+        margin-top: 5%;
+        .list-group {
+            .list-group-item {
+                color: $mazarineBlue;
+                letter-spacing: 0.025em;
+            }
+            .list-group-item.active {
+                color: #fff;
+                background-color: $mazarineBlue !important;
+                border-color: transparent;
+                // background: linear-gradient(#3EA4E2,#3661B9) !important;
+                // border-color: rgb(41, 67, 119) !important;
             }
         }
-
+    }
+}
+@mixin flatCard {
+    background-color: $backgroundDivColor;
+                    padding: 30px 40px 30px 40px;
+                    box-shadow: 1px 2px 43px -3px rgba(230, 230, 230, 0.5);
+}
+    .row {
+        @include bar;
         .main-content {
             margin-top: 5%;
             .underMain1 {
                 .statisticCard {
-                    background-color: $backgroundDivColor;
-                    border-radius: 8px 0px 0px 8px;
-                    padding: 30px 40px 30px 40px;
+                    @include flatCard;
                     border-right: 10px solid $mazarineBlue;
-                    box-shadow: 1px 2px 43px -3px rgba(230, 230, 230, 0.5);
+                    border-radius: 8px 0px 0px 8px;
                     .statistic {
                         margin-bottom: 10px;
                         i {
@@ -141,6 +151,29 @@ h5 {
                 }
             }
         }
+        .contactList {
+            margin-top: 0.9em;
+          .customer-list {
+            margin-top: 5%;
+            .tableBG {
+                @include flatCard;
+                padding: 0px;
+                border-radius: 8px;
+                thead th {
+                    padding: 15px;
+                    border-top: 0;
+                    border-bottom: 0;
+                }
+            }
+            .addNewContact {
+                margin-top: 0.65em;
+            }
+        }  
+        }
+        
+        .contactInfo {
+            @include flatCard;
+        }
     }
 }
 
@@ -148,18 +181,18 @@ h5 {
     margin-top: 10%;
 }
 
-.search-form {
-    display: flex;
-    max-width: 98%;
-    margin-top: 5%;
-    height: 50px;
-}
+// .search-form {
+//     display: flex;
+//     max-width: 98%;
+//     margin-top: 5%;
+//     height: 50px;
+// }
 
-.search {
+// .search {
 
-    max-width: 90%;
-    height: 50px;
-}
+//     max-width: 90%;
+//     height: 50px;
+// }
 
 .footer {
     padding: 3em;
@@ -210,12 +243,12 @@ a {
     }
 }
 
-.tableBG {
-    background-color: $backgroundDivColor;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px 5px $shadowColor;
-    overflow: auto;
-}
+// .tableBG {
+//     background-color: $backgroundDivColor;
+//     border-radius: 10px;
+//     box-shadow: 5px 5px 5px 5px $shadowColor;
+//     overflow: auto;
+// }
 
 .hide {
     display: none;
