@@ -1,112 +1,117 @@
 body {
-    background-color: #ebeff2;
-    width: 100vw;
-    margin: 0;
-    padding: 0;
-    justify-content: center;
-    justify-items: center;
+  background-color: #ebeff2;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  justify-items: center;
 }
 
 .login-page {
-    margin: 20px auto 4px auto;
-    justify-content: center;
-    justify-items: center;
-    text-align: center;
+  margin: 20px auto 4px auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  justify-content: center;
+  justify-items: center;
 }
 
 .form {
-    position: relative;
-    border-radius: 5px;
-    background-color: white;
-    width: 80%;
-    min-width: 300px;
-    margin: auto;
-    padding: 45px;
-    text-align: center;
-    box-shadow: 5px 5px 5px 5px #dad7d7;
+  position: relative;
+  border-radius: 5px;
+  background-color: white;
+  width: 80%;
+  min-width: 300px;
+  margin: auto;
+  padding: 45px;
+  text-align: center;
+  -webkit-box-shadow: 5px 5px 5px 5px #dad7d7;
+          box-shadow: 5px 5px 5px 5px #dad7d7;
 }
 
 .form input {
-    border-radius: 5px;
+  border-radius: 5px;
+  font-family: "arial", sans-serif;
+  outline: 1;
+  background-color: lightgrey;
+  width: 80%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 20px;
+}
+
+.message {
+  margin: 15px 0 0;
+  color: black;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  width: 40%;
+  padding-top: 30px;
+}
+
+.hide {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    background: white;
+  }
+  .login-page {
+    padding: 0;
+    margin: 0px auto 0px auto;
+  }
+  .form {
+    position: relative;
+    background-color: white;
+    width: 100%;
+    margin: 0;
+    padding: 50px 0;
+    text-align: center;
+  }
+  .form input {
     font-family: "arial", sans-serif;
     outline: 1;
     background-color: lightgrey;
     width: 80%;
     border: 0;
-    margin: 0 0 15px;
-    padding: 15px;
-    box-sizing: border-box;
-    font-size: 20px;
-}
-
-.message {
-    margin: 15px 0 0;
-    color: black;
+    margin: 15px;
+    padding: 14px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     font-size: 14px;
-}
-
-a {
-    text-decoration: none;
-    width: 40%;
-    padding-top: 30px;
-}
-
-.hide {
-    display: none;
-}
-
-@media screen and (max-width: 600px) {
-
-    body{
-        background: white;
-    }
-    .login-page {
-        padding: 0;
-        margin: 0px auto 0px auto;
-    }
-    .form {
-        position: relative;
-        background-color: white;
-        width: 100%;
-        margin: 0;
-        padding: 50px 0;
-        text-align: center;
-    }
-
-    .form input {
-        font-family: "arial", sans-serif;
-        outline: 1;
-        background-color: lightgrey;
-        width: 80%;
-        border: 0;
-        margin: 15px;
-        padding: 14px;
-        box-sizing: border-box;
-        font-size: 14px;
-    }
+  }
 }
 
 @media screen and (max-width: 900px) {
-    body{
-        background-color: white;
-    }
-    .login-page {
-        padding: 0;
-        margin: 10px auto 10px auto;
-    }
-
-    .form {
-        position: relative;
-        background-color: white;
-        width: 100%;
-        margin: 0;
-        padding: 50px 20px;
-        text-align: center;
-    }
-    .form input {
-        margin-top: 1rem;
-    }
-    button {
-        padding-top: 100px;
-    }
+  body {
+    background-color: white;
+  }
+  .login-page {
+    padding: 0;
+    margin: 10px auto 10px auto;
+  }
+  .form {
+    position: relative;
+    background-color: white;
+    width: 100%;
+    margin: 0;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  .form input {
+    margin-top: 1rem;
+  }
+  button {
+    padding-top: 100px;
+  }
 }
+/*# sourceMappingURL=login.css.map */
