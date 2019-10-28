@@ -2,31 +2,112 @@ body {
   padding-top: 56px;
   background-color: #ebeff2;
   height: 100vh;
+  font-family: "Muli", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
 }
 
 .navbar {
-  padding: .8rem;
-  background: -webkit-gradient(linear, left top, left bottom, from(#3EA4E2), to(#3661B9));
-  background: linear-gradient(#3EA4E2, #3661B9);
-  -webkit-box-shadow: 5px 5px #dad7d7;
-          box-shadow: 5px 5px #dad7d7;
+  background-color: #fff;
+}
+.navbar .navbar-brand {
+  padding-left: 20px;
+  padding-right: 0;
+}
+.navbar .logoImg {
+  width: 60px;
+  height: 60px;
+}
+.navbar .navbar-toggler-icon .fa-bars {
+  color: #000;
+  font-size: 28px;
+}
+.navbar .navbar-collapse .navbar-nav li {
+  margin-right: 20px;
+}
+.navbar .navbar-collapse .navbar-nav .nav-link {
+  color: #000;
+}
+.navbar .navbar-collapse .navbar-nav .lBtn :hover {
+  background-color: #da4757;
+  transition-duration: 0.125s;
+}
+.navbar .navbar-collapse .navbar-nav .logOut {
+  background-color: #273c75;
+  padding: 10px 15px;
+  color: #fff;
+  border-radius: 4px;
+}
+.navbar .navbar-collapse .navbar-nav .logOut :hover {
+  background-color: #da4757;
+}
+.navbar .navbar-collapse .navbar-nav .logOut h5 {
+  font-size: 16px;
 }
 
-.navbar-nav li {
-  padding-right: 20px;
+.container-fluid .row .sideNav {
+  margin-top: 5%;
 }
-
-.rowPad {
-  padding-top: 5%;
+.container-fluid .row .sideNav .list-group .list-group-item {
+  color: #273c75;
+}
+.container-fluid .row .sideNav .list-group .list-group-item.active {
+  color: #fff;
+  background-color: #273c75 !important;
+  border-color: transparent;
+  letter-spacing: 0.025em;
+}
+.container-fluid .row .main-content {
+  margin-top: 5%;
+}
+.container-fluid .row .main-content .underMain1 .statisticCard {
+  background-color: white;
+  border-radius: 8px 0px 0px 8px;
+  padding: 30px 40px 30px 40px;
+  border-right: 10px solid #273c75;
+  box-shadow: 1px 2px 43px -3px rgba(230, 230, 230, 0.5);
+}
+.container-fluid .row .main-content .underMain1 .statisticCard .statistic {
+  margin-bottom: 10px;
+}
+.container-fluid .row .main-content .underMain1 .statisticCard .statistic i {
+  margin-right: 15px;
+}
+.container-fluid .row .main-content .underMain1 .statisticCard .statisticNo {
+  margin-top: 20px;
+  text-align: center;
+}
+.container-fluid .row .main-content .underMain1 .statisticCard .statisticNo h2 {
+  font-size: 2.125rem !important;
+  font-weight: 900;
+}
+.container-fluid .row .main-content .underMain2 {
+  margin-top: 30px;
+}
+.container-fluid .row .main-content .underMain2 .eventCard {
+  background-color: white;
+  border-radius: 8px;
+  padding: 30px;
+  height: 350px;
+  overflow: auto;
+  box-shadow: 1px 2px 43px -3px rgba(230, 230, 230, 0.5);
+}
+.container-fluid .row .main-content .underMain2 .eventCard .eventCard-title {
+  font-weight: 900;
+  margin-bottom: 15px;
 }
 
 .rowPad2 {
-  padding-top: 10%;
+  margin-top: 10%;
 }
 
 .search-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   max-width: 98%;
   margin-top: 5%;
@@ -48,33 +129,6 @@ body {
   background-color: #ddd7d7;
 }
 
-.main-color-bg {
-  background: -webkit-gradient(linear, left top, left bottom, from(#3EA4E2), to(#3661B9)) !important;
-  background: linear-gradient(#3EA4E2, #3661B9) !important;
-  border-color: #294377 !important;
-}
-
-.div-color-bg {
-  border: 1px solid #c1c3c5 !important;
-  background-color: white;
-  border-radius: 5px;
-  padding: 30px;
-  height: 350px;
-  overflow: auto;
-  -webkit-box-shadow: 5px 5px 5px 5px #dad7d7;
-          box-shadow: 5px 5px 5px 5px #dad7d7;
-}
-
-.div-color-bg1 {
-  border: 1px solid #c1c3c5 !important;
-  background-color: white;
-  border-radius: 5px;
-  height: 150px;
-  padding: 30px;
-  -webkit-box-shadow: 5px 5px 5px 5px #dad7d7;
-          box-shadow: 5px 5px 5px 5px #dad7d7;
-}
-
 a {
   padding: 50px;
 }
@@ -88,24 +142,22 @@ a {
   border-radius: 5px;
   margin-right: 20px;
 }
-
 .note p {
   padding-left: 20px;
   background-color: lightgrey;
   border-radius: 5px;
-  -webkit-box-shadow: 1px 1px #818080;
-          box-shadow: 1px 1px #818080;
+  box-shadow: 1px 1px #818080;
 }
 
 .tableBG {
   background-color: white;
   border-radius: 10px;
-  -webkit-box-shadow: 5px 5px 5px 5px #dad7d7;
-          box-shadow: 5px 5px 5px 5px #dad7d7;
+  box-shadow: 5px 5px 5px 5px #dad7d7;
   overflow: auto;
 }
 
 .hide {
   display: none;
 }
+
 /*# sourceMappingURL=style1.css.map */

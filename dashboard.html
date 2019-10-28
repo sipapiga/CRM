@@ -23,6 +23,7 @@
     <!-- Chart -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style1.css">
     <!-- <script src="js/customer.js"> </script> -->
     <script src="js/dashboard.js"> </script>
@@ -32,20 +33,24 @@
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Our CRM name</a>
+            <a class="navbar-brand" href="#"><img src="image/collasol.png" alt="" class="logoImg"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon">
+                    <i class="fas fa-bars"></i>
+                </span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
+                    <!-- <li class="nav-item active">
                         <a class="nav-link" id="user">Welcome</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="logout" href="login/login.html">Logout</a>
+                    </li> -->
+                    <li class="nav-item lBtn">
+                        <a class="nav-link logOut" id="logout" href="login/login.html">
+                            <h5>Sign In</h5>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -56,7 +61,7 @@
     <!-- container-->
     <div class="container-fluid padding">
         <div class="row">
-            <div class="col-lg-2 rowPad">
+            <div class="col-lg-2 sideNav">
                 <div class="list-group">
                     <a href="dashboard.html" class="list-group-item  active main-color-bg"><i
                             class="far fa-clipboard"></i> Dashboard</a>
@@ -67,57 +72,73 @@
                 </div>
             </div>
 
-            <div class="col-lg-10 padding rowPad ">
-                <div class="row ">
+            <div class="col-lg-10 padding main-content">
+                <div class="row underMain1">
                     <div class="col-md-4 ">
-                        <div class="div-color-bg1 padding">
-                            <h2 id="customers">0</h2>
-                            <div>
+                        <div class="div-color-bg1 statisticCard">
+                            <div class="statistic">
                                 <h4><i class="fas fa-users"></i> Customer</h4>
                             </div>
+                            <div class="statisticNo">
+                                <h2 id="customers">0</h2>
+                            </div>
+
+
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="div-color-bg1">
-                            <h2 id="todo">0</h2>
-                            <div>
+                        <div class="div-color-bg1 statisticCard">
+                            <div class="statistic">
                                 <h4><i class="fas fa-list"></i> Todo List</h4>
                             </div>
+                            <div class="statisticNo">
+                                <h2 id="todo">0</h2>
+                            </div>
+
+
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="div-color-bg1">
-                            <h2 id="events">0</h2>
-                            <div>
+                        <div class="div-color-bg1 statisticCard">
+                            <div class="statistic">
                                 <h4><i class="far fa-calendar-alt"></i> Events</h4>
                             </div>
+                            <div class="statisticNo">
+                                <h2 id="events">0</h2>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
 
-                <div class="row rowPad">
+                <div class="row underMain2">
                     <div class="col-md-8 ">
-                        <div class="div-color-bg padding">
-                            <h4>Events</h4>
+                        <div class="eventCard">
+                            <div class="eventCard-title">
+                              <h3>Events</h3>  
+                            </div>
                             <div id="table-responsive ">
-                                    <table class="table table-hover mails m-0 table table-actions-bar">
-                                        <thead>
-                                            <tr>
-                                                <th>Event title</th>
-                                                <th>Date</th>
-                                                <th>Time</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="eventText">
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <table class="table table-hover mails m-0 table table-actions-bar">
+                                    <thead>
+                                        <tr>
+                                            <th>Event title</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="eventText">
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="div-color-bg">
-                            <h4>Upcoming Birthday</h4>
-                            <div id="table-responsive ">
+                        <div class="eventCard">
+                            <div class="eventCard-title">
+                              <h4>Upcoming Birthday</h4>  
+                            </div>
+                            <div id="table-responsive">
                                 <table class="table table-hover mails m-0 table table-actions-bar" id="birthdayList">
                                     <thead>
                                         <tr>

@@ -26,7 +26,7 @@ function appendEvent(event) {
     const row = document.createElement("tr");
     row.innerHTML = `
         <td>${event.text}</td>
-        <td>${ event.date.day}${" "}${event.date.month}${" "}${event.date.year}</td>
+        <td>${ event.date.day}${" - "}${event.date.month}${" - "}${event.date.year}</td>
         <td>${ event.date.hours}${" : "}${event.date.minutes}</td></tr>
         `;
     eventsDiv.appendChild(row);
