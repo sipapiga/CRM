@@ -37,7 +37,10 @@ body {
   max-width: 90%;
   height: 50px;
 }
-
+.contract-div {
+  margin-top: 1.2rem;
+  text-align: center;
+}
 .footer {
   padding: 3em;
 }

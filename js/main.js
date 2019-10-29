@@ -7,6 +7,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const saveBtn = document.getElementById('saveBtn');
     const noteBtn = document.getElementById('addNoteBtn');
     const callBtn = document.getElementById('addCalltbtn');
+    const contractBtn = document.getElementById('addContractBtn');
     const filterInput = document.getElementById('search');
 
 
@@ -34,6 +35,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             customerList.showInfo(e.target);
             customerList.renderNote(id);
             customerList.renderCall(id);
+            customerList.renderContract(id);
             showDiv.classList.remove("hide");
             tableDIv.classList.add("hide");
             //Add Note to customer
@@ -46,6 +48,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 $('#addCall').modal('show');
                 saveBtn.addEventListener('click', function (e) {
                     customerList.addCallToCustomer(id);
+                });
+            });
+            contractBtn.addEventListener('click', function (e) {
+                const saveBtn = document.querySelector('#saveContract');
+                $('#addContract').modal('show');
+                saveBtn.addEventListener('click', function (e) {
+                    customerList.addContractToCustomer(id);
                 });
             });
         });
