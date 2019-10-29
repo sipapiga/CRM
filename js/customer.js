@@ -16,17 +16,7 @@ class CustomerList {
   setDummyCustomer() {
     //dummy customer
     for (let customerinfo of dummyContacts) {
-      let customer = new Customer(
-        customerinfo.name.first,
-        customerinfo.name.last,
-        customerinfo.dob.date,
-        customerinfo.phone,
-        customerinfo.picture.large,
-        customerinfo.email,
-        this.customer_id,
-        customerinfo.location,
-        customerinfo.company.name
-      );
+      let customer = new Customer(customerinfo.name.first, customerinfo.name.last, customerinfo.dob.date, customerinfo.phone, customerinfo.picture.large, customerinfo.email, this.customer_id, customerinfo.location, customerinfo.company.nam);
       //this.saveContactToLocalStorage(customer);
     }
   }
@@ -99,11 +89,15 @@ class CustomerList {
     ];
     let randomPhoto = photo[(Math.random() * photo.length) | 0];
 
-        let newCus = new Customer(name, lastname, "01-01-1997", tel, randomPhoto, email, this.customer_id, address, company);
-        this.list.push(newCus);
-        this.saveContactToLocalStorage(newCus);
-        this.clearFieldInput();
-        console.log(this.list);
+    let newCus = new Customer(name, lastname, "01-01-1997", tel, randomPhoto, email, this.customer_id, address, company);
+    this.list.push(newCus);
+    this.saveContactToLocalStorage(newCus);
+    this.clearFieldInput();
+  }
+  //delete from UI
+  deleteContactList(e) {
+    if (e.classList.contains("delete")) {
+      e.parentElement.parentElement.remove();
     }
   }
   //Show customer info here
@@ -124,37 +118,19 @@ class CustomerList {
         }
       });
     }
-    //Show customer info here
-    showInfo(id) {
-            console.log(id.getAttribute('data-id'));
-        if (id.classList.contains('info')) {
-            let customerId = id.getAttribute('data-id');
-            this.list.forEach((contact) => {
-                if (contact.id == customerId) {
-                    document.querySelector('#cusName').innerHTML = contact.name;
-                    document.querySelector('#cusLastName').innerHTML = contact.lastname;
-                    document.querySelector('#phoneNum').innerHTML = contact.tel;
-                    document.querySelector('#companyName').innerHTML = contact.company;
-                    document.querySelector('#email').innerHTML = contact.email;
-                    document.querySelector('#profile_user_pic').src = contact.photo;
-                    document.querySelector('#address').innerHTML = contact.address;
-                    document.querySelector('#DOB').innerHTML = contact.DOB;
-                }
-            });
-        }
-    }
-    addCallToCustomer(id) {
-        const customerList = this.getContactsFromLocalStorage();
-        const appendCall = document.querySelector('#callLog');
-        const getDate = document.querySelector('#dateInput').value;
-        for (let i = 0; i < customerList.length; i++) {
-            if (customerList[i].id == id) {
-                customerList[i].call.push(getDate);
-                localStorage.setItem('Customers', JSON.stringify(customerList));
-                this.renderCall(id);
-        }
-            }
-
+  }
+  addCallToCustomer(id) {
+    const customerList = this.getContactsFromLocalStorage();
+    const appendCall = document.querySelector("#callLog");
+    const getDate = document.querySelector("#dateInput").value;
+    const callDetails = document.querySelector("#callDetails").value;
+    for (let i = 0; i < customerList.length; i++) {
+      if (customerList[i].id == id) {
+        let newCall = new call(getDate, callDetails);
+        customerList[i].call.push(newCall);
+        localStorage.setItem("Customers", JSON.stringify(customerList));
+        this.renderCall(id);
+      }
     }
   }
   renderCall(id) {
@@ -175,14 +151,12 @@ class CustomerList {
     const customerList = this.getContactsFromLocalStorage();
     const customerNote = document.querySelector("#addNote").value;
 
-        for (let i = 0; i < customerList.length; i++) {
-            console.log(customerList[i].id);
-            if (customerList[i].id == id) {
-                customerList[i].note.push(customerNote);
-                localStorage.setItem('Customers', JSON.stringify(customerList));
-                this.renderNote(id);
-            }
-        }
+    for (let i = 0; i < customerList.length; i++) {
+      if (customerList[i].id == id) {
+        customerList[i].note.push(customerNote);
+        localStorage.setItem("Customers", JSON.stringify(customerList));
+        this.renderNote(id);
+      }
     }
   }
   renderNote(id) {
@@ -274,17 +248,7 @@ class call {
 }
 
 class Customer {
-  constructor(
-    name,
-    lastname,
-    DOB = "1997-01-01",
-    tel,
-    photo = "",
-    email,
-    id,
-    address = "",
-    company
-  ) {
+  constructor(name, lastname, DOB = "1997-01-01", tel, photo = "", email, id, address = "", company) {
     this.id = id;
     this.name = name;
     this.lastname = lastname;
