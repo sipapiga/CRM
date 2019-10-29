@@ -108,8 +108,8 @@ class CustomerList {
             let remID = id.getAttribute('data-id');
             this.list.forEach((contact) => {
                 if (contact.id == remID) {
-                    document.querySelector('#cusName').innerHTML = contact.name;
-                    document.querySelector('#cusLastName').innerHTML = contact.lastname;
+                    document.querySelector('#cusName').innerHTML = contact.name + ' ' + contact.lastname;
+                    // document.querySelector('#cusLastName').innerHTML = contact.lastname;
                     document.querySelector('#phoneNum').innerHTML = contact.tel;
                     document.querySelector('#email').innerHTML = contact.email;
                     document.querySelector('#companyName').innerHTML = contact.company;
@@ -182,7 +182,7 @@ class CustomerList {
                 for (let note of customerList[i].note) {
                     addNoteHtml += `<p>${note}</p>`
                 }
-                appendNote.innerHTML = addNoteHtml;
+                // appendNote.innerHTML = addNoteHtml;
             }
         }
     }

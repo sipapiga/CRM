@@ -33,7 +33,8 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
         <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/style1.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/style1.css">
     <script src="js/contacts.js"> </script>
     <script src="js/customer.js"> </script>
     <!-- <script src="js/user.js"> </script> -->
@@ -142,25 +143,25 @@
                 </div>
                 <!-- Customer info -->
 
-                <div class="col-lg-12 padding contactInfo hide" id="showInfoDiv">
+               <!-- <div class="col-lg-12 padding contactInfo hide" id="showInfoDiv">
                     <div class="container-fluid">
                         <div class="row well">
                             <div class="col-lg-3">
                                 <div class="profile_user_pic text-center">
-                                    <img class="img-fluid rounded-circle" alt="profile_user_pic" id="profile_user_pic">
-                                </div>
+                                     <img class="img-fluid rounded-circle" alt="profile_user_pic" id="profile_user_pic"> -->
+                                <!-- </div>
                             </div>
                             <div class="col-lg-9">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h4 id="cusName" style="display:inline"> Firstname </h4>
-                                        <h4 id="cusLastName" style="display:inline">Surname </h4>
+                                         <h4 id="cusName" style="display:inline"> Firstname </h4> -->
+                                        <!-- <h4 id="cusLastName" style="display:inline">Surname </h4>
                                     </div>
                                     <div class="col-md-6">
 
                                     </div>
-                                </div>
-                                <table class="table table-reponsive rowPad2">
+                                </div> -->
+                                <!-- <table class="table table-reponsive rowPad2">
                                     <tr>
                                         <td>
                                             <label><i class="fas fa-phone-square"></i> Phone Number:</label>
@@ -218,8 +219,149 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
+                <div class="phase1 hide" id="showInfoDiv">
+                        <div class="profile-header">
+                            <div class="profile-header-img">
+                                    <img class="img-fluid " alt="profile_user_pic" id="profile_user_pic">                            
+                                </div>
+                            <div class="profile-name-label">
+                                <h3 id="cusName">Customer Name</h3>
+                                <div class="profile-sub-label">
+                                    <div class="phoneNo">
+                                        <i class="fas fa-phone-square-alt"></i>
+                                        <h5 id="phoneNum">+46</h5>
+                                    </div>
+                                    <div class="email">
+                                        <i class="fas fa-envelope-square"></i>
+                                        <h5 id="email">example</h5>
+                                    </div>
+                                    <div class="companyName">
+                                        <i class="fas fa-building"></i>
+                                        <h5 id='companyName'>example</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="allColumn">
+                            <div class="col1">
+                                <div class="basicInfo main-card">
+                                    <div class="basic-info-title">
+                                        <h3>Basic Info</h3>
+                                    </div>
+                                    <hr>
+                                    <div class="info-contents">
+                                        <div class="address">
+                                            <h5>Address:</h5>
+                                            <h5 id="address"></h5>
+                                        </div>
+                                        <div class="birthdate">
+                                            <h5>Birth Day:</h5>
+                                            <h5 id="DOB"></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="addComment main-card">
+                                    <div class="comment-title">
+                                        <h3>Comment</h3>
+                                    </div>
+                                    <hr>
+                                    <div class="writeComment">
+                                        <input type="text" placeholder="Topic" class="topic-input" id='topicIn'>
+                                        <textarea name="comment" id="writeText"></textarea>
+                                        <button type="submit" id="sendText">Send</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2 col-content">
+                                <div class="recentPur main-card">
+                                    <div class="recentPur-title">
+                                        <h3>Recently Purchase</h3>
+                                    </div>
+                                    <hr>
+                                    <div class="recentItems">
+                                        <div class="item-card-1">
+                                            <div class="item-card">
+                                                <div class="item-info">
+                                                    <div class="item-img">
+                                                        <div class="imgDemo"></div>
+                                                    </div>
+                                                    <div class="item-info-info">
+                                                        <div class="item-info-name-date">
+                                                            <div class="item-title-name">
+                                                                <h4>Item name</h4>
+                                                            </div>
+                                                            <div class="item-title-date">
+                                                                <h4>Date</h4>
+                                                            </div>
+            
+                                                        </div>
+                                                        <div class="item-desciption">
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                                elit. Etiam lectus elit, egestas sed sodales in.
+            
+                                                            </p>
+                                                        </div>
+                                                    </div>
+            
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col3 col-content">
+                                <div class="recentCont main-card">
+                                    <div class="recentCont-title">
+                                        <h3>Recently Contact</h3>
+                                    </div>
+                                    <hr>
+                                    <div class="item-card-1">
+                                        <div class="item-card">
+                                            <div class="item-info">
+                                                <div class="item-info-info">
+                                                    <div class="item-info-name-date">
+                                                        <div class="item-title-topic">
+                                                            <h4 id='topic'>-</h4>
+                                                        </div>
+                                                        <div class="item-title-date">
+                                                            <h4 id='date'>-</h4>
+                                                        </div>
+            
+                                                    </div>
+                                                    <div class="item-desciption">
+                                                        <p id='descriptt'> -
+            
+                                                        </p>
+                                                    </div>
+                                                </div>
+            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="callLog main-card">
+                                        <div class="callLog-title">
+                                                <h3>Call log:</h3>
+                                            </div>
+                                            <hr>
+                                            <div class="note">
+                                                <div id="callLog"></div>
+                                            </div>
+                                            <div class="">
+                                                    <div class="">
+                                                        <div class="">
+                                                            <button type="button" class="btn btn-primary" id="addCalltbtn"><i
+                                                                    class="fas fa-phone"></i>
+                                                                Add call</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
 
                 <div class="modal" tabindex="-1" role="dialog" id="addCall">
                     <div class="modal-dialog" role="document">

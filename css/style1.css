@@ -4,6 +4,12 @@ body {
   height: 100vh;
   font-family: "Muli", sans-serif;
 }
+body footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+}
 
 h1,
 h2,
@@ -136,18 +142,10 @@ h5 {
   margin-top: 10%;
 }
 
-.footer {
-  padding: 3em;
-}
-
 #info {
   width: 90%;
   height: 500px;
   background-color: #ddd7d7;
-}
-
-a {
-  padding: 50px;
 }
 
 .note {
