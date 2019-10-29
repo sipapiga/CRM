@@ -28,176 +28,179 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="dashboard.html"><img src="image/output-onlinepngtools.png" height="50px" alt="logo"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" id="user">Welcome</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="logout" href="login/login.html">Logout</a>
-                    </li>
-                </ul>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container-fluid nav-bar-div">
+                <a class="navbar-brand" href="dashboard.html"><img src="image/output-onlinepngtools.png" height="50px"
+                        alt="logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" id="user">Welcome</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="logout" href="login/login.html">Logout</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
     <div class="container-fluid padding">
         <div class="row">
             <div class="col-lg-2 rowPad">
                 <div class="list-group ">
                     <div class="list-group sideColumn">
-                        <a href="dashboard.html" class="list-group-item " ><i class="far fa-clipboard"></i> Dashboard</a>
-                        <a href="contacts.html" class="list-group-item " ><i
-                                class="fas fa-id-card"></i> Contacts</a>
-                        <a href="calender.html" class="list-group-item active main-color-bg"><i class="far fa-calendar-alt"></i> Calendar</a>
-                        <a href="callhistory.html" class="list-group-item" ><i class="fas fa-user-astronaut"></i> Call History</a>
+                        <a href="dashboard.html" class="list-group-item "><i class="far fa-clipboard"></i> Dashboard</a>
+                        <a href="contacts.html" class="list-group-item "><i class="fas fa-id-card"></i> Contacts</a>
+                        <a href="calender.html" class="list-group-item active main-color-bg"><i
+                                class="far fa-calendar-alt"></i> Calendar</a>
+                        <a href="callhistory.html" class="list-group-item"><i class="fas fa-user-astronaut"></i> Call
+                            History</a>
                     </div>
                 </div>
             </div>
-                <div class="calender container col-lg-10">
-                    <div class="row text-center">
-                        <div class="d-md-flex p-2 justify-content-around col-md-12">
-                            <a class="icon previous"><i class="fas fa-angle-left fa-sm"></i></a>
-                            <div>
-                                <h1 class="month display-3 ml-5 mr-5"></h1>
-                                <h3 class="year display-5 ml-3 mt-2"></h3>
-                            </div>
-                            <a class="icon next"><i class="fas fa-angle-right fa-sm"></i></a>
+            <div class="calender container col-lg-10">
+                <div class="row text-center">
+                    <div class="d-md-flex p-2 justify-content-around col-md-12">
+                        <a class="icon previous"><i class="fas fa-angle-left fa-sm"></i></a>
+                        <div>
+                            <h1 class="month display-3 ml-5 mr-5"></h1>
+                            <h3 class="year display-5 ml-3 mt-2"></h3>
                         </div>
+                        <a class="icon next"><i class="fas fa-angle-right fa-sm"></i></a>
                     </div>
-
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr class="day-names">
-                                <th scope="col">Mon</th>
-                                <th scope="col">Tue</th>
-                                <th scope="col">Wed</th>
-                                <th scope="col">Thu</th>
-                                <th scope="col">Fri</th>
-                                <th scope="col">Sat</th>
-                                <th scope="col">Sun</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="_1">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr class="_2">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr class="_3">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr class="_4">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr class="_5">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="day-names">
+                            <th scope="col">Mon</th>
+                            <th scope="col">Tue</th>
+                            <th scope="col">Wed</th>
+                            <th scope="col">Thu</th>
+                            <th scope="col">Fri</th>
+                            <th scope="col">Sat</th>
+                            <th scope="col">Sun</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="_1">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="_2">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="_3">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="_4">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="_5">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div id="myModal" class="modal fade " tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header d-block text-center">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title d-inline-block">Add Event</h4>
+        </div>
+        <div id="myModal" class="modal fade " tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header d-block text-center">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title d-inline-block">Add Event</h4>
 
-                        </div>
-                        <div class="modal-body row justify-content-md-center">
-                            <div class="container-fluid">
-                                <div id="mainForm" class="form-group container-fluid">
-                                    <div class="form-group row">
-                                        <div class="col-md-4"><label for="txtEvent">Event Title</label></div>
-                                        <div class="col-md-8"><input type="text" id="txtEvent" value="Event Title"
-                                                class="form-control"></div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-md-4" for="datetimepicker1">Date & Time</label>
-                                        <div class='input-group date col-md-8' id='datetimepicker1'>
-                                            <input type='text' class="form-control" id="date">
-                                            <span class="input-group-addon">
-                                                <i class="fas fa-calendar-alt"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-md-4"><label for="descriptionEvent">Description</label></div>
-                                        <div class="col-md-8"><textarea id="descriptionEvent" class="form-control"
-                                                rows="2"></textarea></div>
-                                    </div>
-
+                    </div>
+                    <div class="modal-body row justify-content-md-center">
+                        <div class="container-fluid">
+                            <div id="mainForm" class="form-group container-fluid">
+                                <div class="form-group row">
+                                    <div class="col-md-4"><label for="txtEvent">Event Title</label></div>
+                                    <div class="col-md-8"><input type="text" id="txtEvent" value="Event Title"
+                                            class="form-control"></div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="submit" id="save" class="btn btn-primary">Save</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                <div class="form-group row">
+                                    <label class="col-md-4" for="datetimepicker1">Date & Time</label>
+                                    <div class='input-group date col-md-8' id='datetimepicker1'>
+                                        <input type='text' class="form-control" id="date">
+                                        <span class="input-group-addon">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-md-4"><label for="descriptionEvent">Description</label></div>
+                                    <div class="col-md-8"><textarea id="descriptionEvent" class="form-control"
+                                            rows="2"></textarea></div>
+                                </div>
+
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="myModal2" class="modal fade">
-                <div class="modal-dialog modal-dialog-centered modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title-calender text-center col-11"></h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="calender-day text-center">
-                                <ul class="calender-items p-4 hide list-group-flush list-group"></ul>
-                                <p class="calender-date"></p>
-                                <p class="calender-time"></p>
-                                <p class="calender-item-text"></p>
-                                <button type="button" class="btn btn-danger" id="delete">delete</button>
-                                <button type="button" class="btn btn-secondary hide" id="back">Back</button>
+                            <div class="modal-footer">
+                                <button type="submit" id="save" class="btn btn-primary">Save</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div id="myModal2" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title-calender text-center col-11"></h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="calender-day text-center">
+                            <ul class="calender-items p-4 hide list-group-flush list-group"></ul>
+                            <p class="calender-date"></p>
+                            <p class="calender-time"></p>
+                            <p class="calender-item-text"></p>
+                            <button type="button" class="btn btn-danger" id="delete">delete</button>
+                            <button type="button" class="btn btn-secondary hide" id="back">Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
     <!-- <div class="container">
     <div class="row">

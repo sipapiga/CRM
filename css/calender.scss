@@ -1,6 +1,10 @@
 body{
     padding: 0;
 }
+.nav-bar-div{
+    display: flex;
+    justify-content: flex-end;
+}
 .icon{
     font-size: 4rem;
 }
@@ -30,7 +34,6 @@ td{
     padding: 0;
 }
 
-
 .modal-backdrop {
    background-color: transparent !important;
 }
@@ -56,16 +59,7 @@ td{
     color: white !important;
    }
 }
-.nav-link {
-    margin-right: 1em !important;
-  }
-.navbar-collapse {
-    justify-content: flex-end;
-}
-.navbar-nav{
-    display: flex;
-    flex-direction: row-reverse;
-}
+
   
 
 

@@ -90,9 +90,7 @@ class CustomerList {
 
         let newCus = new Customer(name, lastname, "01-01-1997", tel, randomPhoto, email, this.customer_id, address, company);
         this.list.push(newCus);
-      //  this.addCustomerToList(this.list, this.customer_id);
         this.saveContactToLocalStorage(newCus);
-     //   this.displayCustomer();
         this.clearFieldInput();
         console.log(this.list);
     }
@@ -130,13 +128,6 @@ class CustomerList {
                 customerList[i].call.push(getDate);
                 localStorage.setItem('Customers', JSON.stringify(customerList));
                 this.renderCall(id);
-             /*    let addCallHtml = "";
-                console.log(customerList[i].call);
-                for (let call of customerList[i].call) {
-                    addCallHtml += `<p>${call}</p>`
-                }
-                appendCall.innerHTML = addCallHtml;
-                break; */
             }
         }
 
@@ -166,11 +157,6 @@ class CustomerList {
                 customerList[i].note.push(customerNote);
                 localStorage.setItem('Customers', JSON.stringify(customerList));
                 this.renderNote(id);
-              /*   let addNoteHtml = ""
-                for (let note of customerList[i].note) {
-                    addNoteHtml += `<p>${note}</p>`
-                }
-                appendNote.innerHTML = addNoteHtml; */
             }
         }
     }

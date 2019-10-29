@@ -44,6 +44,7 @@ function showCustomer() {
     }
 }
 window.addEventListener('DOMContentLoaded', (event) => {
+    
     showCustomer();
     showEvent();
 

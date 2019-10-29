@@ -5,11 +5,9 @@ function showCustomer(list) {
     let sortCustomerCall = "";
     const cusDiv = document.querySelector("#sortTable");
     for (let customer of list) {
-        console.log(customer.call);
         if (customer.call.length > 0) {
             //sorting and reverse array 
             sortCustomerCall = customer.call.sort().reverse();
-            console.log(sortCustomerCall);
             dataHtml += `<tr><td>${num}</td>
                        <td><img src="${customer.photo}" class="img-fluid rounded-circle text-center" width="20%"/></td>
                        <td>${ customer.name}</td>
@@ -23,7 +21,6 @@ function showCustomer(list) {
     }
 }
 function sortArrayBy(array, sort, desc) {
-    console.log(sort);
     array.sort(function (a, b) {
         if (a[sort] < b[sort]) return -1;
         if (a[sort] > b[sort]) return 1;
@@ -44,12 +41,10 @@ function getTodayDate() {
 
 window.addEventListener('DOMContentLoaded', (event) => {
     let sortList = JSON.parse(localStorage.getItem('Customers'));
-    console.log(sortList);
     const sortContactedbtn = document.querySelector("#lastContactedSort");
     const sortNamebtn = document.querySelector("#nameSort");
 
     let desc = false;
-    //check again**
     sortNamebtn.addEventListener('click', (e) => {
         let array = sortArrayBy(sortList, 'name', desc);
         showCustomer(array);
@@ -57,7 +52,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
     sortContactedbtn.addEventListener('click', (e) => {
         let array = sortArrayBy(sortList, 'date', desc);
-        console.log(array);
         showCustomer(array);
         desc = !desc;
     });

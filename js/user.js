@@ -21,7 +21,6 @@ class User {
     }
     saveUserToLocalStorage(user) {
         const userList = this.getUsersFromLocalStorage();
-        //   this.userCRM.push(user);
         userList.push(user);
         console.log(userList);
         localStorage.setItem('Users', JSON.stringify(userList));
@@ -142,7 +141,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
         let userInput = new User(userName, userLastname, userEmail, userUsername, userPassword);
         userInput.saveUserToLocalStorage(userInput);
         console.log(userInput);
-        //  let addUser =  localStorage.setItem('Users', JSON.stringify(userInput));
-        //  console.log(addUser);
     }
 });

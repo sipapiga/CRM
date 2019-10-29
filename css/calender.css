@@ -2,6 +2,15 @@ body {
   padding: 0;
 }
 
+.nav-bar-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
 .icon {
   font-size: 4rem;
 }
@@ -59,25 +68,5 @@ td ul {
 
 .sideColumn .active {
   color: white !important;
-}
-
-.nav-link {
-  margin-right: 1em !important;
-}
-
-.navbar-collapse {
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
-.navbar-nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
 }
 /*# sourceMappingURL=calender.css.map */
