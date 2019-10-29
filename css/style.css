@@ -83,7 +83,6 @@ p {
   grid-column-gap: 20px;
   margin-top: 40px;
   max-height: 480px;
-  min-height: 480px;
 }
 .allColumn .basicInfo .basic-info-title h3 {
   font-size: 18px;
@@ -132,7 +131,7 @@ p {
   height: 105px;
 }
 .allColumn .recentPur {
-  width: 420px;
+  width: auto;
   max-height: 450px;
   overflow: hidden;
 }
@@ -262,13 +261,13 @@ p {
   font-weight: lighter;
   margin-top: 10px;
 }
-.allColumn .callLog {
-  margin-top: 20px;
-}
 .allColumn .callLog .callLog-title h3 {
   font-size: 18px;
   font-weight: 900;
   letter-spacing: 0.05em;
+}
+.allColumn .callLog .addCallButt {
+  margin-top: 10px;
 }
 .allColumn .callLog .item-card-1 {
   box-shadow: 2px 2px 15px 1px rgba(219, 219, 219, 0.3);

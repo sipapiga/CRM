@@ -39,9 +39,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
             document.getElementById('addContactbtn').classList.add('hide');
 
             //Add Note to customer
-            // noteBtn.addEventListener('click', function (e) {
-            //     customerList.addNoteToCustomer(id);
-            // });
+            noteBtn.addEventListener('click', function (e) {
+                customerList.addNoteToCustomer(id);
+            });
             //Add Calling list to customer
             callBtn.addEventListener('click', function (e) {
                 const saveBtn = document.querySelector('#saveLastCall');
