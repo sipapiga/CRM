@@ -268,13 +268,30 @@
                                     </div>
                                     <hr>
                                     <div class="writeComment">
-                                        <input type="text" placeholder="Topic" class="topic-input" id='topicIn'>
-                                        <textarea name="comment" id="writeText"></textarea>
-                                        <button type="submit" id="sendText">Send</button>
+                                        <textarea name="comment" id="addNote"></textarea>
+                                        <button type="submit" id="addNoteBtn">Send</button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col2 col-content">
+                            <div class="callLog main-card">
+                                <div class="callLog-title">
+                                        <h3>Call log:</h3>
+                                    </div>
+                                    <hr>
+                                    <div class="note">
+                                        <div id="callLog"></div>
+                                    </div>
+                                    <div class="">
+                                            <div class="">
+                                                <div class="">
+                                                    <button type="button" class="btn btn-primary addCallButt" id="addCalltbtn"><i
+                                                            class="fas fa-phone"></i>
+                                                        Add call</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                            <!-- <div class="col2 col-content">
                                 <div class="recentPur main-card">
                                     <div class="recentPur-title">
                                         <h3>Recently Purchase</h3>
@@ -310,7 +327,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col3 col-content">
                                 <div class="recentCont main-card">
                                     <div class="recentCont-title">
@@ -322,18 +339,10 @@
                                             <div class="item-info">
                                                 <div class="item-info-info">
                                                     <div class="item-info-name-date">
-                                                        <div class="item-title-topic">
-                                                            <h4 id='topic'>-</h4>
-                                                        </div>
                                                         <div class="item-title-date">
-                                                            <h4 id='date'>-</h4>
+                                                            <h4 id="note">-</h4>
                                                         </div>
             
-                                                    </div>
-                                                    <div class="item-desciption">
-                                                        <p id='descriptt'> -
-            
-                                                        </p>
                                                     </div>
                                                 </div>
             
@@ -341,24 +350,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="callLog main-card">
-                                        <div class="callLog-title">
-                                                <h3>Call log:</h3>
-                                            </div>
-                                            <hr>
-                                            <div class="note">
-                                                <div id="callLog"></div>
-                                            </div>
-                                            <div class="">
-                                                    <div class="">
-                                                        <div class="">
-                                                            <button type="button" class="btn btn-primary" id="addCalltbtn"><i
-                                                                    class="fas fa-phone"></i>
-                                                                Add call</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                    </div>
                             </div>
                         </div>
                     </div>
@@ -468,7 +459,7 @@
     <!-- Footer -->
     <footer class="footer text-center">
         <div class="col-xs-12">
-            © 2019. All rights reserved.
+            <!-- © 2019. All rights reserved. -->
         </div>
         </div>
     </footer>

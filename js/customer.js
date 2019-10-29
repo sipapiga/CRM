@@ -188,11 +188,11 @@ class CustomerList {
           customerList[i].note.push(customerNote);
           localStorage.setItem("Customers", JSON.stringify(customerList));
           this.renderNote(id);
-          /*   let addNoteHtml = ""
+           let addNoteHtml = ""
                   for (let note of customerList[i].note) {
                       addNoteHtml += `<p>${note}</p>`
                   }
-                  appendNote.innerHTML = addNoteHtml; */
+                  appendNote.innerHTML = addNoteHtml;
         }
       }
     }
@@ -206,7 +206,7 @@ class CustomerList {
           for (let note of customerList[i].note) {
             addNoteHtml += `<p>${note}</p>`;
           }
-        //   appendNote.innerHTML = addNoteHtml;
+          appendNote.innerHTML = addNoteHtml;
         }
       }
     }

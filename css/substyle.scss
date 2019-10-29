@@ -122,7 +122,6 @@ p {
     grid-column-gap: 20px;
     margin-top: 40px;
     max-height: 480px;
-    min-height: 480px;
 
     // overflow: hidden;
     @mixin cardTitle {
@@ -199,7 +198,7 @@ p {
     }
 
     .recentPur {
-        width: 420px;
+        width: auto;
         max-height: 450px;
         overflow: hidden;
         .recentPur-title {
@@ -326,7 +325,9 @@ p {
                 @include cardTitle;
             }
         }
-        margin-top: 20px;
+        .addCallButt {
+            margin-top: 10px;
+        }
         .item-card-1 {
             @include boxShadow(2px 2px 15px 1px rgba(219, 219, 219, 0.3));
             padding: 20px;
