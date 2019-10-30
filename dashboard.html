@@ -25,6 +25,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/style1.css">
     <!-- <script src="js/customer.js"> </script> -->
+    
     <script src="js/dashboard.js"> </script>
     <!-- <script src="js/user.js"> </script> -->
     <!-- <script src="js/main.js"> </script> -->
@@ -68,9 +69,9 @@
             </div>
 
             <div class="col-lg-10 col-md-12 padding rowPad ">
-                <div class="row ">
+                <div class="row">
                     <div class="col-md-4 ">
-                        <div class="div-color-bg1 padding">
+                        <div class="div-color-bg padding">
                             <h2 id="customers">0</h2>
                             <div>
                                 <h4><i class="fas fa-users"></i> Customer</h4>
@@ -78,15 +79,25 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="div-color-bg1">
-                            <h2 id="todo">0</h2>
-                            <div>
-                                <h4><i class="fas fa-list"></i> Todo List</h4>
+                        <div class="div-color-bg">
+                            <h4>To Do List</h4>
+                            <div id="table-responsive ">
+                                <table class="table table-hover mails m-0 table table-actions-bar">
+                                    <thead>
+                                        <tr>
+                                            <th>Text</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="toDoText">
+                                    </tbody>
+                                </table>
                             </div>
+                            <button class="btn btn-primary" id="addToDo" data-toggle="modal" data-target="#modalToDo">Add Item</button>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="div-color-bg1">
+                        <div class="div-color-bg">
                             <h2 id="events">0</h2>
                             <div>
                                 <h4><i class="far fa-calendar-alt"></i> Events</h4>
@@ -138,6 +149,27 @@
     </div>
     <!-- End of container-->
     <!-- Footer -->
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalToDoLabel" id="modalToDo" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Add Event</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form id="popForm">
+                    <input type="text" class="form-control" id="toDo">
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="save">Save</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <footer class="footer text-center">
         <div class="col-xs-12">
             © 2019. All rights reserved.

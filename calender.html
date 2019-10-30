@@ -63,7 +63,7 @@
             </div>
                 <div class="calender container col-lg-10">
                     <div class="row text-center">
-                        <div class="d-md-flex p-2 justify-content-around col-md-12">
+                        <div class="d-flex p-2 justify-content-around col-md-12">
                             <a class="icon previous"><i class="fas fa-angle-left fa-sm"></i></a>
                             <div>
                                 <h1 class="month display-3 ml-5 mr-5"></h1>
@@ -135,46 +135,39 @@
                     </table>
                 </div>
             </div>
-            <div id="myModal" class="modal fade " tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header d-block text-center">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title d-inline-block">Add Event</h4>
-
+            <div id="myModal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title">Add Event</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="txtEvent">Event Title</label>
+                            <input type="text" id="txtEvent" placeholder="Event title" class="form-control">
                         </div>
-                        <div class="modal-body row justify-content-md-center">
-                            <div class="container-fluid">
-                                <div id="mainForm" class="form-group container-fluid">
-                                    <div class="form-group row">
-                                        <div class="col-md-4"><label for="txtEvent">Event Title</label></div>
-                                        <div class="col-md-8"><input type="text" id="txtEvent" value="Event Title"
-                                                class="form-control"></div>
-                                    </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-md-4" for="datetimepicker1">Date & Time</label>
-                                        <div class='input-group date col-md-8' id='datetimepicker1'>
-                                            <input type='text' class="form-control" id="date">
-                                            <span class="input-group-addon">
-                                                <i class="fas fa-calendar-alt"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-md-4"><label for="descriptionEvent">Description</label></div>
-                                        <div class="col-md-8"><textarea id="descriptionEvent" class="form-control"
-                                                rows="2"></textarea></div>
-                                    </div>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" id="save" class="btn btn-primary">Save</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <div class="form-group">
+                            <label for="datetimepicker1">Date & Time</label>
+                            <div class="input-group date" id="datetimepicker1">
+                                <input type="text" class="form-control" id="date">
+                                <div class="input-group-addon">
+                                    <i class="fas fa-calendar-alt"></i>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="descriptionEvent">Description</label>
+                            <textarea name="" id="descriptionEvent" cols="5" rows="2" class="form-control"></textarea>
+                        </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="save" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>      
+                </div>
                 </div>
             </div>
             <div id="myModal2" class="modal fade">
@@ -199,43 +192,6 @@
             </div>
         </div>
     </div>
-    <!-- <div class="container">
-    <div class="row">
-            <div class="todo-list text-center col-6">
-                <div class="">
-                    <h2 class="display-4 m-4">To Do List</h2>
-                    <ul class="list-group listToDo">
-                    </ul>
-                    <button type="button" class="btn btn-primary" id="addToDo">Add Item</button>
-                </div>
-                <div id="formToDo" class="hide popover">
-                    <form id="popForm">
-                        <label>To Do</label>
-                        <input type="text" class="form-control" id="toDo">
-                        <button type="button" class="btn btn-primary" id="saveToDo">Save</button>
-                        <button type="button" class="btn btn-light" id="cancelToDo">cancel</button>
-                    </form>
-                </div>
-            </div>
-        
-            <div class="reminders text-center col-6">
-                <div class="">
-                    <h2 class="display-4 m-4">Reminders</h2>
-                    <ul class="list-group listReminder">
-                    </ul>
-                    <button type="button" class="btn btn-primary" id="addReminder">Add Reminder</button>
-                </div>
-            </div>
-            <div id="formReminder" class="hide popover">
-                    <form id="popForm">
-                        <label>Reminder</label>
-                        <input type="text" class="form-control" id="reminder">
-                        <button type="button" class="btn btn-primary" id="saveReminder">Save</button>
-                        <button type="button" class="btn btn-light" id="cancelReminder">cancel</button>
-                    </form>
-                </div>
-        </div>
-    </div>  -->
 
     <script src="js/calender.js" type="text/javascript"></script>
 </body>
