@@ -210,6 +210,39 @@ class CustomerList {
       }
     }
   }
+  addContractToCustomer(id) {
+    const customerList = this.getContactsFromLocalStorage();
+    const appendContract = document.querySelector('.until-contract');
+    const contract = document.querySelector('#contractInput').value;
+    for (let i = 0; i < customerList.length; i++) {
+      if (customerList[i].id == id) {
+        customerList[i].contract.push(contract);
+        let addContract = "";
+        for (let contract of customerList[i].contract) {
+          addContract += `<p>${contract}</p>`;
+        }
+        appendContract.innerHTML = addContract;
+        break;
+      }
+    }
+    localStorage.setItem('Customers', JSON.stringify(customerList));
+
+  }
+
+  renderContract(id) {
+    const customerList = this.getContactsFromLocalStorage();
+    const appendContract = document.querySelector('.until-contract');
+    for (let i = 0; i < customerList.length; i++) {
+      if (customerList[i].id == id) {
+        let addContract = "";
+        for (let contract of customerList[i].contract) {
+          addContract += `<p>${contract}</p>`
+        }
+        appendContract.innerHTML = addContract;
+      }
+    }
+
+  }
   // search by name
   filterNames() {
     let filterValue = document.getElementById("search").value.toUpperCase();
@@ -307,5 +340,8 @@ class Customer {
     this.company = company;
     this.note = [];
     this.call = [];
+    this.contract = [];
   }
 }
+
+
