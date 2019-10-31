@@ -89,7 +89,7 @@ class CustomerList {
     ];
     let randomPhoto = photo[(Math.random() * photo.length) | 0];
 
-    let newCus = new Customer(name, lastname, "01-01-1997", tel, randomPhoto, email, this.customer_id, address, company);
+    let newCus = new Customer(name, lastname, tel, randomPhoto, email, this.customer_id, address, company);
     this.list.push(newCus);
     this.saveContactToLocalStorage(newCus);
     this.clearFieldInput();
@@ -281,14 +281,13 @@ class call {
 }
 
 class Customer {
-  constructor(name, lastname, DOB = "1997-01-01", tel, photo = "", email, id, address = "", company) {
+  constructor(name, lastname, tel, photo = "", email, id, address = "", company) {
     this.id = id;
     this.name = name;
     this.lastname = lastname;
     this.tel = tel;
     this.photo = photo;
     this.email = email;
-    this.DOB = DOB;
     this.address = address;
     this.company = company;
     this.note = [];

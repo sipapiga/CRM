@@ -1,14 +1,3 @@
-//Det här behöver sortering datum***
-function showCustomerBirthday(cus) {
-  const cusBD = document.querySelector("#birthdayList");
-  const row = document.createElement("tr");
-  row.innerHTML = `
-            <td><p>${cus.DOB}</p></td>
-            <td><p >${cus.name}</p></td>
-            <td><p >${cus.company} </p></td>
-         `;
-  cusBD.appendChild(row);
-}
 function showEvent() {
   let getEvents = JSON.parse(localStorage.getItem("events"));
   const eventsNum = document.querySelector("#events");
@@ -27,7 +16,7 @@ function appendEvent(event) {
         <td>${event.text}</td>
         <td>${event.date.month}${"/"}${event.date.day}${"/"}${
     event.date.year
-  }</td>
+    }</td>
         <td>${event.date.hours}${":"}${event.date.minutes}</td></tr>
         `;
   eventsDiv.appendChild(row);
@@ -39,9 +28,6 @@ function showCustomer() {
     antalCustomer.innerHTML = 0;
   } else {
     antalCustomer.innerHTML = contactList.length;
-    for (let x = 0; x < contactList.length; x++) {
-      showCustomerBirthday(contactList[x]);
-    }
   }
 }
 class toDo {
@@ -100,6 +86,7 @@ function removeItem(id) {
 
 function showToDo() {
   const toDoTable = document.querySelector("#toDoText");
+  const toDoStat = document.querySelector("#todo");
   toDoTable.innerHTML = "";
   for (item of list) {
     const row = document.createElement("tr");
@@ -108,24 +95,25 @@ function showToDo() {
         <td><button class="btn btn-danger btn-sm deleteToDo">Delete</button></tr>
         `;
     toDoTable.appendChild(row);
+    toDoStat.innerHTML = list.length;
   }
-  $(".deleteToDo").each(function() {
-    $(this).on("click", function() {
+  $(".deleteToDo").each(function () {
+    $(this).on("click", function () {
       $(this)
         .parent()
         .siblings()
-        .each(function() {
+        .each(function () {
           removeItem($(this).attr("id"));
         });
     });
   });
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
   saveData();
-  $("#modalToDo").on("show.bs.modal", function(event) {
+  $("#modalToDo").on("show.bs.modal", function (event) {
     let modal = $(this);
-    modal.find("#save").click(function() {
+    modal.find("#save").click(function () {
       let x = new toDo(newList.id, $("#toDo").val());
       $("#toDo").val("");
       saveData(x);

@@ -4,7 +4,7 @@ class User {
         this.lastname = lastname;
         this.email = email;
         this.password = password,
-            this.username = username;
+        this.username = username;
     }
     getUserName() {
         const welcomeName = document.querySelector("#user");
@@ -38,11 +38,11 @@ class User {
                     console.log(user);
                     break;
                 }else{
-                    this.showAlert("The password is not correct","danger");
+                    this.showAlert("The password you have entered is invalid.","danger");
                     break;
                 }
             } else {
-                this.showAlert("There is no username", "danger");
+                this.showAlert("The username you have entered is invalid.", "danger");
                 break;
             }
         }
@@ -99,7 +99,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let registerForm = document.querySelector(".register-form");
     let validateBtn = document.querySelector("#validate");
 
-    let user = new User();
     validateBtn.addEventListener('click', function () {
         console.log("test1");
         let validate = user.validateUser();
@@ -110,6 +109,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             //   location.href = "login.html";
         }
     });
+    let user = new User();
     document.querySelector("#login").addEventListener("click", function () {
         let usernameFromUser = document.querySelector("#usernameInput").value;
         let passwordFromUser = document.querySelector("#passwordInput").value;

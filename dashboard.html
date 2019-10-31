@@ -25,7 +25,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/style1.css">
     <!-- <script src="js/customer.js"> </script> -->
-    
+
     <script src="js/dashboard.js"> </script>
     <!-- <script src="js/user.js"> </script> -->
     <!-- <script src="js/main.js"> </script> -->
@@ -35,7 +35,8 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="dashboard.html"><img src="image/output-onlinepngtools.png" height="50px" alt="logo"></a>
+            <a class="navbar-brand" href="dashboard.html"><img src="image/output-onlinepngtools.png" height="50px"
+                    alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -63,7 +64,7 @@
                             class="far fa-clipboard"></i> Dashboard</a>
                     <a href="contacts.html" class="list-group-item"><i class="fas fa-id-card"></i> Contacts</a>
                     <a href="calender.html" class="list-group-item"><i class="far fa-calendar-alt"></i> Calendar</a>
-                    <a href="callHistory.html" class="list-group-item"><i class="fas fa-user-astronaut"></i> Call
+                    <a href="callhistory.html" class="list-group-item"><i class="fas fa-history"></i> Call
                         History</a>
                 </div>
             </div>
@@ -71,10 +72,47 @@
             <div class="col-lg-10 col-md-12 padding rowPad ">
                 <div class="row">
                     <div class="col-md-4 ">
-                        <div class="div-color-bg padding">
+                        <div class="div-color-bg1 padding">
                             <h2 id="customers">0</h2>
                             <div>
-                                <h4><i class="fas fa-users"></i> Customer</h4>
+                                <h4><i class="fas fa-users"></i> Customers</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="div-color-bg1">
+                            <h2 id="todo">0</h2>
+                            <div>
+                                <h4><i class="fas fa-list"></i> Todo List</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="div-color-bg1">
+                            <h2 id="events">0</h2>
+                            <div>
+                                <h4><i class="far fa-calendar-alt"></i> Events</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row rowPad">
+                    <div class="col-md-8 ">
+                        <div class="div-color-bg padding">
+                            <h4>Events</h4>
+                            <div id="table-responsive ">
+                                <table class="table table-hover mails m-0 table table-actions-bar">
+                                    <thead>
+                                        <tr>
+                                            <th>Event title</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="eventText">
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -93,54 +131,8 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <button class="btn btn-primary" id="addToDo" data-toggle="modal" data-target="#modalToDo">Add Item</button>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="div-color-bg">
-                            <h2 id="events">0</h2>
-                            <div>
-                                <h4><i class="far fa-calendar-alt"></i> Events</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row rowPad">
-                    <div class="col-md-8 ">
-                        <div class="div-color-bg padding">
-                            <h4>Events</h4>
-                            <div id="table-responsive ">
-                                    <table class="table table-hover mails m-0 table table-actions-bar">
-                                        <thead>
-                                            <tr>
-                                                <th>Event title</th>
-                                                <th>Date</th>
-                                                <th>Time</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="eventText">
-                                        </tbody>
-                                    </table>
-                                </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="div-color-bg">
-                            <h4>Upcoming Birthday</h4>
-                            <div id="table-responsive ">
-                                <table class="table table-hover mails m-0 table table-actions-bar" id="birthdayList">
-                                    <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Name</th>
-                                            <th>Company</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <button class="btn btn-primary" id="addToDo" data-toggle="modal"
+                                data-target="#modalToDo">Add Item</button>
                         </div>
                     </div>
                 </div>
@@ -149,27 +141,28 @@
     </div>
     <!-- End of container-->
     <!-- Footer -->
-    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalToDoLabel" id="modalToDo" aria-hidden="true">
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalToDoLabel" id="modalToDo"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Add Event</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Event</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="popForm">
+                        <input type="text" class="form-control" id="toDo">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="save">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
-            <div class="modal-body">
-                <form id="popForm">
-                    <input type="text" class="form-control" id="toDo">
-                </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" id="save">Save</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
     <footer class="footer text-center">
         <div class="col-xs-12">
             © 2019. All rights reserved.

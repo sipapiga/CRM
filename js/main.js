@@ -22,7 +22,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
             customerList.displayCustomer();
         }
     });
-    customerList.displayCustomer();
     //Delete customer from UI and localStorage
     for (let i = 0; i < deleteBtn.length; i++) {
         deleteBtn[i].addEventListener('click', function (e) {
