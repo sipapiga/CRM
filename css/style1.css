@@ -24,6 +24,37 @@ body {
   padding-top: 10%;
 }
 
+.search-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 98%;
+  margin-top: 5%;
+  height: 50px;
+}
+
+.search {
+  max-width: 90%;
+  height: 50px;
+}
+
+.contract-div {
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+ 
+}
+#addContractBtn {
+  width: 140px;
+  height: 38px;
+  font: 10px;
+  margin-top: 8px;
+}
+.note-div {
+  margin-top: 8px;
+}
+
+
 .footer {
   padding: 3em;
 }

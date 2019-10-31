@@ -42,7 +42,8 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="dashboard.html"><img src="image/output-onlinepngtools.png" height="50px" alt="logo"></a>
+            <a class="navbar-brand" href="dashboard.html"><img src="image/output-onlinepngtools.png" height="50px"
+                    alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="sideBar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -122,7 +123,7 @@
                 <!-- Customer info -->
 
                 <div class="col-lg-12 padding rowPad hide  tableBG" id="showInfoDiv">
-                    <div class="container-fluid">
+                    <div class="container-fluid pb-2">
                         <div class="row well">
                             <div class="col-lg-3">
                                 <div class="profile_user_pic text-center">
@@ -135,8 +136,7 @@
                                         <h4 id="cusName" style="display:inline"> Firstname </h4>
                                         <h4 id="cusLastName" style="display:inline">Surname </h4>
                                     </div>
-                                    <div class="col-md-6">
-
+                                    <div class="col-md-6 contract-div">
                                     </div>
                                 </div>
                                 <table class="table table-reponsive rowPad2">
@@ -167,23 +167,40 @@
                                     <h4>Call log:</h4>
                                     <div id="callLog"></div>
                                 </div>
-                                <div class="rowPad2 text-right">
+                                <div class="rowPad text-center">
                                     <button type="button" class="btn btn-primary " id="addCalltbtn"><i
                                             class="fas fa-phone"></i> Add call</button>
                                 </div>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-3">
+                                <div class="note">
+                                    <h6>Contract ends</h6>
+                                    <div class="until-contract"></div>
+                                </div>
+                                <div class="col-md-3 contract-div">
+
+                                    <button type="button" class="btn btn-primary" id="addContractBtn"><i
+                                            class="fas fa-file-contract"></i>
+                                        Add Contract</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="note">
                                     <h4>Note:</h4>
                                     <div id="note"></div>
                                 </div>
-                                <div class="input-group mb-3 rowPad">
-                                    <input type="text" class="form-control" aria-labelledby="AddNotetoCustomer"
-                                        placeholder="Add note" id="addNote">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" id="addNoteBtn"> OK</span> </div>
+                                <div class="col-md-12 note-div">
+                                    <div class="input-group ">
+                                        <input type="text" class="form-control" aria-labelledby="AddNotetoCustomer"
+                                            placeholder="Add note" id="addNote">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="addNoteBtn"> OK</span> </div>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
+
                         </div>
                     </div>
                 </div>
@@ -225,6 +242,37 @@
 
 
                 <!-- End test -->
+
+                <div class="modal" tabindex="-1" role="dialog" id="addContract">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Contract</h5>
+                            </div>
+                            <div class="modal-body">
+                                <label>Date</label>
+                                <div class="form-group">
+                                    <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input"
+                                            data-target="#datetimepicker3" id="contractInput"
+                                            aria-labelledby="PickADate" />
+                                        <div class="input-group-append" data-target="#datetimepicker3"
+                                            data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                    id="saveContract">Save
+                                    changes</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
