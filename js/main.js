@@ -36,7 +36,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
             customerList.showInfo(e.target);
             customerList.renderNote(id);
             customerList.renderCall(id);
-            customerList.renderContract(id);
             showDiv.classList.remove("hide");
             tableDIv.classList.add("hide");
             //Add Note to customer
@@ -49,13 +48,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 $('#addCall').modal('show');
                 saveBtn.addEventListener('click', function (e) {
                     customerList.addCallToCustomer(id);
-                });
-            });
-            contractBtn.addEventListener('click', function (e) {
-                const saveBtn = document.querySelector('#saveContract');
-                $('#addContract').modal('show');
-                saveBtn.addEventListener('click', function (e) {
-                    customerList.addContractToCustomer(id);
                 });
             });
         });

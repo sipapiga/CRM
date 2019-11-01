@@ -87,10 +87,14 @@ class CustomerList {
       "https://randomuser.me/api/portraits/men/0.jpg",
       "https://randomuser.me/api/portraits/men/67.jpg"
     ];
-    let randomPhoto = photo[(Math.random() * photo.length) | 0];
+    let randomPhoto = photo[Math.floor(Math.random() * photo.length)];
+
+    let contractEndDate = ["2019-11-02","2019-12-04","2019-11-03"];
+    let randomContractEndDate = contractEndDate[Math.floor(Math.random() * contractEndDate.length)];
 
     let newCus = new Customer(name, lastname, tel, randomPhoto, email, this.customer_id, address, company);
     this.list.push(newCus);
+    newCus.contract = randomContractEndDate;
     this.saveContactToLocalStorage(newCus);
     this.clearFieldInput();
   }
@@ -114,7 +118,7 @@ class CustomerList {
           document.querySelector("#companyName").innerHTML = contact.company;
           document.querySelector("#profile_user_pic").src = contact.photo;
           document.querySelector("#address").innerHTML = contact.address;
-          document.querySelector("#DOB").innerHTML = contact.DOB;
+          document.querySelector("#DOB").innerHTML = contact.contract;
         }
       });
     }
@@ -172,39 +176,6 @@ class CustomerList {
         appendNote.innerHTML = addNoteHtml;
       }
     }
-  }
-  addContractToCustomer(id) {
-    const customerList = this.getContactsFromLocalStorage();
-    const appendContract = document.querySelector('.until-contract');
-    const contract = document.querySelector('#contractInput').value;
-    for (let i = 0; i < customerList.length; i++) {
-      if (customerList[i].id == id) {
-        customerList[i].contract.push(contract);
-        let addContract = "";
-        for (let contract of customerList[i].contract) {
-          addContract += `<p>${contract}</p>`;
-        }
-        appendContract.innerHTML = addContract;
-        break;
-      }
-    }
-    localStorage.setItem('Customers', JSON.stringify(customerList));
-
-  }
-
-  renderContract(id) {
-    const customerList = this.getContactsFromLocalStorage();
-    const appendContract = document.querySelector('.until-contract');
-    for (let i = 0; i < customerList.length; i++) {
-      if (customerList[i].id == id) {
-        let addContract = "";
-        for (let contract of customerList[i].contract) {
-          addContract += `<p>${contract}</p>`
-        }
-        appendContract.innerHTML = addContract;
-      }
-    }
-
   }
   // search by name
   filterNames() {
@@ -292,7 +263,7 @@ class Customer {
     this.company = company;
     this.note = [];
     this.call = [];
-    this.contract = [];
+    this.contract = "";
   }
 }
 

@@ -23,12 +23,19 @@ function appendEvent(event) {
 }
 function showCustomer() {
   let contactList = JSON.parse(localStorage.getItem("Customers"));
+  console.log(contactList);
   const antalCustomer = document.querySelector("#customers");
   if (contactList === null) {
     antalCustomer.innerHTML = 0;
   } else {
     antalCustomer.innerHTML = contactList.length;
   }
+  let getCustomerNameContractEnd = contractEndReminder(contactList);
+  Swal.fire(
+    'Reminder',
+    getCustomerNameContractEnd + " 's contract is about to run out!",
+    'info'
+  )
 }
 class toDo {
   constructor(id, text) {
@@ -121,6 +128,32 @@ $(document).ready(function () {
     });
   });
 });
+
+function contractEndReminder(customer) {
+  /*  let endContractCustomer = customer.map((customer) => {
+     return customer.contract;
+   }); */
+
+  let today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = yyyy + '-' + mm + '-' + dd;
+  console.log(today);
+  for (let contract of customer) {
+    let date1 = new Date(contract.contract);
+    let date2 = new Date(today);
+    console.log(date1);
+    console.log(date2);
+    let difference_In_Time = date1.getTime() - date2.getTime()
+    let difference_In_Days = difference_In_Time / (1000 * 3600 * 24);
+    if (difference_In_Days < 30) {
+      console.log(contract.name);
+      return contract.name;
+    }
+  }
+}
 
 window.addEventListener("DOMContentLoaded", event => {
   showCustomer();
