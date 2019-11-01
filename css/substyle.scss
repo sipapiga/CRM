@@ -271,6 +271,7 @@ p {
     }
 
     .recentCont {
+        overflow: scroll;
         .recentCont-title {
             h3 {
                 @include cardTitle;
@@ -386,4 +387,114 @@ p {
 
 .phase2 {
     margin-top: 50px;
+}
+
+@media screen and (max-width: 770px) {
+    .phase1 {
+        .profile-header {
+            .profile-name-label {
+                .profile-sub-label {
+                   .subtitle {
+                       h5 {
+                           font-size: 0.8em;
+                       }
+                   } 
+                }
+            }
+        }
+        .allColumn {
+            grid-template-columns: auto auto;
+            grid-template-areas: 'basicInfo callLog'
+                                 'comment callLog'
+                                 'recent callLog';
+        .basicInfo {
+            grid-area: basicInfo;
+        }
+        .addComment {
+            grid-area: comment;
+        }
+        .callLog {
+            grid-area: callLog;
+        }
+        .recentCont {
+            margin-top: 20px;
+            overflow: auto;
+            grid-area: recent;
+            .item-info {
+                overflow: auto;
+            }
+        }
+        }
+    }
+}
+@media screen and (max-width: 720px) {
+    .phase1 {
+        .profile-header {
+            .profile-name-label {
+                .profile-sub-label {
+                   display: block;
+                   .subtitle {
+                       margin-top: 10px;
+                       margin-left: 0;
+                   }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 520px) {
+    .phase1 {
+        .profile-header {
+            overflow: auto;
+            .profile-name-label {
+                margin-left: 20px;
+                .profile-sub-label {
+                   display: block;
+                   .subtitle {
+                       margin-left: 0;
+                   }
+                }
+            }
+        }
+        .allColumn {
+            display: block;
+        .basicInfo {
+            
+        }
+        .addComment {
+            
+        }
+        .callLog {
+            margin-top: 20px;
+        }
+        .recentCont {
+            margin-top: 20px;
+            overflow: auto;
+            grid-area: recent;
+            .item-info {
+                overflow: auto;
+            }
+        }
+        }
+    }
+}
+@media screen and (max-width: 420px) {
+    .phase1 {
+        .profile-header {
+            .profile-header-img {
+                .prImg {
+                    width: 80px;
+                }
+            }
+            .profile-name-label {
+                .profile-sub-label {
+                   display: block;
+                   .subtitle {
+                       margin-top: 10px;
+                       margin-left: 0;
+                   }
+                }
+            }
+        }
+    }
 }

@@ -218,6 +218,9 @@ p {
   font-weight: lighter;
   margin-top: 10px;
 }
+.allColumn .recentCont {
+  overflow: scroll;
+}
 .allColumn .recentCont .recentCont-title h3 {
   font-size: 18px;
   font-weight: 900;
@@ -316,6 +319,82 @@ p {
 
 .phase2 {
   margin-top: 50px;
+}
+
+@media screen and (max-width: 770px) {
+  .phase1 .profile-header .profile-name-label .profile-sub-label .subtitle h5 {
+    font-size: 0.8em;
+  }
+  .phase1 .allColumn {
+    grid-template-columns: auto auto;
+    grid-template-areas: "basicInfo callLog" "comment callLog" "recent callLog";
+  }
+  .phase1 .allColumn .basicInfo {
+    grid-area: basicInfo;
+  }
+  .phase1 .allColumn .addComment {
+    grid-area: comment;
+  }
+  .phase1 .allColumn .callLog {
+    grid-area: callLog;
+  }
+  .phase1 .allColumn .recentCont {
+    margin-top: 20px;
+    overflow: auto;
+    grid-area: recent;
+  }
+  .phase1 .allColumn .recentCont .item-info {
+    overflow: auto;
+  }
+}
+@media screen and (max-width: 720px) {
+  .phase1 .profile-header .profile-name-label .profile-sub-label {
+    display: block;
+  }
+  .phase1 .profile-header .profile-name-label .profile-sub-label .subtitle {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 520px) {
+  .phase1 .profile-header {
+    overflow: auto;
+  }
+  .phase1 .profile-header .profile-name-label {
+    margin-left: 20px;
+  }
+  .phase1 .profile-header .profile-name-label .profile-sub-label {
+    display: block;
+  }
+  .phase1 .profile-header .profile-name-label .profile-sub-label .subtitle {
+    margin-left: 0;
+  }
+  .phase1 .allColumn {
+    display: block;
+  }
+  .phase1 .allColumn .callLog {
+    margin-top: 20px;
+  }
+  .phase1 .allColumn .recentCont {
+    margin-top: 20px;
+    overflow: auto;
+    grid-area: recent;
+  }
+  .phase1 .allColumn .recentCont .item-info {
+    overflow: auto;
+  }
+}
+@media screen and (max-width: 420px) {
+  .phase1 .profile-header .profile-header-img .prImg {
+    width: 80px;
+  }
+  .phase1 .profile-header .profile-name-label .profile-sub-label {
+    display: block;
+  }
+  .phase1 .profile-header .profile-name-label .profile-sub-label .subtitle {
+    margin-top: 10px;
+    margin-left: 0;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

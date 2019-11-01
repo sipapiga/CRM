@@ -40,6 +40,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             customerList.renderContract(id);
             showDiv.classList.remove("hide");
             tableDIv.classList.add("hide");
+            document.getElementById('addContactbtn').classList.add('hide')
             //Add Note to customer
             noteBtn.addEventListener('click', function (e) {
                 customerList.addNoteToCustomer(id);
@@ -52,13 +53,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     customerList.addCallToCustomer(id);
                 });
             });
-            contractBtn.addEventListener('click', function (e) {
-                const saveBtn = document.querySelector('#saveContract');
-                $('#addContract').modal('show');
-                saveBtn.addEventListener('click', function (e) {
-                    customerList.addContractToCustomer(id);
-                });
-            });
+            // contractBtn.addEventListener('click', function (e) {
+            //     const saveBtn = document.querySelector('#saveContract');
+            //     $('#addContract').modal('show');
+            //     saveBtn.addEventListener('click', function (e) {
+            //         customerList.addContractToCustomer(id);
+            //     });
+            // });
         });
     }
     // search by name
