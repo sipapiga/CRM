@@ -4,7 +4,7 @@ class User {
         this.lastname = lastname;
         this.email = email;
         this.password = password,
-        this.username = username;
+            this.username = username;
     }
     getUserName() {
         const welcomeName = document.querySelector("#user");
@@ -28,23 +28,28 @@ class User {
     checkLogin(username, password) {
         let user = "";
         const userList = this.getUsersFromLocalStorage();
-        console.log(username);
-        console.log(userList);
-        for (let user of userList) {
-            if (username === user.username){
-                if(password === user.password){
-                    user = user.name;
-                    location.href = "../dashboard.html";
-                    console.log(user);
-                    break;
-                }else{
-                    this.showAlert("The password you have entered is invalid.","danger");
+        let userUsername = userList.map((username) => {
+            return username.username;
+        });
+        if (userUsername.includes(username)) {
+            for (let user of userList) {
+                if (username === user.username) {
+                    if (password === user.password) {
+                        user = user.name;
+                        location.href = "../dashboard.html";
+                        console.log(user);
+                        break;
+                    } else {
+                        this.showAlert("The password you have entered is invalid.", "danger");
+                        break;
+                    }
+                } else {
+                    this.showAlert("The username you have entered is invalid.", "danger");
                     break;
                 }
-            } else {
-                this.showAlert("The username you have entered is invalid.", "danger");
-                break;
             }
+        } else {
+            this.showAlert("The username is not exist, plese register", "danger");
         }
         return user;
     }

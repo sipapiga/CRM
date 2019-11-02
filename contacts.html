@@ -13,7 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js">
-    </script>
+        </script>
 
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -29,11 +29,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js">
-    </script>
-    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
-        <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" type="text/css" href="css/style1.css">
+        </script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style1.css">
     <script src="js/contacts.js"> </script>
     <script src="js/customer.js"> </script>
     <!-- <script src="js/user.js"> </script> -->
@@ -47,12 +48,13 @@
         <div class="container-fluid">
 
             <div class="col-3 brandLogo">
-                    <a class="navbar-brand" href="dashboard.html"><img src="image/collasol.png" alt="" class="logoImg"></a>
+                <a class="navbar-brand" href="dashboard.html"><img src="image/collasol.png" alt="" class="logoImg"></a>
             </div>
             <div class="col-7 searchBar">
-                    <form class="input-group mb-3">
-                        <input type="text" class="form-control mr-sm-2" aria-labelledby="SeachByCustomerName" placeholder="Search by customer name" id="search">
-                    </form>
+                <form class="input-group mb-3">
+                    <input type="text" class="form-control mr-sm-2" aria-labelledby="SeachByCustomerName"
+                        placeholder="Search by customer name" id="search">
+                </form>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,7 +69,7 @@
                         </li> -->
                     <li class="nav-item lBtn">
                         <a class="nav-link logOut" id="logout" href="login/login.html">
-                            <h5>Sign In</h5>
+                            <h5>Sign out</h5>
                         </a>
                     </li>
                 </ul>
@@ -94,129 +96,129 @@
             <div class="col-lg-10 contactList">
                 <div class="customer-list">
                     <div class="table-responsive">
-                            <table class="table-hover mails m-0 table table-actions-bar tableBG" id="tableDiv">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col"></th>
-                                            <th scope="col"></th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Lastname</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Contact Number</th>
-                                            <th scope="col">Company</th>
-                                            <th scope="col">Show info</th>
-                                            <th scope="col">Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="myTable">
-                                    </tbody>
-                                </table>
+                        <table class="table-hover mails m-0 table table-actions-bar tableBG" id="tableDiv">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Lastname</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Contact Number</th>
+                                    <th scope="col">Company</th>
+                                    <th scope="col">Show info</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTable">
+                            </tbody>
+                        </table>
                     </div>
-                <div class="addNewContact">
+                    <div class="addNewContact">
                         <div class="dropdown">
                             <a href="#addContact" class="btn btn-primary btn-md waves-effect waves-light m-b-30"
                                 data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200"
                                 data-overlayColor="#36404a" id="addContactbtn" data-toggle="modal"
                                 data-target="#addContact"><i class="fas fa-user-plus"></i></i> Add Contact</a>
                         </div>
-                    </div>  
+                    </div>
                 </div>
                 <div class="phase1 hide" id="showInfoDiv">
-                        <div class="profile-header">
-                            <div class="profile-header-img">
-                                    <img class="prImg" alt="profile_user_pic" id="profile_user_pic">                            
-                                </div>
-                            <div class="profile-name-label">
-                                <h3 id="cusName">Customer Name</h3>
-                                <div class="profile-sub-label">
-                                    <div class="phoneNo subtitle">
-                                        <i class="fas fa-phone-square-alt"></i>
-                                        <h5 id="phoneNum">+46</h5>
-                                    </div>
-                                    <div class="email subtitle">
-                                        <i class="fas fa-envelope-square"></i>
-                                        <h5 id="email">example</h5>
-                                    </div>
-                                    <div class="companyName subtitle">
-                                        <i class="fas fa-building"></i>
-                                        <h5 id='companyName'>example</h5>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="profile-header">
+                        <div class="profile-header-img">
+                            <img class="prImg" alt="profile_user_pic" id="profile_user_pic">
                         </div>
-                        <div class="allColumn">
-                            <div class="col1">
-                                <div class="basicInfo main-card">
-                                    <div class="basic-info-title">
-                                        <h3>Basic Info</h3>
-                                    </div>
-                                    <hr>
-                                    <div class="info-contents">
-                                        <div class="address">
-                                            <h5>Address:</h5>
-                                            <h5 id="address"></h5>
-                                        </div>
-                                        <div class="birthdate">
-                                            <h5>Birth Day:</h5>
-                                            <h5 id="DOB"></h5>
-                                        </div>
-                                    </div>
+                        <div class="profile-name-label">
+                            <h3 id="cusName">Customer Name</h3>
+                            <div class="profile-sub-label">
+                                <div class="phoneNo subtitle">
+                                    <i class="fas fa-phone-square-alt"></i>
+                                    <h5 id="phoneNum">+46</h5>
                                 </div>
-                                <div class="addComment main-card">
-                                    <div class="comment-title">
-                                        <h3>Comment</h3>
-                                    </div>
-                                    <hr>
-                                    <div class="writeComment">
-                                        <textarea name="comment" id="addNote"></textarea>
-                                        <button type="submit" id="addNoteBtn">Send</button>
-                                    </div>
+                                <div class="email subtitle">
+                                    <i class="fas fa-envelope-square"></i>
+                                    <h5 id="email">example</h5>
+                                </div>
+                                <div class="companyName subtitle">
+                                    <i class="fas fa-building"></i>
+                                    <h5 id='companyName'>example</h5>
                                 </div>
                             </div>
-                            <div class="callLog main-card">
-                                <div class="callLog-title">
-                                        <h3>Call log:</h3>
-                                    </div>
-                                    <hr>
-                                    <div class="note">
-                                        <div id="callLog"></div>
-                                    </div>
-                                    <div class="">
-                                            <div class="">
-                                                <div class="">
-                                                    <button type="button" class="btn btn-primary addCallButt" id="addCalltbtn"><i
-                                                            class="fas fa-phone"></i>
-                                                        Add call</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                            </div>
-                                <div class="recentCont main-card">
-                                    <div class="recentCont-title">
-                                        <h3>Recently Contact</h3>
-                                    </div>
-                                    <hr>
-                                    <div class="item-card-1">
-                                        <div class="item-card">
-                                            <div class="item-info">
-                                                <div class="item-info-info">
-                                                    <div class="item-info-name-date">
-                                                        <div class="item-title-date">
-                                                            <h4 id="note">-</h4>
-                                                        </div>
-            
-                                                    </div>
-                                                </div>
-            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-                        </div>
-                        <div class="row">
-
                         </div>
                     </div>
+                    <div class="allColumn">
+                        <div class="col1">
+                            <div class="basicInfo main-card">
+                                <div class="basic-info-title">
+                                    <h3>Basic Info</h3>
+                                </div>
+                                <hr>
+                                <div class="info-contents">
+                                    <div class="address">
+                                        <h5>Address:</h5>
+                                        <h5 id="address"></h5>
+                                    </div>
+                                    <div class="birthdate">
+                                        <h5>Contract end date:</h5>
+                                        <h5 id="DOB"></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="addComment main-card">
+                                <div class="comment-title">
+                                    <h3>Comment</h3>
+                                </div>
+                                <hr>
+                                <div class="writeComment">
+                                    <textarea name="comment" id="addNote"></textarea>
+                                    <button type="submit" id="addNoteBtn">Send</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="callLog main-card">
+                            <div class="callLog-title">
+                                <h3>Call log:</h3>
+                            </div>
+                            <hr>
+                            <div class="note">
+                                <div id="callLog"></div>
+                            </div>
+                            <div class="">
+                                <div class="">
+                                    <div class="">
+                                        <button type="button" class="btn btn-primary addCallButt" id="addCalltbtn"><i
+                                                class="fas fa-phone"></i>
+                                            Add call</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recentCont main-card">
+                            <div class="recentCont-title">
+                                <h3>Comment</h3>
+                            </div>
+                            <hr>
+                            <div class="item-card-1">
+                                <div class="item-card">
+                                    <div class="item-info">
+                                        <div class="item-info-info">
+                                            <div class="item-info-name-date">
+                                                <div class="item-title-date">
+                                                    <h4 id="note">-</h4>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                </div>
 
                 <div class="modal" tabindex="-1" role="dialog" id="addCall">
                     <div class="modal-dialog" role="document">
@@ -351,14 +353,7 @@
             </div>
         </div>
     </div>
-    <!-- Footer -->
-    <footer class="footer text-center">
-        <div class="col-xs-12">
-            <!-- © 2019. All rights reserved. -->
-        </div>
-        </div>
-    </footer>
-    <!-- End Footer -->
+
 </body>
 
 </html>
