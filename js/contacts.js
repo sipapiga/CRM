@@ -17,8 +17,8 @@ let dummyContacts = [
             "sha1": "229b0a3c3d003cd0b7329547fe8685ca4274ff80",
             "sha256": "7d9bd0eb5ac2f6160fbc9550f299e12f1eb04064d69656cc9b13467727f13773"
         },
-        "dob": {
-            "date": "1971-02-27",
+        "Contractend": {
+            "date": "2019-12-27",
             "age": 48
         },
         "registered": {
@@ -55,8 +55,8 @@ let dummyContacts = [
             "sha1": "0db88f3fbf504ba3760331e90b830e485575d534",
             "sha256": "e1b97e8edd681bbb236307393c802e5d1d6c0590c87e5ba05d821318aee6a878"
         },
-        "dob": {
-            "date": "1944-09-22",
+        "Contractend": {
+            "date": "2019-11-22",
             "age": 75
         },
         "registered": {
@@ -93,8 +93,8 @@ let dummyContacts = [
             "sha1": "2c06c330acc52c7a99bba36316766f6ecce7bbaa",
             "sha256": "5d19c5b263a0d8f6abbb319b16ad2c749d3708553e60ee348e8c29c18157032b"
         },
-        "dob": {
-            "date": "1956-07-12",
+        "Contractend": {
+            "date": "2020-02-02",
             "age": 63
         },
         "registered": {
@@ -131,8 +131,8 @@ let dummyContacts = [
             "sha1": "548611081dc99f8269eb4355694d4f225c521f8a",
             "sha256": "e9fc7fc4b84175118f802a6e9afbe47266e87ae0fdbb2aa6d27ce23c7ceb941f"
         },
-        "dob": {
-            "date": "1961-03-08",
+        "Contractend": {
+            "date": "2019-11-29",
             "age": 58
         },
         "registered": {
@@ -169,8 +169,8 @@ let dummyContacts = [
             "sha1": "9d68d26cdb7a7d6d0aaee6a17170258070402617",
             "sha256": "3321fb5db1a8b42c294c68d194e84a1842b4dfa894c69724ac85697ef5116771"
         },
-        "dob": {
-            "date": "1984-10-06",
+        "Contractend": {
+            "date": "2019-12-06",
             "age": 35
         },
         "registered": {
