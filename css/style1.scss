@@ -1,104 +1,319 @@
 $backgroundDivColor: white;
 $shadowColor: #dad7d7;
-$paddingTop : 20px;
+$watermelon: #ff4757;
+$mazarineBlue: #273c75;
 
 body {
-    padding-top: 56px;
     background-color: #ebeff2;
     height: 100vh;
-    
-}
-.navbar{
-    padding: .8rem;
-    background: linear-gradient(#3EA4E2,#3661B9);
-    box-shadow: 5px 5px  $shadowColor;
-}
-.navbar-nav li{
-    padding-right:20px; 
-}
-.rowPad{
-    padding-top: 5%;
-}
-.rowPad2{
-    padding-top: 10%;
-}
-.footer{
-    padding: 3em;
-}
-#info{
-    width: 90%;
-    height: 500px;
-    background-color: rgb(221, 215, 215);
-}
-.main-color-bg{
-    background: linear-gradient(#3EA4E2,#3661B9) !important;
-    border-color: rgb(41, 67, 119) !important;
-}
-.div-color-bg{
-    border: 1px solid #c1c3c5 !important;
-    background-color:$backgroundDivColor;
-    border-radius: 5px;
-    padding: 30px;
-    height: 350px;
-    overflow: auto; 
-    box-shadow: 5px 5px 5px 5px $shadowColor;
-}
-.div-color-bg1 {
-    border:1px solid #c1c3c5 !important;
-    background-color: $backgroundDivColor;
-    border-radius: 5px;
-    height: 150px;
-    padding: 30px;
-    box-shadow: 5px 5px 5px 5px $shadowColor;
-}
-a{
-    padding: 50px;
-}
-.note{
-    width: 100%;
-    padding: $paddingTop;
-    height: 250px;
-    overflow: auto; 
-    border: 1px solid gray;
-    border-radius: 5px;
-    margin-right: 20px;
-    p{
-        padding-left: 20px;
-        background-color:lightgrey;
-        border-radius: 5px;
-        box-shadow: 1px 1px #818080;
-    }
-}
-.tableBG{
-    background-color:$backgroundDivColor;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px 5px $shadowColor;
-    overflow: auto;
-}
-.hide{
-    display: none;
-}
-// Small devices (landscape phones, 576px and up)
-@media (max-width: 576px) { 
-    #todayDate{
-        padding-top: $paddingTop;
-        font-size: 20px;
+    font-family: 'Muli', sans-serif;
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
     }
 }
 
-// Medium devices (tablets, 768px and up)
-@media (max-width: 768px) { 
-    #todayDate{
-        padding-top: $paddingTop;
-        font-size: 20px;
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin: 0;
+}
+
+.navbar {
+    background-color: #fff;
+
+    // background: linear-gradient(#3EA4E2,#3661B9);
+    // box-shadow: 5px 5px  $shadowColor;
+    .navbar-brand {
+        padding-left: 20px;
+        padding-right: 0;
     }
-    .table-responsive{
-        padding-top: $paddingTop;
+
+    .logoImg {
+        width: 60px;
+        height: 60px;
     }
-    .col-md-9{
-        padding-top: $paddingTop;
+
+    .navbar-toggler-icon {
+        .fa-bars {
+            color: #000;
+            font-size: 28px;
+        }
     }
-    .col-md-4{
-        padding-top: $paddingTop;
+
+    .navbar-collapse {
+        .navbar-nav {
+            li {
+                margin-right: 20px;
+            }
+
+            .nav-link {
+                color: #000;
+            }
+
+            .lBtn {
+                :hover {
+                    background-color: #da4757;
+                    transition-duration: 0.125s;
+                }
+            }
+
+            .logOut {
+                background-color: $mazarineBlue;
+                padding: 10px 15px;
+                color: #fff;
+                border-radius: 4px;
+
+                :hover {
+                    background-color: #da4757;
+                }
+
+                h5 {
+                    font-size: 16px;
+                }
+            }
+        }
+
     }
-} 
+
+    .searchBar {
+        margin-top: 1.125em;
+    }
+}
+
+
+.container-fluid {
+    .callMain-content {
+        margin-top: 8%;
+    }
+    .main-content {
+        margin-top: 50px;
+    }
+    @mixin bar {
+        .sideNav {
+            margin-top: 5%;
+
+            .list-group {
+                .list-group-item {
+                    color: $mazarineBlue;
+                    letter-spacing: 0.025em;
+                }
+
+                .list-group-item.active {
+                    color: #fff;
+                    background-color: $mazarineBlue !important;
+                    border-color: transparent;
+                    // background: linear-gradient(#3EA4E2,#3661B9) !important;
+                    // border-color: rgb(41, 67, 119) !important;
+                }
+            }
+        }
+        .zeroMSideNav {
+            margin-top: 0;
+        }
+    }
+    .calender {
+        margin-top: 5%;
+        background-color: $backgroundDivColor;
+        .icon {
+            font-size: 4rem;
+        }
+        table{
+            table-layout: fixed;
+        }
+        td{
+            height: 15rem;
+            width: 7rem;
+            text-align: center;
+            ul {
+                padding: 0;
+            }
+        }
+    }
+    @mixin flatCard {
+        background-color: $backgroundDivColor;
+        padding: 30px 40px 30px 40px;
+        box-shadow: 1px 2px 43px -3px rgba(230, 230, 230, 0.5);
+    }
+    .callHis {
+        @include flatCard;
+    }
+
+    .row {
+        @include bar;
+
+        .main-content {
+            margin-top: 5%;
+
+            .underMain1 {
+                .statisticCard {
+                    @include flatCard;
+                    border-right: 10px solid $mazarineBlue;
+                    border-radius: 8px 0px 0px 8px;
+
+                    .statistic {
+                        margin-bottom: 10px;
+
+                        i {
+                            margin-right: 15px;
+                        }
+                    }
+
+                    .statisticNo {
+                        margin-top: 20px;
+                        text-align: center;
+
+                        h2 {
+                            font-size: 2.125rem !important;
+                            font-weight: 900;
+                        }
+                    }
+                }
+
+            }
+            .modal {
+                position:absolute;
+                top: 20%;
+                li {
+                    text-align: left;
+                }
+                .modal-body {
+                    .calender-day {
+                        .calender-items {
+                            padding: 0;
+                        }
+                    }
+                }
+            }
+
+            .underMain2 {
+                margin-top: 30px;
+
+                .eventCard {
+                    // border: 1px solid #c1c3c5 !important;
+                    background-color: $backgroundDivColor;
+                    border-radius: 8px;
+                    padding: 30px;
+                    height: 350px;
+                    overflow: auto;
+                    box-shadow: 1px 2px 43px -3px rgba(230, 230, 230, 0.5);
+
+                    .eventCard-title {
+                        font-weight: 900;
+                        margin-bottom: 15px;
+                    }
+                    .btnTodo {
+                        margin-top: 20px;
+                    }
+                }
+            }
+        }
+
+        .contactList {
+            margin-top: 0.9em;
+
+            .customer-list {
+                margin-top: 5%;
+
+                .tableBG {
+                    @include flatCard;
+                    padding: 0px;
+                    border-radius: 8px;
+
+                    thead th {
+                        padding: 15px;
+                        border-top: 0;
+                        border-bottom: 0;
+                    }
+                }
+
+                .addNewContact {
+                    margin-top: 0.65em;
+                }
+            }
+        }
+
+        .contactInfo {
+            @include flatCard;
+        }
+    }
+}
+
+.rowPad2 {
+    margin-top: 10%;
+}
+
+.hide {
+    display: none;
+}
+
+@media screen and (max-width: 770px) {
+    .container-fluid {
+        .row {
+            .sideNav {
+                margin-top: 12%;
+            }
+            .main-content {
+                .underMain1 {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    .statisticCard {
+                        padding: 20px;
+                    }
+                }
+                .underMain2 {
+                    .todoCard {
+                        margin-top: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 590px) {
+    .container-fluid {
+        .row {
+            .main-content {
+                .underMain1 {
+                    .statisticCard {
+                        .statistic {
+                            h4 {
+                                font-size: 1em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 480px) {
+    .container-fluid {
+        .row {
+            .main-content {
+                .underMain1 {
+                    flex-wrap: wrap;
+                    .subCard {
+                        margin-bottom: 20px;
+                        .statisticCard {
+                            .statistic {
+                                h4 {
+                                    font-size: 1em;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .callHisInfo {
+                overflow: auto;
+            }
+        }
+    }
+}
+
