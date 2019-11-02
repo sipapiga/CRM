@@ -38,6 +38,7 @@
     <script src="js/customer.js"> </script>
     <!-- <script src="js/user.js"> </script> -->
     <script src="js/main.js"> </script>
+    <script src="js/all.js"></script>
 </head>
 
 <body>
@@ -89,48 +90,26 @@
             </div>
 
             <div class="col-lg-10 contactList">
-                <!-- search-->
-                <!-- <div class="row">
-                    <div class="col-md-3"> </div>
-                    <div class="col-md-6">
-                        <div class="rowPad">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" aria-labelledby="SeachByCustomerName"
-                                    placeholder="Search by customer name" id="search">
-                                <div class="input-group-append">
-                                    <span class="input-group-text" id="searchBtn"><i class='fas fa-search'></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="dropdown rowPad2 text-center">
-                            <a href="#addContact" class="btn btn-primary btn-md waves-effect waves-light m-b-30"
-                                data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200"
-                                data-overlayColor="#36404a" id="addContactbtn" data-toggle="modal"
-                                data-target="#addContact"><i class="fas fa-user-plus"></i></i> Add Contact</a>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- end of search-->
                 <div class="customer-list">
-                  <table class="table-reponsive table-hover mails m-0 table table-actions-bar tableBG" id="tableDiv">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Lastname</th>
-                            <th>Email</th>
-                            <th>Contact Number</th>
-                            <th>Company</th>
-                            <th>Show info</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody id="myTable">
-                    </tbody>
-                </table>
+                    <div class="table-responsive">
+                            <table class="table-hover mails m-0 table table-actions-bar tableBG" id="tableDiv">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col"></th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Lastname</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Contact Number</th>
+                                            <th scope="col">Company</th>
+                                            <th scope="col">Show info</th>
+                                            <th scope="col">Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="myTable">
+                                    </tbody>
+                                </table>
+                    </div>
                 <div class="addNewContact">
                         <div class="dropdown">
                             <a href="#addContact" class="btn btn-primary btn-md waves-effect waves-light m-b-30"
@@ -140,102 +119,25 @@
                         </div>
                     </div>  
                 </div>
-                <!-- Customer info -->
-
-               <!-- <div class="col-lg-12 padding contactInfo hide" id="showInfoDiv">
-                    <div class="container-fluid">
-                        <div class="row well">
-                            <div class="col-lg-3">
-                                <div class="profile_user_pic text-center">
-                                     <img class="img-fluid rounded-circle" alt="profile_user_pic" id="profile_user_pic"> -->
-                                <!-- </div>
-                            </div>
-                            <div class="col-lg-9">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                         <h4 id="cusName" style="display:inline"> Firstname </h4> -->
-                                        <!-- <h4 id="cusLastName" style="display:inline">Surname </h4>
-                                    </div>
-                                    <div class="col-md-6">
-                                    </div>
-                                </div> -->
-                                <!-- <table class="table table-reponsive rowPad2">
-                                    <tr>
-                                        <td>
-                                            <label><i class="fas fa-phone-square"></i> Phone Number:</label>
-                                            <p id="phoneNum"> Number</p>
-                                        </td>
-                                        <td>
-                                            <label><i class="fas fa-envelope"></i> Email:</label>
-                                            <p id="email">Email</p>
-                                        </td>
-                                        <td>
-                                            <label><i class="fas fa-briefcase"></i> Company:</label>
-                                            <p id="companyName">Company</p>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <label>Adress:</label>
-                                <p id="address">Adress</p><br>
-                                <label>Date of Birth:</label>
-                                <p id="DOB">DOB</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="note">
-                                    <h4>Call log:</h4>
-                                    <div id="callLog"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="note">
-                                    <h4>Note:</h4>
-                                    <div id="note"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="row rowPad2">
-                                    <div class="col-md-6">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <button type="button" class="btn btn-primary" id="addCalltbtn"><i
-                                                class="fas fa-phone"></i>
-                                            Add call</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-9 ">
-                                <div class="input-group mb-3 rowPad">
-                                    <input type="text" class="form-control" aria-labelledby="AddNotetoCustomer"
-                                        placeholder="Add note" id="addNote">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" id="addNoteBtn"> OK</span> </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+                
 
                 <div class="phase1 hide" id="showInfoDiv">
                         <div class="profile-header">
                             <div class="profile-header-img">
-                                    <img class="img-fluid " alt="profile_user_pic" id="profile_user_pic">                            
+                                    <img class="prImg" alt="profile_user_pic" id="profile_user_pic">                            
                                 </div>
                             <div class="profile-name-label">
                                 <h3 id="cusName">Customer Name</h3>
                                 <div class="profile-sub-label">
-                                    <div class="phoneNo">
+                                    <div class="phoneNo subtitle">
                                         <i class="fas fa-phone-square-alt"></i>
                                         <h5 id="phoneNum">+46</h5>
                                     </div>
-                                    <div class="email">
+                                    <div class="email subtitle">
                                         <i class="fas fa-envelope-square"></i>
                                         <h5 id="email">example</h5>
                                     </div>
-                                    <div class="companyName">
+                                    <div class="companyName subtitle">
                                         <i class="fas fa-building"></i>
                                         <h5 id='companyName'>example</h5>
                                     </div>
@@ -289,44 +191,6 @@
                                             </div>
                                         </div>
                             </div>
-                            <!-- <div class="col2 col-content">
-                                <div class="recentPur main-card">
-                                    <div class="recentPur-title">
-                                        <h3>Recently Purchase</h3>
-                                    </div>
-                                    <hr>
-                                    <div class="recentItems">
-                                        <div class="item-card-1">
-                                            <div class="item-card">
-                                                <div class="item-info">
-                                                    <div class="item-img">
-                                                        <div class="imgDemo"></div>
-                                                    </div>
-                                                    <div class="item-info-info">
-                                                        <div class="item-info-name-date">
-                                                            <div class="item-title-name">
-                                                                <h4>Item name</h4>
-                                                            </div>
-                                                            <div class="item-title-date">
-                                                                <h4>Date</h4>
-                                                            </div>
-            
-                                                        </div>
-                                                        <div class="item-desciption">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                                elit. Etiam lectus elit, egestas sed sodales in.
-            
-                                                            </p>
-                                                        </div>
-                                                    </div>
-            
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <div class="col3 col-content">
                                 <div class="recentCont main-card">
                                     <div class="recentCont-title">
                                         <h3>Recently Contact</h3>
@@ -347,8 +211,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </div> 
                         </div>
                     </div>
 

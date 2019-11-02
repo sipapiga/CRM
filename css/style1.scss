@@ -207,6 +207,9 @@ h5 {
                         font-weight: 900;
                         margin-bottom: 15px;
                     }
+                    .btnTodo {
+                        margin-top: 20px;
+                    }
                 }
             }
         }
@@ -245,71 +248,71 @@ h5 {
     margin-top: 10%;
 }
 
-// .search-form {
-//     display: flex;
-//     max-width: 98%;
-//     margin-top: 5%;
-//     height: 50px;
-// }
-
-// .search {
-
-//     max-width: 90%;
-//     height: 50px;
-// }
-
-
-
-// #info {
-//     width: 90%;
-//     height: 500px;
-//     background-color: rgb(221, 215, 215);
-// }
-
-// .div-color-bg {
-//     border: 1px solid #c1c3c5 !important;
-//     background-color: $backgroundDivColor;
-//     border-radius: 5px;
-//     padding: 30px;
-//     height: 350px;
-//     overflow: auto;
-//     box-shadow: 5px 5px 5px 5px $shadowColor;
-// }
-
-// .div-color-bg1 {
-//     background-color: $backgroundDivColor;
-//     border-radius: 5px;
-//     padding: 30px 40px 30px 40px;
-//     box-shadow: 1px 2px 43px -3px rgba(230, 230, 230, 0.5);
-// }
-
-
-
-// .note {
-//     width: 100%;
-//     padding: 20px;
-//     ;
-//     height: 250px;
-//     overflow: auto;
-//     border: 1px solid gray;
-//     border-radius: 5px;
-//     margin-right: 20px;
-
-//     p {
-//         padding-left: 20px;
-//         background-color: lightgrey;
-//         border-radius: 5px;
-//         box-shadow: 1px 1px #818080;
-//     }
-// }
-
-// .tableBG {
-//     background-color: $backgroundDivColor;
-//     border-radius: 10px;
-//     box-shadow: 5px 5px 5px 5px $shadowColor;
-//     overflow: auto;
-// }
-
 .hide {
     display: none;
+}
+
+@media screen and (max-width: 770px) {
+    .container-fluid {
+        .row {
+            .sideNav {
+                margin-top: 12%;
+            }
+            .main-content {
+                .underMain1 {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    .statisticCard {
+                        padding: 20px;
+                    }
+                }
+                .underMain2 {
+                    .todoCard {
+                        margin-top: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 590px) {
+    .container-fluid {
+        .row {
+            .main-content {
+                .underMain1 {
+                    .statisticCard {
+                        .statistic {
+                            h4 {
+                                font-size: 1em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 480px) {
+    .container-fluid {
+        .row {
+            .main-content {
+                .underMain1 {
+                    flex-wrap: wrap;
+                    .subCard {
+                        margin-bottom: 20px;
+                        .statisticCard {
+                            .statistic {
+                                h4 {
+                                    font-size: 1em;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .callHisInfo {
+                overflow: auto;
+            }
+        }
+    }
 }

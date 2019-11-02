@@ -152,6 +152,9 @@ h5 {
   font-weight: 900;
   margin-bottom: 15px;
 }
+.container-fluid .row .main-content .underMain2 .eventCard .btnTodo {
+  margin-top: 20px;
+}
 .container-fluid .row .contactList {
   margin-top: 0.9em;
 }
@@ -185,6 +188,41 @@ h5 {
 
 .hide {
   display: none;
+}
+
+@media screen and (max-width: 770px) {
+  .container-fluid .row .sideNav {
+    margin-top: 12%;
+  }
+  .container-fluid .row .main-content .underMain1 {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .container-fluid .row .main-content .underMain1 .statisticCard {
+    padding: 20px;
+  }
+  .container-fluid .row .main-content .underMain2 .todoCard {
+    margin-top: 30px;
+  }
+}
+@media screen and (max-width: 590px) {
+  .container-fluid .row .main-content .underMain1 .statisticCard .statistic h4 {
+    font-size: 1em;
+  }
+}
+@media screen and (max-width: 480px) {
+  .container-fluid .row .main-content .underMain1 {
+    flex-wrap: wrap;
+  }
+  .container-fluid .row .main-content .underMain1 .subCard {
+    margin-bottom: 20px;
+  }
+  .container-fluid .row .main-content .underMain1 .subCard .statisticCard .statistic h4 {
+    font-size: 1em;
+  }
+  .container-fluid .row .callHisInfo {
+    overflow: auto;
+  }
 }
 
 /*# sourceMappingURL=style1.css.map */
