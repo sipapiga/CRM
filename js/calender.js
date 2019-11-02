@@ -247,32 +247,33 @@ function daysOfMonth(month, year) {
 function showCalItems() {
   let i = 1;
   $("td").each(function() {
-    let ul = $(this).find("ul");
-    ul.empty();
-    let more = document.createElement("li");
-    more.classList.add("list-group-item", "list-group-item-info", "py-1");
-    more.innerHTML = "...";
-
-    for (item of list) {
-      if (
-        item.date.month == month &&
-        item.date.year == year &&
-        item.date.day == i - 1
-      ) {
-        if (ul.children().length > 2) {
-          ul.append(more);
-        } else {
-          let li;
-          jQuery.each(elements, function() {
-            if (item.id == $(this)[0].id) {
-              li = $(this)[0].element;
-            }
-            ul.append(li);
-          });
+    if ($(this).children().length > 0) {
+      let ul = $(this).children();
+      ul.empty();
+      let more = document.createElement("li");
+      more.classList.add("list-group-item", "list-group-item-info", "py-1");
+      more.innerHTML = "...";
+      for (item of list) {
+        if (
+          item.date.month == month &&
+          item.date.year == year &&
+          item.date.day == i - 1
+        ) {
+          if (ul.children().length > 2) {
+            ul.append(more);
+          } else {
+            let li;
+            jQuery.each(elements, function() {
+              if (item.id == $(this)[0].id) {
+                li = $(this)[0].element;
+              }
+              ul.append(li);
+            });
+          }
         }
       }
+      i++;
     }
-    i++;
   });
   calItemClick();
 }
@@ -305,8 +306,19 @@ function calItemClick() {
                   " " +
                   i.date.year
               );
+
+              let hours = i.date.hours;
+              let minutes = i.date.minutes;
+
+              if (i.date.hours < 10) {
+                hours = "0" + i.date.hours;
+              }
+              if (i.date.minutes < 10) {
+                minutes = "0" + i.date.minutes;
+              }
               $(".calender-time").html(
-                "Time : " + i.date.hours + ":" + i.date.minutes
+                "Time : " + hours + ":" + minutes
+                /*"Time : " + i.date.hours + ":" + i.date.minutes*/
               );
               $(".calender-item-text").html(
                 "Description : <br>" + i.description
@@ -351,7 +363,7 @@ function showDay(el) {
     if (
       item.date.month == month &&
       item.date.year == year &&
-      item.date.day == el.parent()[0].id
+      item.date.day == el.parent()[0].id - 1
     ) {
       let li;
       jQuery.each(elements, function() {
@@ -393,7 +405,19 @@ function showItem(test) {
   $(".calender-date").html(
     "Date : " + i.date.day + " " + months[i.date.month] + " " + i.date.year
   );
-  $(".calender-time").html("Time : " + i.date.hours + ":" + i.date.minutes);
+  let hours = i.date.hours;
+  let minutes = i.date.minutes;
+
+  if (i.date.hours < 10) {
+    hours = "0" + i.date.hours;
+  }
+  if (i.date.minutes < 10) {
+    minutes = "0" + i.date.minutes;
+  }
+  $(".calender-time").html(
+    "Time : " + hours + ":" + minutes
+    /*"Time : " + i.date.hours + ":" + i.date.minutes*/
+  );
   $(".calender-item-text").html("Description : <br>" + i.description);
   $("#delete").css("visibility", "visible");
   $("#delete").on("click", function() {
