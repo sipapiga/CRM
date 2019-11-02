@@ -31,6 +31,7 @@ function showCustomer() {
     antalCustomer.innerHTML = contactList.length;
   }
   let getCustomerNameContractEnd = contractEndReminder(contactList);
+  //how to get only one alert?
   Swal.fire(
     'Reminder',
     getCustomerNameContractEnd + " 's contract is about to run out!",
