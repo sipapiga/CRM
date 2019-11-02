@@ -293,6 +293,15 @@ h5 {
     }
 }
 @media screen and (max-width: 480px) {
+    .navbar {
+        .navbar-collapse {
+            .navbar-nav {
+                .lBtn {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
     .container-fluid {
         .row {
             .main-content {
