@@ -7,12 +7,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const saveBtn = document.getElementById('saveBtn');
     const noteBtn = document.getElementById('addNoteBtn');
     const callBtn = document.getElementById('addCalltbtn');
-    const contractBtn = document.getElementById('addContractBtn');
     const filterInput = document.getElementById('search');
+    const logoutBtn = document.querySelector('#logout');
 
 
     let customerList = new CustomerList();
     customerList.displayCustomer();
+
+    logoutBtn.addEventListener('click',function(){
+        localStorage.removeItem('alerted');
+    });
 
     saveBtn.addEventListener('click', function () {
         let validateInput = customerList.validateCustomer();

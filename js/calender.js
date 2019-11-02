@@ -1,9 +1,10 @@
 class calenderItem {
-  constructor(id, text, description, date) {
+  constructor(id, text, description, date, customer) {
     this.id = id;
     this.text = text;
     this.description = description;
     this.date = date;
+    this.customer = customer;
   }
 }
 class dateTime {
@@ -51,7 +52,10 @@ let days = [31, 28, 31, 30, 31, 31, 30, 31, 30, 31, 30, 31];
 let month = new Date().getMonth();
 let year = new Date().getFullYear();
 
-$(document).ready(function() {
+const customer = JSON.parse(localStorage.getItem("Customers"));
+const select = document.querySelector('#chooseCustomerId');
+
+$(document).ready(function () {
   $("#datetimepicker1").datetimepicker();
   $("#datetimepicker1")
     .data("DateTimePicker")
@@ -65,7 +69,7 @@ $(document).ready(function() {
 });
 
 function scrollMonth() {
-  $(".icon").click(function() {
+  $(".icon").click(function () {
     if ($(this).hasClass("next")) {
       month++;
       if (month == months.length) {
@@ -89,14 +93,14 @@ function scrollMonth() {
 }
 
 function modal() {
-  $("#save").click(function() {
+  $("#save").click(function () {
     addEvent();
     $("#myModal").modal("hide");
   });
 
-  $(document).on("show.bs.modal", function() {
+  $(document).on("show.bs.modal", function () {
     $("#txtEvent").val("Enter Event Title");
-    $("#txtEvent").click(function() {
+    $("#txtEvent").click(function () {
       $(this).val("");
     });
     let today = new Date();
@@ -111,6 +115,9 @@ function modal() {
     $("#date").val(dT);
     $("#descriptionEvent").val("");
   });
+  for (let customerOption of customer) {
+    select.options.add(new Option(customerOption.name + " " + customerOption.lastname));
+  }
 }
 
 function removeItem(id) {
@@ -143,12 +150,15 @@ function setID() {
 
 function addEvent() {
   let selectedDate = formatDate($("#date").val());
+  let drop_val = select.options[select.selectedIndex].value;
   let x = new calenderItem(
     testList.id,
     $("#txtEvent").val(),
     $("#descriptionEvent").val(),
-    selectedDate
+    selectedDate,
+    drop_val
   );
+  console.log(x);
   saveData(x);
 }
 
@@ -246,7 +256,7 @@ function daysOfMonth(month, year) {
 
 function showCalItems() {
   let i = 1;
-  $("td").each(function() {
+  $("td").each(function () {
     let ul = $(this).find("ul");
     ul.empty();
     let more = document.createElement("li");
@@ -263,7 +273,7 @@ function showCalItems() {
           ul.append(more);
         } else {
           let li;
-          jQuery.each(elements, function() {
+          jQuery.each(elements, function () {
             if (item.id == $(this)[0].id) {
               li = $(this)[0].element;
             }
@@ -280,7 +290,7 @@ function showCalItems() {
 function calItemClick() {
   $("table")
     .find("li")
-    .each(function() {
+    .each(function () {
       $(this).click(stopEvent);
       let i;
       if ($(this)[0].id.length > 0) {
@@ -290,20 +300,20 @@ function calItemClick() {
             i = item;
           }
         }
-        $(this).click(function() {
+        $(this).click(function () {
           $("#myModal2")
-            .on("show.bs.modal", function() {
+            .on("show.bs.modal", function () {
               $(".calender-items").addClass("hide");
               $(".calender-items").empty();
               let modal = $(this);
               $(".modal-title-calender").html(i.text);
               $(".calender-date").html(
                 "Date : " +
-                  i.date.day +
-                  " " +
-                  months[i.date.month] +
-                  " " +
-                  i.date.year
+                i.date.day +
+                " " +
+                months[i.date.month] +
+                " " +
+                i.date.year
               );
               $(".calender-time").html(
                 "Time : " + i.date.hours + ":" + i.date.minutes
@@ -311,8 +321,11 @@ function calItemClick() {
               $(".calender-item-text").html(
                 "Description : <br>" + i.description
               );
+              $(".customerName").html(
+                "Customer :" + i.customer
+              );
               $("#delete").css("visibility", "visible");
-              $("#delete").on("click", function() {
+              $("#delete").on("click", function () {
                 modal.modal("hide");
                 removeItem(el.id);
               });
@@ -320,17 +333,17 @@ function calItemClick() {
             .modal("show");
         });
       } else if ($(this)[0].id.length == 0) {
-        $(this).click(function() {
+        $(this).click(function () {
           let el = $(this);
           $("#myModal2")
-            .on("show.bs.modal", function() {
+            .on("show.bs.modal", function () {
               showDay(el);
             })
             .modal("show");
           $(".calender-items")
             .find("li")
-            .each(function() {
-              $(this).click(function() {
+            .each(function () {
+              $(this).click(function () {
                 showItem(this);
               });
             });
@@ -348,13 +361,14 @@ function showDay(el) {
   $(".calender-time").html("");
 
   for (item of list) {
+    console.log(list);
     if (
       item.date.month == month &&
       item.date.year == year &&
       item.date.day == el.parent()[0].id
     ) {
       let li;
-      jQuery.each(elements, function() {
+      jQuery.each(elements, function () {
         if (item.id == $(this)[0].id) {
           li = $(this)[0].element;
           li = li.cloneNode(true);
@@ -396,7 +410,7 @@ function showItem(test) {
   $(".calender-time").html("Time : " + i.date.hours + ":" + i.date.minutes);
   $(".calender-item-text").html("Description : <br>" + i.description);
   $("#delete").css("visibility", "visible");
-  $("#delete").on("click", function() {
+  $("#delete").on("click", function () {
     removeItem(el.id);
     $(".calender-item-title").html("");
     $(".calender-item-text").html("");
@@ -432,13 +446,13 @@ function displayMonth() {
 }
 
 function fillTable() {
-  $("td").each(function() {
+  $("td").each(function () {
     if ($(this).html().length > 0) {
       let ul = document.createElement("ul");
       ul.classList.add("list-group-flush");
       ul.setAttribute("id", this.innerHTML);
       $(this).append(ul);
-      $(this).on("click", function() {
+      $(this).on("click", function () {
         $("#myModal")
           .modal({
             backdrop: "static",
@@ -448,12 +462,12 @@ function fillTable() {
       });
     }
   });
-  $("tbody tr").each(function() {
+  $("tbody tr").each(function () {
     this.style.visibility = "visible";
     let row = 0;
     $(this)
       .children()
-      .each(function() {
+      .each(function () {
         if ($(this).children().length == 0) {
           row++;
         }

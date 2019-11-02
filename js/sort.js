@@ -38,6 +38,12 @@ function getTodayDate() {
   let today = new Date().toString().slice(0, 15);
   todayDiv.innerHTML = "Today is " + today;
 }
+function clearAlert(){
+  const logoutBtn = document.querySelector('#logout');
+  logoutBtn.addEventListener('click',function(){
+    localStorage.removeItem('alerted');
+  });
+}
 
 window.addEventListener("DOMContentLoaded", event => {
   let sortList = JSON.parse(localStorage.getItem("Customers"));
@@ -61,4 +67,5 @@ window.addEventListener("DOMContentLoaded", event => {
 
   showCustomer(sortList);
   getTodayDate();
+  clearAlert();
 });

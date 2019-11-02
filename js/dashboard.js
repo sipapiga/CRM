@@ -17,7 +17,8 @@ function appendEvent(event) {
         <td>${event.date.month}${"/"}${event.date.day}${"/"}${
     event.date.year
     }</td>
-        <td>${event.date.hours}${":"}${event.date.minutes}</td></tr>
+        <td>${event.date.hours}${":"}${event.date.minutes}</td>
+        <td>${event.customer}</td></tr>
         `;
   eventsDiv.appendChild(row);
 }
@@ -32,11 +33,15 @@ function showCustomer() {
   }
   let getCustomerNameContractEnd = contractEndReminder(contactList);
   //how to get only one alert?
-  Swal.fire(
-    'Reminder',
-    getCustomerNameContractEnd + " 's contract is about to run out!",
-    'info'
-  )
+  let alerted = localStorage.getItem('alerted') || '';
+  if (alerted != 'yes') {
+    Swal.fire(
+      'Reminder',
+      getCustomerNameContractEnd + " 's contract is about to run out!",
+      'info'
+    )
+    localStorage.setItem('alerted', 'yes');
+  }
 }
 class toDo {
   constructor(id, text) {
@@ -134,7 +139,7 @@ function contractEndReminder(customer) {
   /*  let endContractCustomer = customer.map((customer) => {
      return customer.contract;
    }); */
-
+  let customerContractRunout = [];
   let today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -151,12 +156,21 @@ function contractEndReminder(customer) {
     let difference_In_Days = difference_In_Time / (1000 * 3600 * 24);
     if (difference_In_Days < 30) {
       console.log(contract.name);
-      return contract.name;
+      customerContractRunout.push(contract.name);
+      console.log(customerContractRunout);
     }
   }
+  return customerContractRunout;
+}
+function clearAlert(){
+  const logoutBtn = document.querySelector('#logout');
+  logoutBtn.addEventListener('click',function(){
+    localStorage.removeItem('alerted');
+  });
 }
 
 window.addEventListener("DOMContentLoaded", event => {
   showCustomer();
   showEvent();
+  clearAlert();
 });
