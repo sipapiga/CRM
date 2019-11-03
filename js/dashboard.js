@@ -28,7 +28,8 @@ function appendEvent(event) {
           <td>${event.date.month + 1}${"/"}${event.date.day}${"/"}${
     event.date.year
   }</td>
-          <td>${hours}${":"}${minutes}</td></tr>
+          <td>${hours}${":"}${minutes}</td>
+          <td>${event.customer}</td></tr>
           `;
   eventsDiv.appendChild(row);
 }
