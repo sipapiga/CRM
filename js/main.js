@@ -58,5 +58,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+    $('[data-toggle="tooltip"]').tooltip();
 
 });

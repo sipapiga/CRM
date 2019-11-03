@@ -9,9 +9,9 @@ class CustomerList {
     }
   }
   displayCustomer() {
-    const dummy = this.getContactsFromLocalStorage();
-    this.addCustomerToList(dummy);
-    if (dummy.length == 0) {
+    const customerList = this.getContactsFromLocalStorage();
+    this.addCustomerToList(customerList);
+    if (customerList.length == 0) {
       this.setDummyCustomer();
     }
   }

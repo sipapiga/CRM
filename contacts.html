@@ -37,7 +37,6 @@
     <link rel="stylesheet" type="text/css" href="css/style1.css">
     <script src="js/contacts.js"> </script>
     <script src="js/customer.js"> </script>
-    <!-- <script src="js/user.js"> </script> -->
     <script src="js/main.js"> </script>
     <script src="js/all.js"></script>
 </head>
@@ -62,12 +61,8 @@
                     <i class="fas fa-bars"></i>
                 </span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
+            <div class="collapse navbar-collapse col-2" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <!-- <li class="nav-item active">
-                        <a class="nav-link" id="user">Welcome</a>
-                    </li> -->
-                    
                     <li class="nav-item lBtn">
                         <a class="nav-link logOut" id="logout" href="login/login.html">
                             <h5>Sign out</h5>
@@ -324,7 +319,7 @@
 
                             </div>
                             <div class="form-group">
-                                <label>Contact number*</label>
+                                <label>Contact number*<i class="fas fa-info-circle" data-toggle="tooltip" title="Please write telephone number in digits"></i></label>
                                 <input type="text" class="form-control" id="inputTel" aria-labelledby="CustomerNumber"
                                     placeholder="Enter telephone number">
                                 <span id="invalidTel" class="text-danger"></span>
