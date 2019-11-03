@@ -279,9 +279,8 @@ class CustomerList {
     });
     //Add Calling list to customer
     document.getElementById('addCalltbtn').addEventListener('click', function (e) {
-      const saveBtn = document.querySelector('#saveLastCall');
       $('#addCall').modal('show');
-      document.getElementById('saveBtn').addEventListener('click', function (e) {
+      document.getElementById('saveLastCall').addEventListener('click', function (e) {
         self.addCallToCustomer(id);
       });
     });
