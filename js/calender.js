@@ -179,7 +179,7 @@ function addEvent() {
 
 function formatDate(date) {
   date = new Date(date);
-  let day = date.getDate() - 1;
+  let day = date.getDate();
   let month = date.getMonth();
   let year = date.getFullYear();
   let hours = date.getHours();
@@ -280,10 +280,11 @@ function showCalItems() {
       more.innerHTML = "...";
 
       for (item of list) {
+        console.log(item.date.day);
         if (
           item.date.month == month &&
           item.date.year == year &&
-          item.date.day == i - 1
+          item.date.day == i
         ) {
           if (ul.children().length > 2) {
             ul.append(more);
@@ -398,7 +399,7 @@ function showDay(el) {
     if (
       item.date.month == month &&
       item.date.year == year &&
-      item.date.day == el.parent()[0].id - 1
+      item.date.day == el.parent()[0].id
     ) {
       let li;
       jQuery.each(elements, function() {
