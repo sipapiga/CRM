@@ -280,7 +280,6 @@ function showCalItems() {
       more.innerHTML = "...";
 
       for (item of list) {
-        console.log(item.date.day);
         if (
           item.date.month == month &&
           item.date.year == year &&

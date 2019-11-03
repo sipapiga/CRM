@@ -73,10 +73,23 @@ class CustomerList {
                 <td><a href="#" >${customer.email} </a></td>
                 <td>${customer.tel}</td>
                 <td>${customer.company}</td>
-                <td><a href="#" class="btn btn-success btn-sm info" id=infoBtn${this.customer_id} data-id=${customer.id}>Info</a></td>
-                <td class="text-center"><button class="btn btn-danger btn-sm delete" data-id=${customer.id}>X</button></td></tr>
+                <td><a href="#" class="btn btn-success btn-sm info" id=infoBtn${customer.id} data-id=${customer.id}>Info</a></td>
+                <td class="text-center"><button class="btn btn-danger btn-sm delete" id="deleteBtn${customer.id}" data-id=${customer.id}>X</button></td></tr>
                 `;
       cusDiv.innerHTML = dataHtml;
+    }
+    let deleteBtn = document.getElementsByClassName('delete');
+    let infoBtn = document.getElementsByClassName('info');
+    let self = this;
+    //Delete customer from UI and localStorage
+    for (let i = 0; i < deleteBtn.length; i++) {
+      deleteBtn[i].addEventListener('click', function (e) {
+        self.handleDeleteClicked(e);
+      });
+      //Show customer Info
+      infoBtn[i].addEventListener('click', function (e) {
+        self.handleInfoClicked(e);
+      });
     }
   }
   addNewContact() {
@@ -95,11 +108,14 @@ class CustomerList {
       "https://randomuser.me/api/portraits/women/30.jpg",
       "https://randomuser.me/api/portraits/women/71.jpg",
       "https://randomuser.me/api/portraits/men/0.jpg",
-      "https://randomuser.me/api/portraits/men/67.jpg"
+      "https://randomuser.me/api/portraits/men/67.jpg",
+      "https://randomuser.me/api/portraits/women/89.jpg",
+      "https://randomuser.me/api/portraits/women/9.jpg",
+      "https://randomuser.me/api/portraits/men/9.jpg"
     ];
     let randomPhoto = photo[Math.floor(Math.random() * photo.length)];
 
-    let contractEndDate = ["2019-11-02", "2019-12-04", "2019-11-03"];
+    let contractEndDate = ["2019-11-12", "2019-12-20", "2019-11-05","2020-01-04","2019-12-23","2019-11-13"];
     let randomContractEndDate = contractEndDate[Math.floor(Math.random() * contractEndDate.length)];
 
     let newCus = new Customer(name, lastname, randomContractEndDate, tel, randomPhoto, email, this.customer_id, address, company);
@@ -247,6 +263,32 @@ class CustomerList {
     document.querySelector("#invalidEmail").value = "";
     document.querySelector("#invalidTel").value = "";
     document.querySelector("#invalidCompany").value = "";
+  }
+  handleInfoClicked(e) {
+    let id = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+    this.showInfo(e.target);
+    this.renderNote(id);
+    this.renderCall(id);
+    document.querySelector('#showInfoDiv').classList.remove("hide");
+    document.querySelector('#tableDiv').classList.add("hide");
+    document.getElementById('addContactbtn').classList.add('hide')
+    let self = this;
+    //Add Note to customer
+    document.getElementById('addNoteBtn').addEventListener('click', function (e) {
+      self.addNoteToCustomer(id);
+    });
+    //Add Calling list to customer
+    document.getElementById('addCalltbtn').addEventListener('click', function (e) {
+      const saveBtn = document.querySelector('#saveLastCall');
+      $('#addCall').modal('show');
+      document.getElementById('saveBtn').addEventListener('click', function (e) {
+        self.addCallToCustomer(id);
+      });
+    });
+  }
+  handleDeleteClicked(e) {
+    this.deleteContactList(e.target);
+    this.RemoveContactFromLocalStorage(e.target);
   }
 }
 class call {

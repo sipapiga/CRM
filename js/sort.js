@@ -4,11 +4,9 @@ function showCustomer(list) {
     let sortCustomerCall = "";
     const cusDiv = document.querySelector("#sortTable");
     for (let customer of list) {
-      console.log(customer.call);
       if (customer.call.length > 0) {
         //sorting and reverse array
         sortCustomerCall = customer.call.sort().reverse();
-        console.log(sortCustomerCall);
         dataHtml += `<tr><td>${num}</td>
                          <td><img src="${customer.photo}" class="img-fluid rounded-circle text-center" width="20%"/></td>
                          <td>${customer.name}</td>
@@ -41,7 +39,6 @@ function showCustomer(list) {
   
   window.addEventListener("DOMContentLoaded", event => {
     let sortList = JSON.parse(localStorage.getItem("Customers"));
-    console.log(sortList);
     const sortContactedbtn = document.querySelector("#lastContactedSort");
     const sortNamebtn = document.querySelector("#nameSort");
   
