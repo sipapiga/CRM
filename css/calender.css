@@ -44,14 +44,6 @@ td ul {
   padding: 0;
 }
 
-.modal-backdrop {
-  background-color: transparent !important;
-}
-
-.popover .arrow {
-  visibility: hidden;
-}
-
 .sideColumn a {
   color: #007bff !important;
   height: 55px;
