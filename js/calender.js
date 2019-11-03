@@ -333,17 +333,29 @@ function calItemClick() {
               $(".calender-items").empty();
               let modal = $(this);
               $(".modal-title-calender").html(i.text);
+              $(".customerName").html(
+                "Customer : <p class='text-dark lead'>" + i.customer + "</p>"
+              );
               $(".calender-date").html(
-                "Date : " +
+                "Date : <p class='text-dark lead'>" +
                   (i.date.day + 1) +
                   " " +
                   months[i.date.month] +
                   " " +
-                  i.date.year
+                  i.date.year +
+                  "</p>"
               );
-              $(".calender-time").html("Time : " + hours + ":" + minutes);
+              $(".calender-time").html(
+                "Time : <p class='text-dark lead'> " +
+                  hours +
+                  ":" +
+                  minutes +
+                  "</p>"
+              );
               $(".calender-item-text").html(
-                "Description : <br>" + i.description
+                "Description : <br> <p class='text-dark lead'>" +
+                  i.description +
+                  "</p>"
               );
               $("#delete").css("visibility", "visible");
               $("#delete").on("click", function() {
@@ -380,6 +392,7 @@ function showDay(el) {
   $(".calender-item-text").html("");
   $(".calender-date").html("");
   $(".calender-time").html("");
+  $(".customerName").html("");
 
   for (item of list) {
     if (
@@ -392,8 +405,9 @@ function showDay(el) {
         if (item.id == $(this)[0].id) {
           li = $(this)[0].element;
           li = li.cloneNode(true);
-          li.classList.remove("list-group-item-info");
+          //li.classList.remove("list-group-item-info");
           li.classList.add("p-3");
+          li.classList.add("list-group-item-info", "mb-2");
 
           let hours = item.date.hours;
           let minutes = item.date.minutes;
@@ -435,16 +449,24 @@ function showItem(test) {
 
   $(".calender-items").addClass("hide");
   $(".modal-title-calender").html(i.text);
+  $(".customerName").html(
+    "Customer : <p class='text-dark lead'>" + i.customer + "</p>"
+  );
   $(".calender-date").html(
-    "Date : " +
+    "Date : <p class='text-dark lead'>" +
       (i.date.day + 1) +
       " " +
       months[i.date.month] +
       " " +
-      i.date.year
+      i.date.year +
+      "</p>"
   );
-  $(".calender-time").html("Time : " + hours + ":" + minutes);
-  $(".calender-item-text").html("Description : <br>" + i.description);
+  $(".calender-time").html(
+    "Time : <p class='text-dark lead'> " + hours + ":" + minutes + "</p>"
+  );
+  $(".calender-item-text").html(
+    "Description : <br> <p class='text-dark lead'>" + i.description + "</p>"
+  );
   $("#delete").css("visibility", "visible");
   $("#delete").on("click", function() {
     removeItem(el.id);
