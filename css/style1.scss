@@ -293,6 +293,15 @@ h5 {
     }
 }
 @media screen and (max-width: 480px) {
+    .navbar {
+        .navbar-collapse {
+            .navbar-nav {
+                .lBtn {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
     .container-fluid {
         .row {
             .main-content {
@@ -316,4 +325,27 @@ h5 {
         }
     }
 }
+@media (max-width: 576px) { 
+    #todayDate{
+        padding-top: $paddingTop;
+        font-size: 20px;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) { 
+    #todayDate{
+        padding-top: $paddingTop;
+        font-size: 20px;
+    }
+    .table-responsive{
+        padding-top: $paddingTop;
+    }
+    .col-md-9{
+        padding-top: $paddingTop;
+    }
+    .col-md-4{
+        padding-top: $paddingTop;
+    }
+} 
 

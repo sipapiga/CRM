@@ -26,18 +26,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
     //Delete customer from UI and localStorage
     for (let i = 0; i < deleteBtn.length; i++) {
         deleteBtn[i].addEventListener('click', function (e) {
-            console.log(e.target);
             customerList.deleteContactList(e.target);
             customerList.RemoveContactFromLocalStorage(e.target);
         });
         //Show customer Info
         infoBtn[i].addEventListener('click', function (e) {
             let id = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-            console.log("id " + id);
             customerList.showInfo(e.target);
             customerList.renderNote(id);
             customerList.renderCall(id);
-            customerList.renderContract(id);
             showDiv.classList.remove("hide");
             tableDIv.classList.add("hide");
             document.getElementById('addContactbtn').classList.add('hide')
@@ -53,14 +50,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     customerList.addCallToCustomer(id);
                 });
             });
-
-            // contractBtn.addEventListener('click', function (e) {
-            //     const saveBtn = document.querySelector('#saveContract');
-            //     $('#addContract').modal('show');
-            //     saveBtn.addEventListener('click', function (e) {
-            //         customerList.addContractToCustomer(id);
-            //     });
-            // });
         });
     }
     // search by name
@@ -69,5 +58,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+    $('[data-toggle="tooltip"]').tooltip();
 
 });

@@ -1,9 +1,10 @@
 class calenderItem {
-  constructor(id, text, description, date) {
+  constructor(id, text, description, date, customer) {
     this.id = id;
     this.text = text;
     this.description = description;
     this.date = date;
+    this.customer = customer;
   }
 }
 class dateTime {
@@ -50,6 +51,9 @@ let days = [31, 28, 31, 30, 31, 31, 30, 31, 30, 31, 30, 31];
 
 let month = new Date().getMonth();
 let year = new Date().getFullYear();
+
+const customer = JSON.parse(localStorage.getItem("Customers"));
+const select = document.querySelector("#chooseCustomerId");
 
 $(document).ready(function() {
   //$("#datetimepicker1").datetimepicker();
@@ -125,6 +129,11 @@ function modal() {
     $("#date").val(dT);
     $("#descriptionEvent").val("");
   });
+  for (let customerOption of customer) {
+    select.options.add(
+      new Option(customerOption.name + " " + customerOption.lastname)
+    );
+  }
 }
 
 function removeItem(id) {
@@ -157,11 +166,13 @@ function setID() {
 
 function addEvent() {
   let selectedDate = formatDate($("#date").val());
+  let drop_val = select.options[select.selectedIndex].value;
   let x = new calenderItem(
     testList.id,
     $("#txtEvent").val(),
     $("#descriptionEvent").val(),
-    selectedDate
+    selectedDate,
+    drop_val
   );
   saveData(x);
 }
@@ -361,7 +372,6 @@ function calItemClick() {
       }
     });
 }
-
 function showDay(el) {
   $(".calender-items").removeClass("hide");
   $(".calender-items").empty();
@@ -399,8 +409,8 @@ function showDay(el) {
       });
       $(".calender-items").append(li);
     }
-    $("#delete").css("visibility", "hidden");
   }
+  $("#delete").css("visibility", "hidden");
 }
 
 function showItem(test) {

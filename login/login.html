@@ -25,8 +25,11 @@
                             <h3>Log in</h3>
                             <input type="text" placeholder="username" id="usernameInput"/>
                             <input type="password" placeholder="password" id="passwordInput" /></br>
-                            <button type="button" class="btn btn-primary btn-lg" role="button"
-                                aria-disabled="true" id="login">Log in</button>
+                            <span class="text-danger text-left">All field is required.</span></br>
+                            <div class="padding">
+                                <button type="button" class="btn btn-primary btn-lg" role="button"
+                                    aria-disabled="true" id="login">Log in</button>
+                            </div>
                             <p class="message"> Not registered? <a href="#register" class="register">Register</a></p>
                         </form>
                         <div class="container">
@@ -46,9 +49,12 @@
                                 <span id="invalidUsername" class="text-danger"></span>
                                 <input type="password" id="password" placeholder="password" /></br>
                                 <span id="invalidPassword" class="text-danger"></span></br>
-                                <a href="#" class="btn btn-primary btn-lg" id="validate" role="button"
-                                    aria-disabled="true">Create</a>
-                                <p class="message">
+                                <span class="text-danger text-left">All field is required.</span></br>
+                                <div class="padding">
+                                    <a href="#" class="btn btn-primary btn-lg" id="validate" role="button"
+                                        aria-disabled="true">Create</a>
+                                    <p class="message">
+                                </div>
                                     Already Registered? <a href="login.html" class="login">Login</a>
                                 </p>
                             </form>
