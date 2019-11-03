@@ -26,14 +26,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
     //Delete customer from UI and localStorage
     for (let i = 0; i < deleteBtn.length; i++) {
         deleteBtn[i].addEventListener('click', function (e) {
-            console.log(e.target);
             customerList.deleteContactList(e.target);
             customerList.RemoveContactFromLocalStorage(e.target);
         });
         //Show customer Info
         infoBtn[i].addEventListener('click', function (e) {
             let id = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-            console.log("id " + id);
             customerList.showInfo(e.target);
             customerList.renderNote(id);
             customerList.renderCall(id);

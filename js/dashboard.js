@@ -1,12 +1,14 @@
 function showEvent() {
   let getEvents = JSON.parse(localStorage.getItem("events"));
   const eventsNum = document.querySelector("#events");
-  eventsNum.innerHTML = getEvents.length;
-  let sortEvent = getEvents.sort();
-  console.log(sortEvent);
-
-  for (let event of getEvents) {
-    appendEvent(event);
+  if (getEvents !== null) {
+    eventsNum.innerHTML = getEvents.length;
+    let sortEvent = getEvents.sort();
+    for (let event of getEvents) {
+      appendEvent(event);
+    }
+  } else {
+    eventsNum.innerHTML = 0;
   }
 }
 function appendEvent(event) {
@@ -24,7 +26,6 @@ function appendEvent(event) {
 }
 function showCustomer() {
   let contactList = JSON.parse(localStorage.getItem("Customers"));
-  console.log(contactList);
   const antalCustomer = document.querySelector("#customers");
   if (contactList === null) {
     antalCustomer.innerHTML = 0;
@@ -44,9 +45,6 @@ function showCustomer() {
   }
 }
 function contractEndReminder(customer) {
-  /*  let endContractCustomer = customer.map((customer) => {
-     return customer.contract;
-   }); */
   let customerContractRunout = [];
   let today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
@@ -54,25 +52,22 @@ function contractEndReminder(customer) {
   var yyyy = today.getFullYear();
 
   today = yyyy + '-' + mm + '-' + dd;
-  console.log(today);
-  for (let contract of customer) {
-    let date1 = new Date(contract.contract);
-    let date2 = new Date(today);
-    console.log(date1);
-    console.log(date2);
-    let difference_In_Time = date1.getTime() - date2.getTime()
-    let difference_In_Days = difference_In_Time / (1000 * 3600 * 24);
-    if (difference_In_Days < 30) {
-      console.log(contract.name);
-      customerContractRunout.push(contract.name);
-      console.log(customerContractRunout);
+  if (customer !== null) {
+    for (let contract of customer) {
+      let date1 = new Date(contract.contract);
+      let date2 = new Date(today);
+      let difference_In_Time = date1.getTime() - date2.getTime()
+      let difference_In_Days = difference_In_Time / (1000 * 3600 * 24);
+      if (difference_In_Days < 30) {
+        customerContractRunout.push(contract.name);
+      }
     }
   }
   return customerContractRunout;
 }
-function clearAlert(){
+function clearAlert() {
   const logoutBtn = document.querySelector('#logout');
-  logoutBtn.addEventListener('click',function(){
+  logoutBtn.addEventListener('click', function () {
     localStorage.removeItem('alerted');
   });
 }

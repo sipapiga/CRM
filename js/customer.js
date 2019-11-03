@@ -12,7 +12,7 @@ class CustomerList {
     const dummy = this.getContactsFromLocalStorage();
     this.addCustomerToList(dummy);
     if (dummy.length == 0) {
-      this.setDummyCustomer(); 
+      this.setDummyCustomer();
     }
   }
   setDummyCustomer() {
@@ -43,12 +43,10 @@ class CustomerList {
   }
   saveContactToLocalStorage(contact) {
     const customerList = this.getContactsFromLocalStorage();
-    console.log(customerList);
     this.list.push(contact);
     this.customer_id++;
     localStorage.setItem("Customers", JSON.stringify(customerList));
     localStorage.setItem("CurrentId", this.customer_id);
-    console.log(this.list);
   }
 
   RemoveContactFromLocalStorage(id) {
@@ -118,7 +116,6 @@ class CustomerList {
   //Show customer info here
   showInfo(id) {
     if (id.classList.contains("info")) {
-      console.log(id.getAttribute("data-id"));
       let customerId = id.getAttribute("data-id");
       this.list.forEach(contact => {
         if (contact.id == customerId) {
@@ -166,7 +163,6 @@ class CustomerList {
     const customerNote = document.querySelector("#addNote").value;
 
     for (let i = 0; i < customerList.length; i++) {
-      console.log(customerList[i].id);
       if (customerList[i].id == id) {
         customerList[i].note.push(customerNote);
         localStorage.setItem("Customers", JSON.stringify(customerList));
@@ -178,7 +174,6 @@ class CustomerList {
     const customerList = this.getContactsFromLocalStorage();
     const appendNote = document.querySelector("#note");
     for (let i = 0; i < customerList.length; i++) {
-      console.log(customerList[i].id);
       if (customerList[i].id == id) {
         let addNoteHtml = "";
         for (let note of customerList[i].note) {
@@ -194,7 +189,6 @@ class CustomerList {
     let names = document.getElementById("myTable");
     let tr = names.querySelectorAll("tr");
     for (let i = 0; i < tr.length; i++) {
-      console.log(tr[i].getElementsByTagName("td"));
       let td = tr[i].getElementsByTagName("td")[2];
       if (td.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
         tr[i].style.display = "";

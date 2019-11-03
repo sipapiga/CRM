@@ -22,7 +22,6 @@ class User {
     saveUserToLocalStorage(user) {
         const userList = this.getUsersFromLocalStorage();
         userList.push(user);
-        console.log(userList);
         localStorage.setItem('Users', JSON.stringify(userList));
     }
     checkLogin(username, password) {
@@ -37,7 +36,6 @@ class User {
                     if (password === user.password) {
                         user = user.name;
                         location.href = "../dashboard.html";
-                        console.log(user);
                         break;
                     } else {
                         this.showAlert("The password you have entered is invalid.", "danger");
@@ -105,13 +103,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let validateBtn = document.querySelector("#validate");
 
     validateBtn.addEventListener('click', function () {
-        console.log("test1");
         let validate = user.validateUser();
         if (validate == true) {
             user.showAlert("You have registered", "success")
             addNewUser();
             clearTextfield();
-            //   location.href = "login.html";
         }
     });
     let user = new User();
@@ -145,6 +141,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         let userInput = new User(userName, userLastname, userEmail, userUsername, userPassword);
         userInput.saveUserToLocalStorage(userInput);
-        console.log(userInput);
     }
 });

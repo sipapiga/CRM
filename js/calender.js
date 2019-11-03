@@ -158,7 +158,6 @@ function addEvent() {
     selectedDate,
     drop_val
   );
-  console.log(x);
   saveData(x);
 }
 
@@ -361,7 +360,6 @@ function showDay(el) {
   $(".calender-time").html("");
 
   for (item of list) {
-    console.log(list);
     if (
       item.date.month == month &&
       item.date.year == year &&
