@@ -35,7 +35,7 @@ class User {
                 if (username === user.username) {
                     if (password === user.password) {
                         user = user.name;
-                        location.href = "../dashboard.html";
+                        location.href = "../index.html";
                         break;
                     } else {
                         this.showAlert("The password you have entered is invalid.", "danger");
