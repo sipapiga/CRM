@@ -35,7 +35,7 @@
         <div class="container-fluid">
 
             <div class="col-3 brandLogo">
-                    <a class="navbar-brand" href="dashboard.html"><img src="image/collasol.png" alt="" class="logoImg"></a>
+                <a class="navbar-brand" href="dashboard.html"><img src="image/collasol.png" alt="" class="logoImg"></a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -150,72 +150,73 @@
                         </tbody>
                     </table>
                 </div>
-        </div>
-        <div id="myModal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h4 class="modal-title">Add Event</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="txtEvent">Event Title</label>
-                            <input type="text" id="txtEvent" placeholder="Event title" class="form-control">
+            </div>
+            <div id="myModal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title">Add Event</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
                         </div>
-                        <div class="form-group">
-                            <label for="txtCustomer">Choose customer</label>
-                            <select class="form-control" id="chooseCustomerId">
-                                <!-- <option id="selectCustomerId">1</option> -->
-                            </select>
-                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="txtEvent">Event Title</label>
+                                <input type="text" id="txtEvent" placeholder="Event title" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtCustomer">Choose customer</label>
+                                <select class="form-control" id="chooseCustomerId">
+                                    <!-- <option id="selectCustomerId">1</option> -->
+                                </select>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="datetimepicker1">Date & Time</label>
-                            <div class="input-group date" id="datetimepicker1">
-                                <input type="text" class="form-control" id="date">
-                                <div class="input-group-append">
-                                    <i class="fas fa-calendar-alt input-group-text"></i>
+                            <div class="form-group">
+                                <label for="datetimepicker1">Date & Time</label>
+                                <div class="input-group date" id="datetimepicker1">
+                                    <input type="text" class="form-control" id="date">
+                                    <div class="input-group-append">
+                                        <i class="fas fa-calendar-alt input-group-text"></i>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="descriptionEvent">Description</label>
-                            <textarea name="" id="descriptionEvent" cols="5" rows="2" class="form-control"></textarea>
+                            <div class="form-group">
+                                <label for="descriptionEvent">Description</label>
+                                <textarea name="" id="descriptionEvent" cols="5" rows="2"
+                                    class="form-control"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" id="save" class="btn btn-primary">Save</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="myModal2" class="modal fade">
-            <div class="modal-dialog modal-dialog-centered modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title-calender text-center col-11"></h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="calender-day text-center">
-                            <ul class="calender-items p-4 hide list-group-flush list-group"></ul>
-                            <p class="customerName text-muted"></p>
-                            <p class="calender-date text-muted"></p>
-                            <p class="calender-time text-muted"></p>
-                            <p class="calender-item-text text-muted"></p>
-                            <button type="button" class="btn btn-danger" id="delete">delete</button>
-                            <button type="button" class="btn btn-secondary hide" id="back">Back</button>
+                        <div class="modal-footer">
+                            <button type="submit" id="save" class="btn btn-primary">Save</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
+            <div id="myModal2" class="modal fade">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title-calender text-center col-11"></h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="calender-day text-center">
+                                <ul class="calender-items p-4 hide list-group-flush list-group"></ul>
+                                <p class="customerName text-muted"></p>
+                                <p class="calender-date text-muted"></p>
+                                <p class="calender-time text-muted"></p>
+                                <p class="calender-item-text text-muted"></p>
+                                <button type="button" class="btn btn-danger" id="delete">delete</button>
+                                <button type="button" class="btn btn-secondary hide" id="back">Back</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
     </div>
 
     <script src="js/calender.js" type="text/javascript"></script>
